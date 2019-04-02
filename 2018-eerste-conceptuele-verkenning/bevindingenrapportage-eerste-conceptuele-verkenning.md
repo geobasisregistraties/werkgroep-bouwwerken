@@ -6,7 +6,7 @@ _**Een eerste conceptuele verkenning**_
 _Versie 1.0_
 _21-10-2018_
 
-![](docs/assets/img/bzk.svg) ![](docs/assets/img/vng.svg)
+![](/docs/assets/img/bzk.svg) ![](/docs/assets/img/vng.svg)
 
 **Rapport werkgroep bouwwerken: een eerste conceptuele verkenning
 **
