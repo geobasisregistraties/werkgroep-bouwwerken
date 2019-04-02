@@ -6,10 +6,10 @@ _**Een eerste conceptuele verkenning**_
 _Versie 1.0_
 _21-10-2018_
 
-![](/docs/assets/img/bzk.svg) ![](/docs/assets/img/vng.svg)
+![](/docs/assets/img/bzk.svg){:width="25%"} ![](/docs/assets/img/vng.svg){:width="25%"}
 
-**Rapport werkgroep bouwwerken: een eerste conceptuele verkenning
-**
+**Rapport werkgroep bouwwerken: een eerste conceptuele verkenning**
+
 In opdracht van het ministerie van BZK en de VNG
 
 Werkgroepleden | Organisaties |
@@ -28,8 +28,6 @@ Frank Kooij | Kadaster |
 Erwin Marsman | Gemeente Ommen-Hardenberg |
 Gert Prins | Gemeente Den Haag |
 Gijs Schulkes | Gemeente Deventer |
-
-----
 
 ## 1. Inleiding
 
@@ -53,7 +51,7 @@ _Voer een verdiepende analyse uit op de knelpunten die er in de huidige situatie
 
 Tijdens de verkenning is de in de opdracht benoemde omgeving verder uitgebreid en als volgt in beeld gebracht:
 
-![](aandachtsgebieden-bouwwerken.png)
+![](img/aandachtsgebieden-bouwwerken.png)
 
 _Figuur 1: aandachtsgebieden 'bouwwerken'_
 
@@ -130,7 +128,7 @@ Centraal hebben we te maken met de basisregistraties die wettelijk verankerd zij
 
 Er zijn daarnaast specifieke sectoren waar bouwwerkinformatie wordt vastgelegd, gebruikmakend van de informatie uit verschillende (basis‑)registraties. Zo wordt door het Instituut Fysieke Veiligheid (IFV) voor het veiligheidsdomein een Kernregistratie Objecten bijgehouden. Daarnaast worden op provinciaal niveau risicokaarten beheerd. Ook lokaal wordt nog gebouwinformatie vastgelegd, bijvoorbeeld in de vorm van BAG+ als niet-authentieke aanvulling op de BAG-gegevens bij gemeenten.
 
-![](huidig-bouwwerk-gegevenslandschap-als-scope-voor-de-conceptuele-verkenning.png)
+![](img/huidig-bouwwerk-gegevenslandschap-als-scope-voor-de-conceptuele-verkenning.png)
 
 _Figuur 2: huidig 'bouwwerk'-gegevenslandschap als scope voor de conceptuele verkenning_
 
@@ -290,7 +288,7 @@ Bouwwerken die niet aan de ruimere definitie van een Gebouw voldoen, worden in h
 
 Dit leidt uiteindelijk tot het volgende model met de relatie naar INSPIRE:
 
-![](houtskoolschets-bouwwerken.png)
+![](img/houtskoolschets-bouwwerken.png)
 
 _Figuur 3: houtskoolschets 'bouwwerken'_
 
@@ -308,23 +306,23 @@ De werkgroep is van mening dat het toekomstige geo-model voor bouwwerken de inwi
 
 De volgende voorbeelden tonen de objectrelaties inclusief 3D-geometrie zoals deze aan de hand van de houtskoolschets uit figuur 3 uitgewerkt zouden kunnen worden:
 
- | |
+Objecttype | Bouwstenen |
 |:---|:---|
 Gebouwdeel | A, B, C |
 Verblijfsobject | A+B |
 Gebouw | A+B, C |
 
-![](eengezinswoning-met-uitbouw-en-losstaande-schuur.png)
+![](img/eengezinswoning-met-uitbouw-en-losstaande-schuur.png)
 
 _Figuur 4: eengezinswoning met uitbouw en losstaande schuur_
 
- | |
+Objecttype | Bouwstenen |
 |:---|:---|
 Gebouwdeel | A, B, C, D |
 Verblijfsobject | A+C ,B |
 Gebouw | A+B+C, D |
 
-![](bovenwoning-benedenwoning-met-uitbouw-en-losstaande-schuur.png)
+![](img/bovenwoning-benedenwoning-met-uitbouw-en-losstaande-schuur.png)
 
 _Figuur 5: bovenwoning, benedenwoning met uitbouw en losstaande schuur_
 
