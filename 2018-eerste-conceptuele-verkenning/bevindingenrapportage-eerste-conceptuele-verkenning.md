@@ -1,9 +1,11 @@
 **Samenhangende objectenregistratie**
 
 # Rapport werkgroep bouwwerken
+
 _**Een eerste conceptuele verkenning**_
 
 _Versie 1.0_
+
 _21-10-2018_
 
 ![](img/bzk.png) ![](img/vng.png)
