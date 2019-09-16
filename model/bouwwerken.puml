@@ -288,7 +288,8 @@ class Voorziening << Objecttype >> {
     gebruikseenheid.
     ==
     RELEVANT BIJ HET INTERPRETEREN VAN
-    OBJECTEN VOOR BAG, WOZ EN OOV
+    OBJECTEN VOOR CONTEXTEN VAN BAG,
+    WOZ EN OOV
 }
 
 @enduml
