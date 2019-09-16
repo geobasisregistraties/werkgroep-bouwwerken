@@ -1,13 +1,41 @@
 @startuml
 
+' https://www.rijkshuisstijl.nl/organisatiespecifieke-richtlijnen/ministerie-van-binnenlandse-zaken-en-koninkrijksrelaties/deelidentiteit-kerndepartement-bzk
+' https://www.rijkshuisstijl.nl/basiselementen/basiselementen-online/online-kleuren
+'
+' # Communicatiekleuren
+' Het kerndepartement van BZK heeft uit het kleurenpalet van de rijkshuisstijl drie kleuren (elk met tint1 / tint2) gekozen:
+' - Rijksoverheid hemelblauw #007bc7 (#b2d7ee/#d9ebf7)
+' - Rijksoverheid rood #d52b1e (#f2bfbb/#f9dfdd)
+' - Rijksoverheid groen #39870c (#c3dbb6/#e1eddb)
+' Het gebruik van deze kleuren in combinatie met veel wit wordt gestimuleerd.
+'
+' # Tinten voor achtergrondkaders, grafieken en tabellen
+' Voor achtergrondkaders, grafieken en tabellen kunnen 7 neutrale grijstinten of tinten van een communicatiekleur in stappen van 20% worden toegepast. Voor tekstachtergrond wordt grijstint1 of communicatiekleur tint2 aanbevolen om aan de contrasteisen voor een goede leesbaarheid te voldoen.
+'
+' Rijksoverheid grijs 1 #f3f3f3
+' Rijksoverheid grijs 2 #e6e6e6
+' Rijksoverheid grijs 3 #cccccc
+' Rijksoverheid grijs 4 #b4b4b4
+' Rijksoverheid grijs 5 #999999
+' Rijksoverheid grijs 6 #696969
+' Rijksoverheid grijs 7 #535353
+
 ' skinparam linetype ortho
 ' skinparam linetype polyline
 
 skinparam class {
-    BackgroundColor #ffffff
-    BorderColor #008dc9
-    ArrowColor #00387d
+    ArrowColor #39870c
     ArrowThickness 1.5
+    BackgroundColor #ffffff
+    BorderColor #007bc7
+    BorderColor<<extern>> #999999
+    FontColor<<extern>> #999999
+'     StereotypeFontStyle italic
+}
+
+skinparam package {
+    FontColor #d52b1e
 }
 
 hide empty members
@@ -20,24 +48,22 @@ hide stereotype
 
 ' hide AbstractBouwwerk
 
-package "Fysiek" <<rectangle>> #ededed {
+package "Fysiek" <<rectangle>> #e6e6e6 {
     AbstractBouwwerk <|-- Bouwwerk
     AbstractBouwwerk <|-- Bouwwerkdeel
     Gebouw "1" *-- "1..*" Bouwwerk
 }
 
-package "Functie" <<rectangle>> #ededed {
-    package "Gebruik" <<rectangle>> #f6f6f6 {
+package "Functie" <<rectangle>> #e6e6e6 {
+    package "Gebruik" <<rectangle>> #f3f3f3 {
         AbstractGebruik <|-- Gebruikseenheid
         AbstractGebruik <|-- Voorziening
         Gebruikseenheid "*" --> "*" Voorziening
     }
-    package "Indeling" <<rectangle>> #f6f6f6 {
+    package "Indeling" <<rectangle>> #f3f3f3 {
         AbstractIndeling <|-- Verblijfseenheid
     }
-    package "Vindbaarheid" <<rectangle>> #f6f6f6 {
-        class Adres {
-        }
+    package "Vindbaarheid" <<rectangle>> #f3f3f3 {
         class Toegang {
         }
         class Verdieping {
@@ -45,7 +71,7 @@ package "Functie" <<rectangle>> #ededed {
     }
 }
 
-' package "Representatie" <<rectangle>> #ededed {
+' package "Representatie" <<rectangle>> #e6e6e6 {
 '     class AbstractRepresentatie {
 '     }
 '     class GebouwRepresentatie {
@@ -86,6 +112,7 @@ Bouwwerk "1" *-- "1..*" Bouwwerkdeel
 Gebruikseenheid "*" --> "1..*" Gebouw
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
 Bouwwerk "*" *-- "*" Voorziening
+Bouwbesluit "1..*" <- "*" Bouwwerk
 Verblijfseenheid "0..1" --> "*" Voorziening
 Verblijfseenheid "*" --> "1..*" Verdieping
 AbstractIndeling <|-- Verdieping
@@ -122,7 +149,7 @@ abstract class AbstractIndeling << Objecttype >> {
     geometrie
 }
 
-class Adres << Objecttype >> {
+class Adres << extern >> {
 }
 
 class Bouwwerk << Objecttype >> {
@@ -171,6 +198,9 @@ class Gebruikseenheid << Objecttype >> {
 class Metagegeven << Objecttype >> {
     typeMetagegeven: TypeMetagegeven
     waarde
+}
+
+class Bouwbesluit << extern >> {
 }
 
 class Toegang << Objecttype >> {
