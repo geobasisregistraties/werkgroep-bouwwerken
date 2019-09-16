@@ -151,20 +151,20 @@ AbstractGebruik <|-- Voorziening
 AbstractBouwwerk <|-- Bouwwerk
 AbstractBouwwerk <|-- Bouwwerkdeel
 Gebouw "1" *-- "1..*" Bouwwerk
-Gebruikseenheid "*" --> "*" Voorziening : gebruikt >
+Gebruikseenheid "*" --> "*" Voorziening : gebruikt
 Bouwwerk "1" *-- "1..*" Bouwwerkdeel
-Gebruikseenheid "*" --> "1..*" Gebouw : ligt\nin >
+Gebruikseenheid "*" --> "1..*" Gebouw : ligt\nin
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
 Bouwwerk "*" *-- "*" Voorziening
-Bouwwerk "*" -- "1..*" Bouwbesluit : is\ngebouwd\nvolgens >
-Verblijfseenheid "0..*" <-- "*" Voorziening : < ligt\nin
-Verblijfseenheid "*" --> "1..*" Verdieping : ligt\nop >
+Bouwwerk "*" -- "1..*" Bouwbesluit : is\ngebouwd\nvolgens
+Verblijfseenheid "0..*" <-- "*" Voorziening : ligt\nin
+Verblijfseenheid "*" --> "1..*" Verdieping : ligt\nop
 AbstractIndeling <|-- Verdieping
 AbstractIndeling <|-- Verblijfseenheid
 Gebouw "1" *-- "*" AbstractIndeling
-Gebruikseenheid "1" --> "+ hoofdtoegang\n1" Toegang : heeft >
-Verblijfseenheid "1" --> "*" Toegang : heeft >
-Toegang "1" --> "1" Adres : heeft >
+Gebruikseenheid "1" --> "+ hoofdtoegang\n1" Toegang : heeft
+Verblijfseenheid "1" --> "*" Toegang : heeft
+Toegang "1" --> "1" Adres : heeft
 ' Gebouw "1" <|-- "1..*" GebouwRepresentatie
 ' AbstractRepresentatie <|-- GebouwRepresentatie
 ' Gebruikseenheid "1" <|-- "1..*" GebruikseenheidRepresentatie
