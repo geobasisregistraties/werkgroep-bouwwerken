@@ -120,7 +120,7 @@ Bouwwerk "1" *-- "1..*" Bouwwerkdeel
 Gebruikseenheid "*" --> "1..*" Gebouw
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
 Bouwwerk "*" *-- "*" Voorziening
-Bouwwerk "*" --> "1..*" Bouwbesluit
+Bouwwerk "*" ..> "1..*" Bouwbesluit
 Verblijfseenheid "0..1" --> "*" Voorziening
 Verblijfseenheid "*" --> "1..*" Verdieping
 AbstractIndeling <|-- Verdieping
@@ -145,6 +145,8 @@ abstract class AbstractBouwwerk << Objecttype >> {
 }
 
 abstract class AbstractGebruik << Objecttype >> {
+..
+    Een functioneel ondeelbare eenheid van gebruik.
 }
 
 abstract class AbstractObject << Objecttype >> {
@@ -199,8 +201,9 @@ class Gebruikseenheid << Objecttype >> {
     ..
     Samenstel van verblijfseenheden
     en gebouwen die als eenheid
-    worden gebruikt (relevant voor
-    WOZ).
+    worden gebruikt.
+    ==
+    RELEVANT VOOR WOZ
 }
 
 class MetaObject << extern >> {
@@ -231,12 +234,13 @@ class Verblijfseenheid << Objecttype >> {
     verkeersruimte, onderwerp kan
     zijn van goederenrechtelijke
     rechtshandelingen en in
-    functioneel opzicht zelfstandig
-    is (dus als een verblijfsobject
-    uit de BAG, maar altijd
-    binnendoor bereikbaar en zonder
-    gebruiksdoel en daarom zonder
-    eis van voorzieningen).
+    functioneel opzicht zelfstandig is.
+    ==
+    DUS ALS EEN VERBLIJFSOBJECT
+    UIT DE BAG, MAAR ALTIJD
+    BINNENDOOR BEREIKBAAR EN ZONDER
+    GEBRUIKSDOEL EN DAAROM ZONDER
+    EIS VAN VOORZIENINGEN.
 }
 
 ' abstract class AbstractRepresentatie << Objecttype >> {
@@ -281,6 +285,9 @@ class Voorziening << Objecttype >> {
     die relevant zijn bij het interpreteren
     van objecten voor de contexten van
     BAG, WOZ en OOV.
+    ==
+    RELEVANT BIJ HET INTERPRETEREN VAN
+    OBJECTEN VOOR BAG, WOZ EN OOV
 }
 
 @enduml
