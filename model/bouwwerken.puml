@@ -262,9 +262,10 @@ class Verblijfseenheid << Objecttype >> {
     ==
     DUS ALS EEN VERBLIJFSOBJECT
     UIT DE BAG, MAAR ALTIJD
-    BINNENDOOR BEREIKBAAR EN ZONDER
-    GEBRUIKSDOEL EN DAAROM ZONDER
-    EIS VAN VOORZIENINGEN.
+    BINNENDOOR BEREIKBAAR EN
+    ZONDER GEBRUIKSDOEL EN
+    DAAROM ZONDER EIS VAN
+    VOORZIENINGEN.
 }
 
 ' ----vvvv---- representatie ----
@@ -303,8 +304,8 @@ class Verdieping << Objecttype >> <<Vrijwillig>> {
     ..
     ==
     SCHRAPPEN INDIEN NIET
-    RELEVANT VOOR CONTEXT
-    VAN WOZ
+    RELEVANT VOOR
+    CONTEXT VAN WOZ
 }
 
 class Voorziening << Objecttype >> {
