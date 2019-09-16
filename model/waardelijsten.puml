@@ -29,7 +29,7 @@
 ' skinparam linetype polyline
 ' --------^-^-^-^-^-^-^-^--------
 
-' skinparam WrapWidth 200
+skinparam WrapWidth 200
 
 skinparam Shadowing false
 
