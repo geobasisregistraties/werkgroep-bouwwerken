@@ -39,6 +39,7 @@ skinparam class {
 skinparam package {
     FontColor #d52b1e
     FontStyle normal
+    Style rectangle
 }
 
 hide empty members
@@ -51,22 +52,22 @@ hide stereotype
 
 ' hide MetaObject
 
-package "Fysiek" <<rectangle>> #e6e6e6 {
+package "Fysiek" #e6e6e6 {
     AbstractBouwwerk <|-- Bouwwerk
     AbstractBouwwerk <|-- Bouwwerkdeel
     Gebouw "1" *-- "1..*" Bouwwerk
 }
 
-package "Functie" <<rectangle>> #e6e6e6 {
-    package "Gebruik" <<rectangle>> #f3f3f3 {
+package "Functie" #e6e6e6 {
+    package "Gebruik" #f3f3f3 {
         AbstractGebruik <|-- Gebruikseenheid
         AbstractGebruik <|-- Voorziening
         Gebruikseenheid "*" --> "*" Voorziening
     }
-    package "Indeling" <<rectangle>> #f3f3f3 {
+    package "Indeling" #f3f3f3 {
         AbstractIndeling <|-- Verblijfseenheid
     }
-    package "Vindbaarheid" <<rectangle>> #f3f3f3 {
+    package "Vindbaarheid" #f3f3f3 {
         class Toegang {
         }
         class Verdieping {
@@ -74,7 +75,7 @@ package "Functie" <<rectangle>> #e6e6e6 {
     }
 }
 
-' package "Representatie" <<rectangle>> #e6e6e6 {
+' package "Representatie" #e6e6e6 {
 '     class AbstractRepresentatie {
 '     }
 '     class GebouwRepresentatie {
@@ -120,12 +121,12 @@ Bouwwerk "1" *-- "1..*" Bouwwerkdeel
 Gebruikseenheid "*" --> "1..*" Gebouw
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
 Bouwwerk "*" *-- "*" Voorziening
-Bouwwerk "*" --> "1..*" Bouwbesluit
-Verblijfseenheid "0..1" --> "*" Voorziening
+Bouwwerk "*" -- "1..*" Bouwbesluit
+Verblijfseenheid "*" --> "*" Voorziening
 Verblijfseenheid "*" --> "1..*" Verdieping
 AbstractIndeling <|-- Verdieping
 Gebouw "1" *-- "*" AbstractIndeling
-Gebruikseenheid "1" --> "1" Toegang : hoofdadres
+Gebruikseenheid "1" --> "hoofdadres\n1" Toegang
 Verblijfseenheid "1" --> "*" Toegang
 Toegang "1" --> "1" Adres
 ' Gebouw "1" <|-- "1..*" GebouwRepresentatie
