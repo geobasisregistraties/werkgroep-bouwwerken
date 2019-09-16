@@ -173,7 +173,7 @@ Toegang "1" --> "1" Adres : heeft
 ' ' AbstractRepresentatie <|-- VerblijfseenheidRepresentatie
 
 abstract class AbstractBouwwerk << Objecttype >> {
-..
+    ..
     Een aaneengesloten en in
     één keer gerealiseerde
     bouwkundige constructie,
@@ -182,7 +182,7 @@ abstract class AbstractBouwwerk << Objecttype >> {
 }
 
 abstract class AbstractGebruik << Objecttype >> {
-..
+    ..
     Kleinste ondeelbare functionele
     eenheid van gebruik.
 }
@@ -195,6 +195,8 @@ abstract class AbstractObject << Objecttype >> {
 
 abstract class AbstractIndeling << Objecttype >> {
     + geometrie
+    ..
+    Gedeelte van\neen gebouw.
 }
 
 class Adres << extern >> {
