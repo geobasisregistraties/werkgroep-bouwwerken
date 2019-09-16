@@ -204,8 +204,8 @@ class Gebruikseenheid << Objecttype >> {
 }
 
 class Metagegeven << extern >> {
-    typeMetagegeven: TypeMetagegeven
-    waarde
+'     typeMetagegeven: TypeMetagegeven
+'     waarde
 }
 
 class Bouwbesluit << extern >> {
