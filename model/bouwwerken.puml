@@ -24,6 +24,8 @@
 ' skinparam linetype ortho
 ' skinparam linetype polyline
 
+skinparam shadowing false
+
 skinparam class {
     ArrowColor #39870c
     ArrowThickness 1.5
@@ -36,6 +38,7 @@ skinparam class {
 
 skinparam package {
     FontColor #d52b1e
+    FontStyle normal
 }
 
 hide empty members
