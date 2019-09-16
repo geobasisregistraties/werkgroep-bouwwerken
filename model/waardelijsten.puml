@@ -53,12 +53,12 @@ package "Waardelijsten" <<rectangle>> #ededed {
         function en Room function.
     }
 
-    class TypeMetagegeven << Referentielijst >> {
-        in onderzoek
-        accuraatheid
-        bewerkingsmethode
-        inwinningsmethode
-    }
+'     class TypeMetagegeven << Referentielijst >> {
+'         in onderzoek
+'         accuraatheid
+'         bewerkingsmethode
+'         inwinningsmethode
+'     }
 
     class Gebruiksdoel << Referentielijst >> {
         bijeenkomstfunctie
