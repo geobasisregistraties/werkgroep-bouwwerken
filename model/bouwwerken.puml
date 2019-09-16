@@ -49,7 +49,7 @@ hide stereotype
 
 ' hide AbstractObject
 
-hide Metagegeven
+' hide Metagegeven
 
 package "Fysiek" <<rectangle>> #e6e6e6 {
     AbstractBouwwerk <|-- Bouwwerk
@@ -203,7 +203,7 @@ class Gebruikseenheid << Objecttype >> {
     WOZ).
 }
 
-class Metagegeven << Objecttype >> {
+class Metagegeven << extern >> {
     typeMetagegeven: TypeMetagegeven
     waarde
 }
