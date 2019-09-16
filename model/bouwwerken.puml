@@ -146,7 +146,7 @@ abstract class AbstractBouwwerk << Objecttype >> {
 
 abstract class AbstractGebruik << Objecttype >> {
 ..
-    Kleinste functioneel ondeelbare
+    Kleinste ondeelbare functionele
     eenheid van gebruik.
 }
 
@@ -200,11 +200,13 @@ class Gebruikseenheid << Objecttype >> {
     gebruiksdoel: Gebruiksdoel [1..*]
     vergundGebruik
     ..
-    Samenstel van verblijfseenheden
-    en gebouwen die als eenheid
+    Samenstel van alle
+    verblijfseenheden en gebouwen
+    die functioneel als eenheid
     worden gebruikt.
     ==
-    RELEVANT VOOR WOZ
+    RELEVANT VOOR CONTEXT VAN
+    WOZ
 }
 
 class MetaObject << extern >> {
@@ -284,13 +286,13 @@ class Voorziening << Objecttype >> {
     geometrie
     typeVoorziening: TypeVoorziening
     ..
-    Installatie of andere voorziening
-    die relevant is voor een
-    gebruikseenheid.
+    Functioneel geheel van een installatie
+    of andere voorziening die relevant is
+    voor een gebruikseenheid.
     ==
     RELEVANT BIJ HET INTERPRETEREN
-    VAN OBJECTEN VOOR CONTEXTEN VAN
-    BAG, WOZ EN OOV
+    VAN OBJECTEN VOOR CONTEXTEN
+    VAN BAG, WOZ EN OOV
 }
 
 @enduml
