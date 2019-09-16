@@ -1,0 +1,248 @@
+@startuml
+
+' skinparam linetype ortho
+' skinparam linetype polyline
+
+skinparam class {
+    BackgroundColor #ffffff
+    BorderColor #008dc9
+    ArrowColor #00387d
+    ArrowThickness 1.5
+}
+
+hide empty members
+
+hide circle
+
+hide stereotype
+
+' hide AbstractObject
+
+' hide AbstractBouwwerk
+
+package "Fysiek" <<rectangle>> #ededed {
+    AbstractBouwwerk <|-- Bouwwerk
+    AbstractBouwwerk <|-- Bouwwerkdeel
+    Gebouw "1" *-- "1..*" Bouwwerk
+}
+
+package "Functie" <<rectangle>> #ededed {
+    package "Gebruik" <<rectangle>> #f6f6f6 {
+        AbstractGebruik <|-- Gebruikseenheid
+        AbstractGebruik <|-- Voorziening
+        Gebruikseenheid "*" --> "*" Voorziening
+    }
+    package "Indeling" <<rectangle>> #f6f6f6 {
+        AbstractIndeling <|-- Verblijfseenheid
+    }
+    package "Vindbaarheid" <<rectangle>> #f6f6f6 {
+        class Adres {
+        }
+        class Toegang {
+        }
+        class Verdieping {
+        }
+    }
+}
+
+' package "Representatie" <<rectangle>> #ededed {
+'     class AbstractRepresentatie {
+'     }
+'     class GebouwRepresentatie {
+'     }
+'     class GebruikseenheidRepresentatie {
+'     }
+' '     class VerblijfseenheidRepresentatie {
+' '     }
+' }
+
+together {
+    class AbstractObject
+    class Metagegeven
+}
+
+' together {
+'     class AbstractBouwwerk
+'     class Bouwwerk
+'     class Bouwwerkdeel
+' }
+'
+' together {
+'     class Gebruikseenheid
+'     class Verblijfseenheid
+' }
+'
+' together {
+'     class Verblijfseenheid
+'     class Verdieping
+' }
+
+AbstractObject <|-- AbstractBouwwerk
+AbstractObject <|-- AbstractIndeling
+AbstractObject <|-- Gebouw
+AbstractObject <|-- AbstractGebruik
+AbstractObject "1" <-- "1..*" Metagegeven
+Bouwwerk "1" *-- "1..*" Bouwwerkdeel
+Gebruikseenheid "*" --> "1..*" Gebouw
+Gebruikseenheid "1" o-- "*" Verblijfseenheid
+Bouwwerk "*" *-- "*" Voorziening
+Verblijfseenheid "0..1" --> "*" Voorziening
+Verblijfseenheid "*" --> "1..*" Verdieping
+AbstractIndeling <|-- Verdieping
+Gebouw "1" *-- "*" AbstractIndeling
+Gebruikseenheid "1" --> "*" Toegang
+Toegang "0..1" --> "1" Adres : hoofdadres
+Toegang "0..1" --> "*" Adres : nevenadres
+' Gebouw "1" <|-- "1..*" GebouwRepresentatie
+' AbstractRepresentatie <|-- GebouwRepresentatie
+' Gebruikseenheid "1" <|-- "1..*" GebruikseenheidRepresentatie
+' AbstractRepresentatie <|-- GebruikseenheidRepresentatie
+' ' Verblijfseenheid "1" <|-- "1..*" VerblijfseenheidRepresentatie
+' ' AbstractRepresentatie <|-- VerblijfseenheidRepresentatie
+
+abstract class AbstractBouwwerk << Objecttype >> {
+..
+    Een aaneengesloten en in
+    één keer gerealiseerde
+    bouwkundige constructie,
+    ongeacht de bereikbaarheid
+    binnendoor.
+}
+
+abstract class AbstractGebruik << Objecttype >> {
+}
+
+abstract class AbstractObject << Objecttype >> {
+    identificatie
+    geconstateerd
+    status
+}
+
+abstract class AbstractIndeling << Objecttype >> {
+    geometrie
+}
+
+class Adres << Objecttype >> {
+}
+
+class Bouwwerk << Objecttype >> {
+    bouwgeometrie [0..1]
+    opleverdatum [1..1]
+    sloopgeometrie [0..1]
+    vigerendBouwbesluit [1..1]
+    ..
+    Het grootst mogelijke geheel
+    van een bouwkundige
+    constructie.
+}
+
+class Bouwwerkdeel << Objecttype >> {
+    typeConstructie: TypeConstructie [1..1]
+    ..
+    Bouwkundig-constructief homogeen
+    gedeelte van een bouwwerk.
+}
+
+class Gebouw << Objecttype >> {
+    typeGebouw: TypeGebouw [1..*]
+    ..
+    Het grootst mogelijke homogene
+    en tezamen duurzaam met de
+    aarde verbonden geheel van
+    aaneengesloten bouwwerken
+    waarop de kleinst mogelijke
+    verscheidenheid van
+    attribuutwaarden integraal van
+    toepassing is, ongeacht de
+    bereikbaarheid binnendoor.
+}
+
+class Gebruikseenheid << Objecttype >> {
+    feitelijkGebruik
+    gebruiksdoel: Gebruiksdoel [1..*]
+    vergundGebruik
+    ..
+    Samenstel van verblijfseenheden
+    en gebouwen die als eenheid
+    worden gebruikt (relevant voor
+    WOZ).
+}
+
+class Metagegeven << Objecttype >> {
+    typeMetagegeven: TypeMetagegeven
+    waarde
+}
+
+class Toegang << Objecttype >> {
+    geometrie
+    ..
+    Deur of andere voorziening
+    die toegang geeft.
+}
+
+class Verblijfseenheid << Objecttype >> {
+    oppervlakte
+    ..
+    Kleinste binnen een gebouw
+    gelegen aaneengesloten eenheid
+    van gebruik die volledig
+    binnendoor bereikbaar is en
+    ontsloten wordt via een eigen
+    toegang vanaf de openbare weg,
+    een erf of een gedeelde
+    verkeersruimte, onderwerp kan
+    zijn van goederenrechtelijke
+    rechtshandelingen en in
+    functioneel opzicht zelfstandig
+    is (dus als een verblijfsobject
+    uit de BAG, maar altijd
+    binnendoor bereikbaar en zonder
+    gebruiksdoel en daarom zonder
+    eis van voorzieningen).
+}
+
+' abstract class AbstractRepresentatie << Objecttype >> {
+'     geometrie
+'     levelOfDetail: LevelOfDetail [1..1]
+'     schaal: Schaalbereik [1..1]
+' }
+'
+' class GebouwRepresentatie << Objecttype >> {
+'     ..
+'     Authentieke gegeneraliseerde
+'     representatie van een Gebouw.
+' }
+'
+' ' class VerblijfseenheidRepresentatie << Objecttype >> {
+' '     ..
+' '     Authentieke gegeneraliseerde
+' '     representatie van een
+' '     Verblijfseenheid.
+' ' }
+'
+' class GebruikseenheidRepresentatie << Objecttype >> {
+'     ..
+'     Authentieke gegeneraliseerde
+'     representatie van een
+'     Gebruikseenheid.
+' }
+
+class Verdieping << Objecttype >> <<Vrijwillig>> {
+    verdiepingsaanduiding
+    ..
+    ==
+    SCHRAPPEN INDIEN NIET
+    RELEVANT VOOR WOZ
+}
+
+class Voorziening << Objecttype >> {
+    geometrie
+    typeVoorziening: TypeVoorziening
+    ..
+    Installaties en andere voorzieningen
+    die relevant zijn bij het interpreteren
+    van objecten voor de contexten van
+    BAG, WOZ en OOV.
+}
+
+@enduml
