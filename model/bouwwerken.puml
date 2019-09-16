@@ -254,6 +254,7 @@ class Bouwbesluit << extern >> {
 
 class Toegang << Objecttype >> {
     + geometrie
+    + toegankelijkheid
     ..
     Deur of andere voorziening
     die toegang geeft tot een
