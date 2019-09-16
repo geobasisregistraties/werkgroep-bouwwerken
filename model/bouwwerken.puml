@@ -239,7 +239,8 @@ class Toegang << Objecttype >> {
     geometrie
     ..
     Deur of andere voorziening
-    die toegang geeft.
+    die toegang geeft tot een
+    verblijfseenheid.
 }
 
 class Verblijfseenheid << Objecttype >> {
