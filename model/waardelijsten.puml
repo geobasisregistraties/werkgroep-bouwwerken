@@ -3,11 +3,63 @@
 ' skinparam linetype ortho
 ' skinparam linetype polyline
 
+' --------v-v-v-v-v-v-v-v--------
+' https://www.rijkshuisstijl.nl/organisatiespecifieke-richtlijnen/ministerie-van-binnenlandse-zaken-en-koninkrijksrelaties/deelidentiteit-kerndepartement-bzk
+' https://www.rijkshuisstijl.nl/basiselementen/basiselementen-online/online-kleuren
+'
+' # Communicatiekleuren
+' Het kerndepartement van BZK heeft uit het kleurenpalet van de rijkshuisstijl drie kleuren (elk met tint1 / tint2) gekozen:
+' - Rijksoverheid hemelblauw #007bc7 (#b2d7ee/#d9ebf7)
+' - Rijksoverheid rood #d52b1e (#f2bfbb/#f9dfdd)
+' - Rijksoverheid groen #39870c (#c3dbb6/#e1eddb)
+' Het gebruik van deze kleuren in combinatie met veel wit wordt gestimuleerd.
+'
+' # Tinten voor achtergrondkaders, grafieken en tabellen
+' Voor achtergrondkaders, grafieken en tabellen kunnen 7 neutrale grijstinten of tinten van een communicatiekleur in stappen van 20% worden toegepast. Voor tekstachtergrond wordt grijstint1 of communicatiekleur tint2 aanbevolen om aan de contrasteisen voor een goede leesbaarheid te voldoen.
+'
+' Rijksoverheid grijs 1 #f3f3f3
+' Rijksoverheid grijs 2 #e6e6e6
+' Rijksoverheid grijs 3 #cccccc
+' Rijksoverheid grijs 4 #b4b4b4
+' Rijksoverheid grijs 5 #999999
+' Rijksoverheid grijs 6 #696969
+' Rijksoverheid grijs 7 #535353
+
+' skinparam linetype ortho
+' skinparam linetype polyline
+' --------^-^-^-^-^-^-^-^--------
+
+skinparam WrapWidth 165
+
+skinparam Shadowing false
+
+skinparam classAttributeIconSize 0
+
 skinparam class {
-    BackgroundColor #ffffff
-    BorderColor #008dc9
-    ArrowColor #00387d
+    ArrowColor #39870c
+'     ArrowMessageAlignment center
     ArrowThickness 1.5
+    BackgroundColor #ffffff
+    BorderColor #007bc7
+    BorderColor<<extern>> #999999
+    FontColor<<extern>> #999999
+'     FontName RijksoverheidSansText
+'     StereotypeFontStyle italic
+}
+
+skinparam note {
+    BackgroundColor #fdf6bb
+    BorderColor #f9e11e
+    FontColor #01689b
+'     FontName RijksoverheidSansText
+}
+
+skinparam package {
+    BorderColor #d52b1e
+    FontColor #d52b1e
+'     FontName RijksoverheidSansText
+    FontStyle normal
+    Style rectangle
 }
 
 hide empty members
