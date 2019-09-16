@@ -203,8 +203,7 @@ class Gebruikseenheid << Objecttype >> {
     ..
     Samenstel van alle
     verblijfseenheden en gebouwen
-    die functioneel als eenheid
-    worden gebruikt.
+    die als geheel worden gebruikt.
     ==
     RELEVANT VOOR CONTEXT VAN
     WOZ
@@ -292,9 +291,9 @@ class Voorziening << Objecttype >> {
     geometrie
     typeVoorziening: TypeVoorziening
     ..
-    Kleinste functioneel geheel van een
-    installatie of andere voorziening die
-    relevant is voor een gebruikseenheid.
+    Kleinste geheel van een installatie
+    of andere voorziening die relevant
+    is voor een gebruikseenheid.
     ==
     RELEVANT BIJ HET INTERPRETEREN
     VAN OBJECTEN VOOR CONTEXTEN
