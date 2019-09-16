@@ -146,7 +146,8 @@ abstract class AbstractBouwwerk << Objecttype >> {
 
 abstract class AbstractGebruik << Objecttype >> {
 ..
-    Een functioneel ondeelbare eenheid van gebruik.
+    Kleinste functioneel ondeelbare
+    eenheid van gebruik.
 }
 
 abstract class AbstractObject << Objecttype >> {
@@ -281,10 +282,7 @@ class Voorziening << Objecttype >> {
     geometrie
     typeVoorziening: TypeVoorziening
     ..
-    Installaties en andere voorzieningen
-    die relevant zijn bij het interpreteren
-    van objecten voor de contexten van
-    BAG, WOZ en OOV.
+    Installatie of andere voorziening.
     ==
     RELEVANT BIJ HET INTERPRETEREN VAN
     OBJECTEN VOOR BAG, WOZ EN OOV
