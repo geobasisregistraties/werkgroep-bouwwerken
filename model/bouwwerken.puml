@@ -137,7 +137,7 @@ AbstractBouwwerk <|-- Bouwwerkdeel
 Gebouw "1" *-- "1..*" Bouwwerk
 Gebruikseenheid "*" --> "*" Voorziening : gebruikt >
 Bouwwerk "1" *-- "1..*" Bouwwerkdeel
-Gebruikseenheid "*" --> "1..*" Gebouw
+Gebruikseenheid "*" --> "1..*" Gebouw : < ligt\nin
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
 Bouwwerk "*" *-- "*" Voorziening
 Bouwwerk "*" -- "1..*" Bouwbesluit
