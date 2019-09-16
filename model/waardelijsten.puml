@@ -193,8 +193,7 @@ package "Waardelijsten" <<rectangle>> #ededed {
         + politiebureau
         + pompstation
         + postkantoor
-        + psychiatrisch
-        + psychiatrisch centrum
+        + psychiatrisch ziekenhuis, psychiatrisch centrum
         + radarpost
         + radartoren
         + radiotoren, televisietoren
@@ -232,7 +231,6 @@ package "Waardelijsten" <<rectangle>> #ededed {
         + windturbine
         + zendtoren
         + ziekenhuis
-        + ziekenhuis,
         + zwembad
         + overig
         --
