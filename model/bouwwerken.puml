@@ -100,12 +100,12 @@ together {
 '     class Bouwwerk
 '     class Bouwwerkdeel
 ' }
-'
+
 ' together {
 '     class Gebruikseenheid
 '     class Verblijfseenheid
 ' }
-'
+
 ' together {
 '     class Verblijfseenheid
 '     class Verdieping
@@ -246,10 +246,14 @@ class Verblijfseenheid << Objecttype >> {
     EIS VAN VOORZIENINGEN.
 }
 
+' ----vvvv---- representatie ----
 ' abstract class AbstractRepresentatie << Objecttype >> {
 '     geometrie
 '     levelOfDetail: LevelOfDetail [1..1]
 '     schaal: Schaalbereik [1..1]
+'     ..
+'     Authentieke gegeneraliseerde
+'     representatie van een object.
 ' }
 '
 ' class GebouwRepresentatie << Objecttype >> {
@@ -271,6 +275,7 @@ class Verblijfseenheid << Objecttype >> {
 '     representatie van een
 '     Gebruikseenheid.
 ' }
+' ----^^^^---- representatie ----
 
 class Verdieping << Objecttype >> <<Vrijwillig>> {
     verdiepingsaanduiding
