@@ -279,13 +279,12 @@ class Verdieping << Objecttype >> <<Vrijwillig>> {
 }
 
 class Voorziening << Objecttype >> {
-    exclusiefGebruik
+    gedeeldeVoorziening
     geometrie
     typeVoorziening: TypeVoorziening
     ..
-    Installatie of andere exclusieve
-    of gedeelde voorziening die
-    relevant is voor een
+    Installatie of andere voorziening
+    die relevant is voor een
     gebruikseenheid.
     ==
     RELEVANT BIJ HET INTERPRETEREN VAN
