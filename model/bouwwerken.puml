@@ -153,7 +153,7 @@ Bouwwerk "1" *-- "1..*" Bouwwerkdeel
 Gebruikseenheid "*" --> "1..*" Gebouw : ligt\nin >
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
 Bouwwerk "*" *-- "*" Voorziening
-Bouwwerk "*" -- "1..*" Bouwbesluit : is gebouwd volgens >
+Bouwwerk "*" -- "1..*" Bouwbesluit : is\ngebouwd\nvolgens >
 Verblijfseenheid "0..*" <-- "*" Voorziening : < ligt\nin
 Verblijfseenheid "*" --> "1..*" Verdieping : ligt\nop >
 AbstractIndeling <|-- Verdieping
