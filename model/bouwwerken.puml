@@ -146,7 +146,7 @@ Verblijfseenheid "*" --> "1..*" Verdieping
 AbstractIndeling <|-- Verdieping
 AbstractIndeling <|-- Verblijfseenheid
 Gebouw "1" *-- "*" AbstractIndeling
-Gebruikseenheid "1" --> "hoofdtoegang\n1" Toegang
+Gebruikseenheid "1" --> "+hoofdtoegang\n1" Toegang
 Verblijfseenheid "1" --> "*" Toegang
 Toegang "1" --> "1" Adres
 ' Gebouw "1" <|-- "1..*" GebouwRepresentatie
@@ -172,23 +172,23 @@ abstract class AbstractGebruik << Objecttype >> {
 }
 
 abstract class AbstractObject << Objecttype >> {
-    identificatie
-    geconstateerd
-    status
+    + identificatie
+    + geconstateerd
+    + status
 }
 
 abstract class AbstractIndeling << Objecttype >> {
-    geometrie
+    + geometrie
 }
 
 class Adres << extern >> {
 }
 
 class Bouwwerk << Objecttype >> {
-    bouwgeometrie [0..1]
-    opleverdatum [1..1]
-    sloopgeometrie [0..1]
-    vigerendBouwbesluit [1..1]
+    + bouwgeometrie [0..1]
+    + opleverdatum [1..1]
+    + sloopgeometrie [0..1]
+    + vigerendBouwbesluit [1..1]
     ..
     Grootst mogelijke geheel
     van een bouwkundige
@@ -196,14 +196,14 @@ class Bouwwerk << Objecttype >> {
 }
 
 class Bouwwerkdeel << Objecttype >> {
-    typeConstructie: TypeConstructie [1..1]
+    + typeConstructie: TypeConstructie [1..1]
     ..
     Bouwkundig-constructief homogeen
     gedeelte van een bouwwerk.
 }
 
 class Gebouw << Objecttype >> {
-    typeGebouw: TypeGebouw [1..*]
+    + typeGebouw: TypeGebouw [1..*]
     ..
     Grootst mogelijke homogene
     en tezamen duurzaam met de
@@ -217,9 +217,9 @@ class Gebouw << Objecttype >> {
 }
 
 class Gebruikseenheid << Objecttype >> {
-    feitelijkGebruik
-    gebruiksdoel: Gebruiksdoel [1..*]
-    vergundGebruik
+    + feitelijkGebruik
+    + gebruiksdoel: Gebruiksdoel [1..*]
+    + vergundGebruik
     ..
     Samenstel van alle
     verblijfseenheden en gebouwen
@@ -230,15 +230,15 @@ class Gebruikseenheid << Objecttype >> {
 }
 
 class MetaObject << extern >> {
-'     typeMetagegeven: TypeMetagegeven
-'     waarde
+'     + typeMetagegeven: TypeMetagegeven
+'     + waarde
 }
 
 class Bouwbesluit << extern >> {
 }
 
 class Toegang << Objecttype >> {
-    geometrie
+    + geometrie
     ..
     Deur of andere voorziening
     die toegang geeft tot een
@@ -246,7 +246,7 @@ class Toegang << Objecttype >> {
 }
 
 class Verblijfseenheid << Objecttype >> {
-    oppervlakte
+    + oppervlakte
     ..
     Kleinste binnen een gebouw
     gelegen aaneengesloten eenheid
@@ -269,9 +269,9 @@ class Verblijfseenheid << Objecttype >> {
 
 ' ----vvvv---- representatie ----
 ' abstract class AbstractRepresentatie << Objecttype >> {
-'     geometrie
-'     levelOfDetail: LevelOfDetail [1..1]
-'     schaal: Schaalbereik [1..1]
+'     + geometrie
+'     + levelOfDetail: LevelOfDetail [1..1]
+'     + schaal: Schaalbereik [1..1]
 '     ..
 '     Authentieke gegeneraliseerde
 '     representatie van een object.
@@ -299,7 +299,7 @@ class Verblijfseenheid << Objecttype >> {
 ' ----^^^^---- representatie ----
 
 class Verdieping << Objecttype >> <<Vrijwillig>> {
-    verdiepingsaanduiding
+    + verdiepingsaanduiding
     ..
     ==
     SCHRAPPEN INDIEN NIET
@@ -308,9 +308,9 @@ class Verdieping << Objecttype >> <<Vrijwillig>> {
 }
 
 class Voorziening << Objecttype >> {
-    gedeeldeVoorziening
-    geometrie
-    typeVoorziening: TypeVoorziening
+    + gedeeldeVoorziening
+    + geometrie
+    + typeVoorziening: TypeVoorziening
     ..
     Kleinste geheel van een installatie
     of andere voorziening die relevant
