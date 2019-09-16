@@ -35,11 +35,21 @@ skinparam class {
     BorderColor #007bc7
     BorderColor<<extern>> #999999
     FontColor<<extern>> #999999
+'     FontName RijksoverheidSansText
 '     StereotypeFontStyle italic
 }
 
+skinparam note {
+    BackgroundColor #fdf6bb
+    BorderColor #f9e11e
+    FontColor #01689b
+'     FontName RijksoverheidSansText
+}
+
 skinparam package {
+    BorderColor #d52b1e
     FontColor #d52b1e
+'     FontName RijksoverheidSansText
     FontStyle normal
     Style rectangle
 }
@@ -73,12 +83,15 @@ package "FUNCTIE" #e6e6e6 {
         }
         class Voorziening {
         }
+        note top of Gebruikseenheid : Relevant\nvoor de\ncontext\nvan WOZ
     }
     package "Indeling" #f3f3f3 {
         class AbstractIndeling {
         }
         class Verblijfseenheid {
         }
+        note top of Verblijfseenheid : Als een verblijfsobject\nuit BAG, maar altijd\nbinnendoor bereikbaar\nen zonder gebruiksdoel\nen daarom zonder eis\nvan voorzieningen.
+
     }
     package "Vindbaarheid" #f3f3f3 {
         class Toegang {
@@ -137,7 +150,7 @@ AbstractBouwwerk <|-- Bouwwerkdeel
 Gebouw "1" *-- "1..*" Bouwwerk
 Gebruikseenheid "*" --> "*" Voorziening : gebruikt >
 Bouwwerk "1" *-- "1..*" Bouwwerkdeel
-Gebruikseenheid "*" --> "1..*" Gebouw : < ligt\nin
+Gebruikseenheid "*" --> "1..*" Gebouw : ligt\nin >
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
 Bouwwerk "*" *-- "*" Voorziening
 Bouwwerk "*" -- "1..*" Bouwbesluit
@@ -224,9 +237,6 @@ class Gebruikseenheid << Objecttype >> {
     Samenstel van alle
     verblijfseenheden en gebouwen
     die als geheel worden gebruikt.
-    ==
-    RELEVANT VOOR DE CONTEXT
-    VAN WOZ
 }
 
 class MetaObject << extern >> {
@@ -259,13 +269,6 @@ class Verblijfseenheid << Objecttype >> {
     zijn van goederenrechtelijke
     rechtshandelingen en in
     functioneel opzicht zelfstandig is.
-    ==
-    DUS ALS EEN VERBLIJFSOBJECT
-    UIT DE BAG, MAAR ALTIJD
-    BINNENDOOR BEREIKBAAR EN
-    ZONDER GEBRUIKSDOEL EN
-    DAAROM ZONDER EIS VAN
-    VOORZIENINGEN.
 }
 
 ' ----vvvv---- representatie ----
@@ -302,11 +305,9 @@ class Verblijfseenheid << Objecttype >> {
 class Verdieping << Objecttype >> <<Vrijwillig>> {
     + verdiepingsaanduiding
     ..
-    ==
-    SCHRAPPEN INDIEN NIET
-    RELEVANT VOOR DE
-    CONTEXT VAN WOZ
 }
+
+note bottom of Verdieping : Schrappen indien niet\nrelevant voor de\ncontext van WOZ
 
 class Voorziening << Objecttype >> {
     + gedeeldeVoorziening
@@ -316,10 +317,8 @@ class Voorziening << Objecttype >> {
     Kleinste geheel van een installatie
     of andere voorziening die relevant
     is voor een gebruikseenheid.
-    ==
-    RELEVANT BIJ HET INTERPRETEREN
-    VAN OBJECTEN VOOR CONTEXTEN
-    VAN BAG, WOZ EN OOV
 }
+
+note bottom of Voorziening : Relevant bij het interpreteren\nvan objecten voor de contexten\nvan BAG, WOZ EN OOV
 
 @enduml
