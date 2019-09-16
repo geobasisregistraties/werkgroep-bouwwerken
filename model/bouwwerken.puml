@@ -26,7 +26,9 @@
 ' skinparam linetype polyline
 ' --------^-^-^-^-^-^-^-^--------
 
-skinparam shadowing false
+skinparam WrapWidth 200
+
+skinparam Shadowing false
 
 skinparam classAttributeIconSize 0
 
@@ -86,14 +88,14 @@ package "FUNCTIE" #e6e6e6 {
         }
         class Voorziening {
         }
-        note top of Gebruikseenheid : Relevant\nvoor de\ncontext\nvan WOZ
+        note top of Gebruikseenheid : Relevant voor de context van WOZ
     }
     package "Indeling" #f3f3f3 {
         class AbstractIndeling {
         }
         class Verblijfseenheid {
         }
-        note top of Verblijfseenheid : Als een verblijfsobject\nuit BAG, maar altijd\nbinnendoor bereikbaar\nen zonder gebruiksdoel\nen daarom zonder eis\nvan voorzieningen.
+        note top of Verblijfseenheid : Als een verblijfsobject uit BAG, maar altijd binnendoor bereikbaar en zonder gebruiksdoel en daarom zonder eis van voorzieningen.
 
     }
     package "Vindbaarheid" #f3f3f3 {
@@ -174,17 +176,12 @@ Toegang "1" --> "1" Adres : heeft
 
 abstract class AbstractBouwwerk << Objecttype >> {
     ..
-    Een aaneengesloten en in
-    één keer gerealiseerde
-    bouwkundige constructie,
-    ongeacht de bereikbaarheid
-    binnendoor.
+    Een aaneengesloten en in één keer gerealiseerde bouwkundige constructie, ongeacht de bereikbaarheid binnendoor.
 }
 
 abstract class AbstractGebruik << Objecttype >> {
     ..
-    Kleinste ondeelbare functionele
-    eenheid van gebruik.
+    Kleinste ondeelbare functionele eenheid van gebruik.
 }
 
 abstract class AbstractObject << Objecttype >> {
@@ -196,7 +193,7 @@ abstract class AbstractObject << Objecttype >> {
 abstract class AbstractIndeling << Objecttype >> {
     + geometrie
     ..
-    Gedeelte van\neen gebouw.
+    Gedeelte van een gebouw.
 }
 
 class Adres << extern >> {
@@ -208,30 +205,19 @@ class Bouwwerk << Objecttype >> {
     + sloopgeometrie [0..1]
     + vigerendBouwbesluit [1..1]
     ..
-    Grootst mogelijke geheel
-    van een bouwkundige
-    constructie.
+    Grootst mogelijke geheel van een bouwkundige constructie.
 }
 
 class Bouwwerkdeel << Objecttype >> {
     + typeConstructie: TypeConstructie [1..1]
     ..
-    Bouwkundig-constructief homogeen
-    gedeelte van een bouwwerk.
+    Bouwkundig-constructief homogeen gedeelte van een bouwwerk.
 }
 
 class Gebouw << Objecttype >> {
     + typeGebouw: TypeGebouw [1..*]
     ..
-    Grootst mogelijke homogene
-    en tezamen duurzaam met de
-    aarde verbonden geheel van
-    aaneengesloten bouwwerken
-    waarop de kleinst mogelijke
-    verscheidenheid van
-    attribuutwaarden integraal van
-    toepassing is, ongeacht de
-    bereikbaarheid binnendoor.
+    Grootst mogelijke homogene en tezamen duurzaam met de aarde verbonden geheel van aaneengesloten bouwwerken waarop de kleinst mogelijke verscheidenheid van attribuutwaarden integraal van toepassing is, ongeacht de bereikbaarheid binnendoor.
 }
 
 class Gebruikseenheid << Objecttype >> {
@@ -239,9 +225,7 @@ class Gebruikseenheid << Objecttype >> {
     + gebruiksdoel: Gebruiksdoel [1..*]
     + vergundGebruik
     ..
-    Samenstel van alle
-    verblijfseenheden en gebouwen
-    die als geheel worden gebruikt.
+    Samenstel van alle verblijfseenheden en gebouwen die als geheel worden gebruikt.
 }
 
 class MetaObject << extern >> {
@@ -256,25 +240,13 @@ class Toegang << Objecttype >> {
     + geometrie
     + toegankelijkheid
     ..
-    Deur of andere voorziening
-    die toegang geeft tot een
-    verblijfseenheid.
+    Deur of andere voorziening die toegang geeft tot een verblijfseenheid.
 }
 
 class Verblijfseenheid << Objecttype >> {
     + oppervlakte
     ..
-    Kleinste binnen een gebouw
-    gelegen aaneengesloten eenheid
-    van gebruik die volledig
-    binnendoor bereikbaar is en
-    ontsloten wordt via een eigen
-    toegang vanaf de openbare weg,
-    een erf of een gedeelde
-    verkeersruimte, onderwerp kan
-    zijn van goederenrechtelijke
-    rechtshandelingen en in
-    functioneel opzicht zelfstandig is.
+    Kleinste binnen een gebouw gelegen aaneengesloten eenheid van gebruik die volledig binnendoor bereikbaar is en ontsloten wordt via een eigen toegang vanaf de openbare weg, een erf of een gedeelde verkeersruimte, onderwerp kan zijn van goederenrechtelijke rechtshandelingen en in functioneel opzicht zelfstandig is.
 }
 
 ' ----vvvv---- representatie ----
@@ -311,21 +283,19 @@ class Verblijfseenheid << Objecttype >> {
 class Verdieping << Objecttype >> <<Vrijwillig>> {
     + verdiepingsaanduiding
     ..
-    Grootste aaneengesloten\ngedeelte van een gebouw\ndat zich op dezelfde\nbouwlaag bevindt.
+    Grootste aaneengesloten gedeelte van een gebouw dat zich op dezelfde bouwlaag bevindt.
 }
 
-note bottom of Verdieping : Schrappen indien niet\nrelevant voor de\ncontext van WOZ
+note bottom of Verdieping : Schrappen indien niet relevant voor de context van WOZ
 
 class Voorziening << Objecttype >> {
     + gedeeldeVoorziening
     + geometrie
     + typeVoorziening: TypeVoorziening
     ..
-    Kleinste geheel van een installatie
-    of andere voorziening die relevant
-    is voor een gebruikseenheid.
+    Kleinste geheel van een installatie of andere voorziening die relevant is voor een gebruikseenheid.
 }
 
-note bottom of Voorziening : Relevant bij het interpreteren\nvan objecten voor de contexten\nvan BAG, WOZ EN OOV
+note bottom of Voorziening : Relevant bij het interpreteren van objecten voor de contexten van BAG, WOZ EN OOV
 
 @enduml
