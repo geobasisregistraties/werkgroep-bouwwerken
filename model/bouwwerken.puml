@@ -49,7 +49,7 @@ hide stereotype
 
 ' hide AbstractObject
 
-' hide Metagegeven
+' hide MetaObject
 
 package "Fysiek" <<rectangle>> #e6e6e6 {
     AbstractBouwwerk <|-- Bouwwerk
@@ -87,7 +87,7 @@ package "Functie" <<rectangle>> #e6e6e6 {
 
 ' together {
 '     class AbstractObject
-'     class Metagegeven
+'     class MetaObject
 ' }
 
 together {
@@ -115,7 +115,7 @@ AbstractObject <|-- AbstractBouwwerk
 AbstractObject <|-- AbstractIndeling
 AbstractObject <|-- Gebouw
 AbstractObject <|-- AbstractGebruik
-AbstractObject "1" <- "1..*" Metagegeven
+AbstractObject "1" <- "1..*" MetaObject
 Bouwwerk "1" *-- "1..*" Bouwwerkdeel
 Gebruikseenheid "*" --> "1..*" Gebouw
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
@@ -203,7 +203,7 @@ class Gebruikseenheid << Objecttype >> {
     WOZ).
 }
 
-class Metagegeven << extern >> {
+class MetaObject << extern >> {
 '     typeMetagegeven: TypeMetagegeven
 '     waarde
 }
