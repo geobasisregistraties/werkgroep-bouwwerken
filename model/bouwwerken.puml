@@ -142,12 +142,12 @@ Gebruikseenheid "1" o-- "*" Verblijfseenheid
 Bouwwerk "*" *-- "*" Voorziening
 Bouwwerk "*" -- "1..*" Bouwbesluit
 Verblijfseenheid "0..*" <-- "*" Voorziening : < ligt\nin
-Verblijfseenheid "*" --> "1..*" Verdieping
+Verblijfseenheid "*" --> "1..*" Verdieping : ligt\nop >
 AbstractIndeling <|-- Verdieping
 AbstractIndeling <|-- Verblijfseenheid
 Gebouw "1" *-- "*" AbstractIndeling
 Gebruikseenheid "1" --> "+ hoofdtoegang\n1" Toegang
-Verblijfseenheid "1" --> "*" Toegang
+Verblijfseenheid "1" --> "*" Toegang : heeft >
 Toegang "1" --> "1" Adres
 ' Gebouw "1" <|-- "1..*" GebouwRepresentatie
 ' AbstractRepresentatie <|-- GebouwRepresentatie
