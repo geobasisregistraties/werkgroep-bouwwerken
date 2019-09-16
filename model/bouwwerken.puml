@@ -225,8 +225,8 @@ class Gebruikseenheid << Objecttype >> {
     verblijfseenheden en gebouwen
     die als geheel worden gebruikt.
     ==
-    RELEVANT VOOR CONTEXT VAN
-    WOZ
+    RELEVANT VOOR DE CONTEXT
+    VAN WOZ
 }
 
 class MetaObject << extern >> {
@@ -304,7 +304,7 @@ class Verdieping << Objecttype >> <<Vrijwillig>> {
     ..
     ==
     SCHRAPPEN INDIEN NIET
-    RELEVANT VOOR
+    RELEVANT VOOR DE
     CONTEXT VAN WOZ
 }
 
