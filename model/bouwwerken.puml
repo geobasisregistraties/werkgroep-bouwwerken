@@ -279,10 +279,14 @@ class Verdieping << Objecttype >> <<Vrijwillig>> {
 }
 
 class Voorziening << Objecttype >> {
+    exclusiefGebruik
     geometrie
     typeVoorziening: TypeVoorziening
     ..
-    Installatie of andere voorziening.
+    Installatie of andere exclusieve
+    of gedeelde voorziening die
+    relevant is voor een
+    gebruikseenheid.
     ==
     RELEVANT BIJ HET INTERPRETEREN VAN
     OBJECTEN VOOR BAG, WOZ EN OOV
