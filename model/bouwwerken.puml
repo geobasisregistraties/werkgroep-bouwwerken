@@ -296,6 +296,6 @@ class Voorziening << Objecttype >> {
     Kleinste geheel van een installatie of andere voorziening die relevant is voor een gebruikseenheid.
 }
 
-note bottom of Voorziening : Relevant bij het interpreteren van objecten voor de contexten van BAG, WOZ EN OOV
+note bottom of Voorziening : Relevant bij het interpreteren van objecten voor de contexten van BAG, WOZ en OOV
 
 @enduml
