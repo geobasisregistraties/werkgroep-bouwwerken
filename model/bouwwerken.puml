@@ -85,10 +85,10 @@ package "Functie" <<rectangle>> #e6e6e6 {
 ' '     }
 ' }
 
-together {
-    class AbstractObject
-    class Metagegeven
-}
+' together {
+'     class AbstractObject
+'     class Metagegeven
+' }
 
 together {
     class Adres
