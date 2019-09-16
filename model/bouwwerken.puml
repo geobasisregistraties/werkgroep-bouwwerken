@@ -133,7 +133,7 @@ AbstractGebruik <|-- Voorziening
 AbstractBouwwerk <|-- Bouwwerk
 AbstractBouwwerk <|-- Bouwwerkdeel
 Gebouw "1" *-- "1..*" Bouwwerk
-Gebruikseenheid "*" --> "*" Voorziening : < relevant voor
+Gebruikseenheid "*" --> "*" Voorziening : < relevant\nvoor
 Bouwwerk "1" *-- "1..*" Bouwwerkdeel
 Gebruikseenheid "*" --> "1..*" Gebouw
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
