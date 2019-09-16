@@ -26,6 +26,8 @@
 
 skinparam shadowing false
 
+skinparam classAttributeIconSize 0
+
 ' skinparam ArrowMessageAlignment center
 
 skinparam class {
