@@ -53,37 +53,33 @@ hide stereotype
 hide MetaObject
 
 package "Fysiek" #e6e6e6 {
-    AbstractBouwwerk <|-- Bouwwerk
-    AbstractBouwwerk <|-- Bouwwerkdeel
-    Gebouw "1" *-- "1..*" Bouwwerk
+    class AbstractBouwwerk {}
+    class Gebouw {}
+    class Bouwwerk {}
+    class Bouwwerkdeel {}
 }
 
 package "Functie" #e6e6e6 {
     package "Gebruik" #f3f3f3 {
-        AbstractGebruik <|-- Gebruikseenheid
-        AbstractGebruik <|-- Voorziening
-        Gebruikseenheid "*" --> "*" Voorziening : < relevant voor
+        class AbstractGebruik {}
+        class Gebruikseenheid {}
+        class Voorziening {}
     }
     package "Indeling" #f3f3f3 {
-        AbstractIndeling <|-- Verblijfseenheid
+        class AbstractIndeling {}
+        class Verblijfseenheid {}
     }
     package "Vindbaarheid" #f3f3f3 {
-        class Toegang {
-        }
-        class Verdieping {
-        }
+        class Toegang {}
+        class Verdieping {}
     }
 }
 
 ' package "Representatie" #e6e6e6 {
-'     class AbstractRepresentatie {
-'     }
-'     class GebouwRepresentatie {
-'     }
-'     class GebruikseenheidRepresentatie {
-'     }
-' '     class VerblijfseenheidRepresentatie {
-' '     }
+'     class AbstractRepresentatie {}
+'     class GebouwRepresentatie {}
+'     class GebruikseenheidRepresentatie {}
+' '     class VerblijfseenheidRepresentatie {}
 ' }
 
 ' together {
@@ -117,6 +113,12 @@ AbstractObject <|-- AbstractIndeling
 AbstractObject <|-- Gebouw
 AbstractObject <|-- AbstractGebruik
 AbstractObject "1" <- "1..*" MetaObject
+AbstractGebruik <|-- Gebruikseenheid
+AbstractGebruik <|-- Voorziening
+AbstractBouwwerk <|-- Bouwwerk
+AbstractBouwwerk <|-- Bouwwerkdeel
+Gebouw "1" *-- "1..*" Bouwwerk
+Gebruikseenheid "*" --> "*" Voorziening : < relevant voor
 Bouwwerk "1" *-- "1..*" Bouwwerkdeel
 Gebruikseenheid "*" --> "1..*" Gebouw
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
@@ -125,6 +127,7 @@ Bouwwerk "*" -- "1..*" Bouwbesluit
 Verblijfseenheid "*" --> "*" Voorziening
 Verblijfseenheid "*" --> "1..*" Verdieping
 AbstractIndeling <|-- Verdieping
+AbstractIndeling <|-- Verblijfseenheid
 Gebouw "1" *-- "*" AbstractIndeling
 Gebruikseenheid "1" --> "hoofdtoegang\n1" Toegang
 Verblijfseenheid "1" --> "*" Toegang
