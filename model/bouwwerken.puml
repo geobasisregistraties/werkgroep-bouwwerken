@@ -54,7 +54,7 @@ hide stereotype
 
 hide MetaObject
 
-package "Fysiek" #e6e6e6 {
+package "FYSIEK" #e6e6e6 {
     class AbstractBouwwerk {
     }
     class Gebouw {
@@ -65,7 +65,7 @@ package "Fysiek" #e6e6e6 {
     }
 }
 
-package "Functie" #e6e6e6 {
+package "FUNCTIE" #e6e6e6 {
     package "Gebruik" #f3f3f3 {
         class AbstractGebruik {
         }
