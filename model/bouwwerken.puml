@@ -169,7 +169,7 @@ class Bouwwerk << Objecttype >> {
     sloopgeometrie [0..1]
     vigerendBouwbesluit [1..1]
     ..
-    Het grootst mogelijke geheel
+    Grootst mogelijke geheel
     van een bouwkundige
     constructie.
 }
@@ -184,7 +184,7 @@ class Bouwwerkdeel << Objecttype >> {
 class Gebouw << Objecttype >> {
     typeGebouw: TypeGebouw [1..*]
     ..
-    Het grootst mogelijke homogene
+    Grootst mogelijke homogene
     en tezamen duurzaam met de
     aarde verbonden geheel van
     aaneengesloten bouwwerken
