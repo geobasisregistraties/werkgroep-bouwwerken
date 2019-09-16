@@ -135,13 +135,13 @@ AbstractGebruik <|-- Voorziening
 AbstractBouwwerk <|-- Bouwwerk
 AbstractBouwwerk <|-- Bouwwerkdeel
 Gebouw "1" *-- "1..*" Bouwwerk
-Gebruikseenheid "*" --> "*" Voorziening : < gebruikt\ndoor\n\n
+Gebruikseenheid "*" --> "*" Voorziening : < gebruikt\ndoor
 Bouwwerk "1" *-- "1..*" Bouwwerkdeel
 Gebruikseenheid "*" --> "1..*" Gebouw
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
 Bouwwerk "*" *-- "*" Voorziening
 Bouwwerk "*" -- "1..*" Bouwbesluit
-Verblijfseenheid "0..*" <-- "*" Voorziening : "< ligt in"
+Verblijfseenheid "0..*" <-- "*" Voorziening : < ligt\nin
 Verblijfseenheid "*" --> "1..*" Verdieping
 AbstractIndeling <|-- Verdieping
 AbstractIndeling <|-- Verblijfseenheid
