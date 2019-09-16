@@ -100,7 +100,7 @@ package "Waardelijsten" <<rectangle>> #ededed {
         + zolder
         + zwembad
         --
-        Gebaseerd op o.a. CityGML 2.0 BuildingInstallation function en Room function.
+        Bronnen: CityGML 2.0 BuildingInstallation function; CityGML 2.0 Room function
     }
 
 '     class TypeMetagegeven << Referentielijst >> {
@@ -123,7 +123,7 @@ package "Waardelijsten" <<rectangle>> #ededed {
         + woonfunctie
         + overige gebruiksfunctie
         --
-        Bronnen: BAG en Bouwbesluit 2012.
+        Bronnen: BAG; Bouwbesluit 2012
     }
 
     class TypeGebouw << Referentielijst >> {
@@ -150,7 +150,7 @@ package "Waardelijsten" <<rectangle>> #ededed {
 '         windturbine
 '         zonnescherm
 '         --
-'         Bron: INSPIRE BuildingNatureValue.
+'         Bron: INSPIRE BuildingNatureValue
 '
         + bezoekerscentrum
         + boortoren
@@ -234,7 +234,7 @@ package "Waardelijsten" <<rectangle>> #ededed {
         + zwembad
         + overig
         --
-        Bron: Basisregistratie Topografie: Catalogus en Productspecificaties, versie 1.2.0.1, 8 juli 2019.
+        Bron: Basisregistratie Topografie: Catalogus en Productspecificaties, versie 1.2.0.1, 8 juli 2019
     }
 }
 @enduml
