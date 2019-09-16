@@ -1,5 +1,6 @@
 @startuml
 
+' --------v-v-v-v-v-v-v-v--------
 ' https://www.rijkshuisstijl.nl/organisatiespecifieke-richtlijnen/ministerie-van-binnenlandse-zaken-en-koninkrijksrelaties/deelidentiteit-kerndepartement-bzk
 ' https://www.rijkshuisstijl.nl/basiselementen/basiselementen-online/online-kleuren
 '
@@ -23,6 +24,7 @@
 
 ' skinparam linetype ortho
 ' skinparam linetype polyline
+' --------^-^-^-^-^-^-^-^--------
 
 skinparam shadowing false
 
@@ -30,7 +32,7 @@ skinparam classAttributeIconSize 0
 
 skinparam class {
     ArrowColor #39870c
-    ArrowMessageAlignment center
+'     ArrowMessageAlignment center
     ArrowThickness 1.5
     BackgroundColor #ffffff
     BorderColor #007bc7
