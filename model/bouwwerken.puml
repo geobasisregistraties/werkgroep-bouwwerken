@@ -120,7 +120,7 @@ Bouwwerk "1" *-- "1..*" Bouwwerkdeel
 Gebruikseenheid "*" --> "1..*" Gebouw
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
 Bouwwerk "*" *-- "*" Voorziening
-Bouwwerk "*" ..> "1..*" Bouwbesluit
+Bouwwerk "*" --> "1..*" Bouwbesluit
 Verblijfseenheid "0..1" --> "*" Voorziening
 Verblijfseenheid "*" --> "1..*" Verdieping
 AbstractIndeling <|-- Verdieping
