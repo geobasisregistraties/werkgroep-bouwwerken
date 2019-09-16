@@ -28,8 +28,6 @@ skinparam shadowing false
 
 skinparam classAttributeIconSize 0
 
-' skinparam ArrowMessageAlignment center
-
 skinparam class {
     ArrowColor #39870c
     ArrowThickness 1.5
