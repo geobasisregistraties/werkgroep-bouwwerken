@@ -53,25 +53,25 @@ hide stereotype
 hide MetaObject
 
 package "Fysiek" #e6e6e6 {
-    class AbstractBouwwerk {}
-    class Gebouw {}
-    class Bouwwerk {}
-    class Bouwwerkdeel {}
+    class AbstractBouwwerk { }
+    class Gebouw { }
+    class Bouwwerk { }
+    class Bouwwerkdeel { }
 }
 
 package "Functie" #e6e6e6 {
     package "Gebruik" #f3f3f3 {
-        class AbstractGebruik {}
-        class Gebruikseenheid {}
-        class Voorziening {}
+        class AbstractGebruik { }
+        class Gebruikseenheid { }
+        class Voorziening { }
     }
     package "Indeling" #f3f3f3 {
-        class AbstractIndeling {}
-        class Verblijfseenheid {}
+        class AbstractIndeling { }
+        class Verblijfseenheid { }
     }
     package "Vindbaarheid" #f3f3f3 {
-        class Toegang {}
-        class Verdieping {}
+        class Toegang { }
+        class Verdieping { }
     }
 }
 
