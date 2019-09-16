@@ -139,7 +139,7 @@ Gebruikseenheid "*" --> "1..*" Gebouw
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
 Bouwwerk "*" *-- "*" Voorziening
 Bouwwerk "*" -- "1..*" Bouwbesluit
-Verblijfseenheid "*" --> "*" Voorziening
+Verblijfseenheid "*" --> "*" Voorziening : < (deels)\naanwezig\nin
 Verblijfseenheid "*" --> "1..*" Verdieping
 AbstractIndeling <|-- Verdieping
 AbstractIndeling <|-- Verblijfseenheid
