@@ -126,7 +126,7 @@ Verblijfseenheid "*" --> "*" Voorziening
 Verblijfseenheid "*" --> "1..*" Verdieping
 AbstractIndeling <|-- Verdieping
 Gebouw "1" *-- "*" AbstractIndeling
-Gebruikseenheid "1" --> "hoofdadres\n1" Toegang
+Gebruikseenheid "1" --> "hoofdtoegang\n1" Toegang
 Verblijfseenheid "1" --> "*" Toegang
 Toegang "1" --> "1" Adres
 ' Gebouw "1" <|-- "1..*" GebouwRepresentatie
