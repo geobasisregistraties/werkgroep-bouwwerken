@@ -49,7 +49,7 @@ hide stereotype
 
 ' hide AbstractObject
 
-' hide AbstractBouwwerk
+hide Metagegeven
 
 package "Fysiek" <<rectangle>> #e6e6e6 {
     AbstractBouwwerk <|-- Bouwwerk
@@ -90,6 +90,11 @@ together {
     class Metagegeven
 }
 
+together {
+    class Adres
+    class Bouwbesluit
+}
+
 ' together {
 '     class AbstractBouwwerk
 '     class Bouwwerk
@@ -110,12 +115,12 @@ AbstractObject <|-- AbstractBouwwerk
 AbstractObject <|-- AbstractIndeling
 AbstractObject <|-- Gebouw
 AbstractObject <|-- AbstractGebruik
-AbstractObject "1" <-- "1..*" Metagegeven
+AbstractObject "1" <- "1..*" Metagegeven
 Bouwwerk "1" *-- "1..*" Bouwwerkdeel
 Gebruikseenheid "*" --> "1..*" Gebouw
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
 Bouwwerk "*" *-- "*" Voorziening
-Bouwbesluit "1..*" <- "*" Bouwwerk
+Bouwwerk "*" --> "1..*" Bouwbesluit
 Verblijfseenheid "0..1" --> "*" Voorziening
 Verblijfseenheid "*" --> "1..*" Verdieping
 AbstractIndeling <|-- Verdieping
