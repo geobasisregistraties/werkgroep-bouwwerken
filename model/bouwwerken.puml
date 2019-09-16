@@ -135,7 +135,7 @@ AbstractGebruik <|-- Voorziening
 AbstractBouwwerk <|-- Bouwwerk
 AbstractBouwwerk <|-- Bouwwerkdeel
 Gebouw "1" *-- "1..*" Bouwwerk
-Gebruikseenheid "*" --> "*" Voorziening : < gebruikt\ndoor
+Gebruikseenheid "*" --> "*" Voorziening : gebruikt >
 Bouwwerk "1" *-- "1..*" Bouwwerkdeel
 Gebruikseenheid "*" --> "1..*" Gebouw
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
@@ -146,7 +146,7 @@ Verblijfseenheid "*" --> "1..*" Verdieping
 AbstractIndeling <|-- Verdieping
 AbstractIndeling <|-- Verblijfseenheid
 Gebouw "1" *-- "*" AbstractIndeling
-Gebruikseenheid "1" --> "+hoofdtoegang\n1" Toegang
+Gebruikseenheid "1" --> "+ hoofdtoegang\n1" Toegang
 Verblijfseenheid "1" --> "*" Toegang
 Toegang "1" --> "1" Adres
 ' Gebouw "1" <|-- "1..*" GebouwRepresentatie
