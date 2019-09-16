@@ -30,6 +30,7 @@ skinparam classAttributeIconSize 0
 
 skinparam class {
     ArrowColor #39870c
+    ArrowMessageAlignment center
     ArrowThickness 1.5
     BackgroundColor #ffffff
     BorderColor #007bc7
