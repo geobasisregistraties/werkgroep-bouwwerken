@@ -311,7 +311,7 @@ class Verblijfseenheid << Objecttype >> {
 class Verdieping << Objecttype >> <<Vrijwillig>> {
     + verdiepingsaanduiding
     ..
-    Grootste aaneengesloten\ngedeelte van een\ngebouw dat zich op\ndezelfde bouwlaag\nbevindt.
+    Grootste aaneengesloten\ngedeelte van een gebouw\ndat zich op dezelfde\nbouwlaag bevindt.
 }
 
 note bottom of Verdieping : Schrappen indien niet\nrelevant voor de\ncontext van WOZ
