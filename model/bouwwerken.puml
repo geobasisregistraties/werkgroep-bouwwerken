@@ -62,7 +62,7 @@ package "Functie" #e6e6e6 {
     package "Gebruik" #f3f3f3 {
         AbstractGebruik <|-- Gebruikseenheid
         AbstractGebruik <|-- Voorziening
-        Gebruikseenheid "*" --> "*" Voorziening
+        Gebruikseenheid "*" --> "*" Voorziening : < relevant voor
     }
     package "Indeling" #f3f3f3 {
         AbstractIndeling <|-- Verblijfseenheid
