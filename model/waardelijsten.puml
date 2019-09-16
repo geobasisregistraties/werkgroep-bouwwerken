@@ -29,7 +29,7 @@
 ' skinparam linetype polyline
 ' --------^-^-^-^-^-^-^-^--------
 
-' skinparam WrapWidth 165
+' skinparam WrapWidth 200
 
 skinparam Shadowing false
 
@@ -71,62 +71,59 @@ hide stereotype
 package "Waardelijsten" <<rectangle>> #ededed {
     ' https://www.groephuyzentruyt.be/blog/de-verschillende-bouwmethodes
     class TypeConstructie << Referentielijst >> {
-        beton
-        houtskelet
-        metselwerk
-        prefab
-        staalstructuur
+        + beton
+        + houtskelet
+        + metselwerk
+        + prefab
+        + staalstructuur
     }
 
     class TypeVoorziening << Referentielijst >> {
-        atelier/hobbyruimte
-        badkamer
-        balkon
-        berging
-        carport
-        dakkapel
-        dakopbouw
-        dakterras
-        garage
-        keuken
-        kelder
-        meterkast
-        serre
-        souterrain
-        terras
-        toilet
-        toren
-        trap
-        zolder
-        zwembad
+        + atelier/hobbyruimte
+        + badkamer
+        + balkon
+        + berging
+        + carport
+        + dakkapel
+        + dakopbouw
+        + dakterras
+        + garage
+        + kelder
+        + keuken
+        + meterkast
+        + serre
+        + souterrain
+        + terras
+        + toilet
+        + toren
+        + trap
+        + zolder
+        + zwembad
         --
-        Gebaseerd op o.a. CityGML
-        2.0 BuildingInstallation
-        function en Room function.
+        Gebaseerd op o.a. CityGML 2.0 BuildingInstallation function en Room function.
     }
 
 '     class TypeMetagegeven << Referentielijst >> {
-'         in onderzoek
 '         accuraatheid
 '         bewerkingsmethode
+'         in onderzoek
 '         inwinningsmethode
 '     }
 
     class Gebruiksdoel << Referentielijst >> {
-        bijeenkomstfunctie
-        celfunctie
-        gezondheidszorgfunctie
-        industriefunctie
-        kantoorfunctie
-        logiesfunctie
-        onderwijsfunctie
-        sportfunctie
-        winkelfunctie
-        woonfunctie
-        overige gebruiksfunctie
+        + bijeenkomstfunctie
+        + celfunctie
+        + gezondheidszorgfunctie
+        + industriefunctie
+        + kantoorfunctie
+        + logiesfunctie
+        + onderwijsfunctie
+        + sportfunctie
+        + winkelfunctie
+        + woonfunctie
+        + overige gebruiksfunctie
         --
-        Overgenomen van BAG en
-        art. 1.1 van Bouwbesluit 2012.
+        Bronnen: BAG en Bouwbesluit 2012.
     }
 
     class TypeGebouw << Referentielijst >> {
@@ -153,97 +150,93 @@ package "Waardelijsten" <<rectangle>> #ededed {
 '         windturbine
 '         zonnescherm
 '         --
-'         Overgenomen van INSPIRE
-'         BuildingNatureValue.
+'         Bron: INSPIRE BuildingNatureValue.
 '
-        bezoekerscentrum
-        boortoren
-        brandtoren
-        brandweerkazerne
-        bunker
-        crematorium
-        dok
-        elektriciteitscentrale
-        fabriek
-        fort
-        gemaal
-        gemeentehuis
-        gevangenis
-        hotel
-        huizenblok
-        kapel
-        kas, warenhuis
-        kasteel
-        kerk
-        kerncentrale, kernreactor
-        kliniek, inrichting, sanatorium
-        klokkentoren
-        klooster, abdij
-        koeltoren
-        koepel
-        kunstijsbaan
-        lichttoren
-        luchtwachttoren
-        manege
-        markant gebouw
-        militair gebouw
-        moskee
-        museum
-        observatorium
-        overig religieus gebouw
-        paleis
-        parkeerdak, parkeerdek, parkeergarage
-        peilmeetstation
-        politiebureau
-        pompstation
-        postkantoor
-        psychiatrisch centrum
-        radarpost
-        radartoren
-        radiotoren, televisietoren
-        ziekenhuis,
-        psychiatrisch
-        recreatiecentrum
-        reddingboothuisje
-        remise
-        ruïne
-        schaapskooi
-        school
-        schoorsteen
-        silo
-        sporthal
-        stadion
-        stadskantoor, hulpsecretarie
-        stationsgebouw
-        synagoge
-        tank
-        tankstation
-        telecommunicatietoren
-        tol
-        toren
-        transformatorstation
-        uitzichttoren
-        universiteit
-        veiling
-        verkeerstoren
-        vuurtoren
-        waterradmolen
-        watertoren
-        wegrestaurant
-        werf
-        windmolen
-        windmolen: korenmolen
-        windmolen: watermolen
-        windturbine
-        zendtoren
-        ziekenhuis
-        zwembad
-        overig
+        + bezoekerscentrum
+        + boortoren
+        + brandtoren
+        + brandweerkazerne
+        + bunker
+        + crematorium
+        + dok
+        + elektriciteitscentrale
+        + fabriek
+        + fort
+        + gemaal
+        + gemeentehuis
+        + gevangenis
+        + hotel
+        + huizenblok
+        + kapel
+        + kas, warenhuis
+        + kasteel
+        + kerk
+        + kerncentrale, kernreactor
+        + kliniek, inrichting, sanatorium
+        + klokkentoren
+        + klooster, abdij
+        + koeltoren
+        + koepel
+        + kunstijsbaan
+        + lichttoren
+        + luchtwachttoren
+        + manege
+        + markant gebouw
+        + militair gebouw
+        + moskee
+        + museum
+        + observatorium
+        + overig religieus gebouw
+        + paleis
+        + parkeerdak, parkeerdek, parkeergarage
+        + peilmeetstation
+        + politiebureau
+        + pompstation
+        + postkantoor
+        + psychiatrisch
+        + psychiatrisch centrum
+        + radarpost
+        + radartoren
+        + radiotoren, televisietoren
+        + recreatiecentrum
+        + reddingboothuisje
+        + remise
+        + ruïne
+        + schaapskooi
+        + school
+        + schoorsteen
+        + silo
+        + sporthal
+        + stadion
+        + stadskantoor, hulpsecretarie
+        + stationsgebouw
+        + synagoge
+        + tank
+        + tankstation
+        + telecommunicatietoren
+        + tol
+        + toren
+        + transformatorstation
+        + uitzichttoren
+        + universiteit
+        + veiling
+        + verkeerstoren
+        + vuurtoren
+        + waterradmolen
+        + watertoren
+        + wegrestaurant
+        + werf
+        + windmolen
+        + windmolen: korenmolen
+        + windmolen: watermolen
+        + windturbine
+        + zendtoren
+        + ziekenhuis
+        + ziekenhuis,
+        + zwembad
+        + overig
         --
-        Overgenomen van Basisregistratie
-        Topografie: Catalogus en
-        Productspecificaties,
-        versie 1.2.0.1, 8 juli 2019.
+        Bron: Basisregistratie Topografie: Catalogus en Productspecificaties, versie 1.2.0.1, 8 juli 2019.
     }
 }
 @enduml
