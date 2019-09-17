@@ -187,6 +187,8 @@ abstract class AbstractGebruik << Objecttype >> {
 
 abstract class AbstractObject << Objecttype >> {
     + identificatie
+    + documentdatum
+    + documentnummer
     + geconstateerd
     + status
 }
