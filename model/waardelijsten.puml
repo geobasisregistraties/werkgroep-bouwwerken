@@ -77,7 +77,7 @@ hide stereotype
 '     class TypeGebouw
 ' }
 
-package "Waardelijsten" {
+package "WAARDELIJSTEN" {
 
     class TypeConstructie << Referentielijst >> {
         + beton
