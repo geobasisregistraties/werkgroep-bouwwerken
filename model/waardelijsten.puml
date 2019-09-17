@@ -246,7 +246,7 @@ package "WAARDELIJSTEN" {
         Bron: Basisregistratie Topografie: Catalogus en Productspecificaties, versie 1.2.0.1, 8 juli 2019
     }
 
-note bottom of TypeGebouw : Niet-fysieke kenmerken schrappen uit de waardelijst van TypeGebouw
+note bottom of TypeGebouw : Niet-fysieke kenmerken verwijderen uit de waardelijst van TypeGebouw, zoals "bezoekerscentrum"
 
 }
 @enduml
