@@ -289,11 +289,11 @@ class Verdieping << Objecttype >> <<Vrijwillig>> {
 note bottom of Verdieping : Schrappen indien niet relevant voor de context van WOZ
 
 class Voorziening << Objecttype >> {
-    + gedeeldeVoorziening
+'     + gedeeldeVoorziening
     + geometrie
     + typeVoorziening: TypeVoorziening
     ..
-    Kleinste geheel van een installatie of andere voorziening die relevant is voor een gebruikseenheid.
+    Kleinste geheel van een installatie of andere voorziening die relevant is voor een of meer gebruikseenheden.
 }
 
 note bottom of Voorziening : Relevant bij het interpreteren van objecten voor de contexten van BAG, WOZ en OOV
