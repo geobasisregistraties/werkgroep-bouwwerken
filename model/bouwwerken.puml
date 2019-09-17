@@ -293,7 +293,7 @@ note bottom of Verdieping : Schrappen indien niet relevant voor de contexten van
 
 class Voorziening << Objecttype >> {
 '     + gedeeldeVoorziening
-    + geometrie
+'     + geometrie
     + typeVoorziening: TypeVoorziening
     ..
     Kleinste geheel van een installatie of andere voorziening die relevant is voor een of meer gebruikseenheden.
