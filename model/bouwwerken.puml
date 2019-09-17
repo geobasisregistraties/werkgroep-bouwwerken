@@ -158,7 +158,7 @@ Gebruikseenheid "*" --> "*" Voorziening : gebruikt
 Bouwwerk "1" *-- "1..*" Bouwwerkdeel
 Gebruikseenheid "*" --> "1..*" Gebouw : ligt\nin
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
-note on link : Nog uitwerken hoe om te gaan met bijvoorbeeld een woning die alleen toegankelijk is via een winkel.
+note top on link : Nog uitwerken hoe om te gaan met bijvoorbeeld een woning die alleen toegankelijk is via een winkel. Dit kan gevolgen hebben voor de definitie van AbstractGebruik.
 Bouwwerk "*" <-- "*" Voorziening : ligt\nin
 Bouwwerk "*" -- "1..*" Bouwbesluit : is\ngebouwd\nvolgens
 Verblijfseenheid "*" <-- "*" Voorziening : ligt\nin
