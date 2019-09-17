@@ -90,6 +90,7 @@ package "FUNCTIE" {
         class Voorziening {
         }
         note top of Gebruikseenheid : Relevant voor de context van WOZ.
+        note top of Gebruikseenheid : Nog uit te werken hoe om te gaan met bijvoorbeeld een woning die toegankelijk is via een winkel.
     }
     package "Indeling" #e6e6e6 {
         class AbstractIndeling {
