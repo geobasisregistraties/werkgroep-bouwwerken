@@ -78,6 +78,12 @@ package "Waardelijsten" <<rectangle>> #ededed {
         + staalstructuur
     }
 
+together {
+    class TypeVoorziening
+    class TypeMetagegeven
+    class Gebruiksdoel
+}
+
     class TypeVoorziening << Referentielijst >> {
         + atelier/hobbyruimte
         + badkamer
@@ -236,5 +242,8 @@ package "Waardelijsten" <<rectangle>> #ededed {
         --
         Bron: Basisregistratie Topografie: Catalogus en Productspecificaties, versie 1.2.0.1, 8 juli 2019
     }
+
+note bottom of TypeGebouw : Niet-fysieke kenmerken schrappen uit de waardelijst van TypeGebouw
+
 }
 @enduml
