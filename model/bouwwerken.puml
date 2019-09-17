@@ -52,6 +52,7 @@ skinparam note {
 }
 
 skinparam package {
+    BackgroundColor #f3f3f3
     BorderColor #d52b1e
     FontColor #d52b1e
 '     FontName RijksoverheidSansText
@@ -69,7 +70,7 @@ hide stereotype
 
 hide MetaObject
 
-package "FYSIEK" #e6e6e6 {
+package "FYSIEK" {
     class AbstractBouwwerk {
     }
     class Gebouw {
@@ -80,8 +81,8 @@ package "FYSIEK" #e6e6e6 {
     }
 }
 
-package "FUNCTIE" #e6e6e6 {
-    package "Gebruik" #f3f3f3 {
+package "FUNCTIE" {
+    package "Gebruik" #f9dfdd {
         class AbstractGebruik {
         }
         class Gebruikseenheid {
@@ -90,7 +91,7 @@ package "FUNCTIE" #e6e6e6 {
         }
         note top of Gebruikseenheid : Relevant voor de context van WOZ
     }
-    package "Indeling" #f3f3f3 {
+    package "Indeling" #f9dfdd {
         class AbstractIndeling {
         }
         class Verblijfseenheid {
@@ -98,7 +99,7 @@ package "FUNCTIE" #e6e6e6 {
         note top of Verblijfseenheid : Als een verblijfsobject uit BAG, maar altijd binnendoor bereikbaar en zonder gebruiksdoel en daarom zonder eis van voorzieningen.
 
     }
-    package "Vindbaarheid" #f3f3f3 {
+    package "Vindbaarheid" #f9dfdd {
         class Toegang {
         }
         class Verdieping {
@@ -106,7 +107,7 @@ package "FUNCTIE" #e6e6e6 {
     }
 }
 
-' package "Representatie" #e6e6e6 {
+' package "Representatie" {
 '     class AbstractRepresentatie {
 '     }
 '     class GebouwRepresentatie {
