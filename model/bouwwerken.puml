@@ -90,7 +90,7 @@ package "FUNCTIE" {
         class Voorziening {
         }
         note top of Gebruikseenheid : Relevant voor de context van WOZ.
-        note top of Gebruikseenheid : Nog uitwerken hoe om te gaan met bijvoorbeeld een woning die alleen toegankelijk is via een winkel. Dit kan gevolgen hebben voor de definitie van AbstractGebruik.
+        note top of Gebruikseenheid : Nog uitwerken hoe om te gaan met bijvoorbeeld een woning die alleen toegankelijk is via een winkel. Dit kan ook gevolgen hebben voor de definitie van AbstractGebruik.
     }
     package "Indeling" #e6e6e6 {
         class AbstractIndeling {
@@ -292,7 +292,7 @@ class Verdieping << Objecttype >> <<vrijwillig>> {
 
 note bottom of Verdieping : Schrappen indien niet relevant voor de contexten van WOZ en OOV.
 
-note top of Verdieping : Nog uitwerken of verdieping thuishoren bij vindbaarheid of bij indeling.
+note top of Verdieping : Nog uitwerken of verdiepingen thuishoren bij vindbaarheid of bij indeling.
 
 class Voorziening << Objecttype >> {
 '     + gedeeldeVoorziening
