@@ -292,7 +292,7 @@ class Verdieping << Objecttype >> <<vrijwillig>> {
 
 note bottom of Verdieping : Schrappen indien niet relevant voor de contexten van WOZ en OOV.
 
-note top of Verdieping : Nog uitwerken of verdiepingen thuishoren bij vindbaarheid of bij indeling.
+note bottom of Verdieping : Nog uitwerken of verdiepingen thuishoren bij vindbaarheid of bij indeling.
 
 class Voorziening << Objecttype >> {
 '     + gedeeldeVoorziening
