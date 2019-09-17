@@ -248,6 +248,6 @@ package "WAARDELIJSTEN" {
 
 }
 
-note bottom of TypeGebouw : Waardelijst reduceren tot fysieke kenmerken (dus zonder bezoekerscentrum, gemeentehuis en recreatiecentrum, omdat zulke waarden meer zeggen over het gebruik van een gebouw dan over het fysieke karakter ervan)
+note bottom of TypeGebouw : Waardelijst reduceren tot fysieke kenmerken (dus zonder bijvoorbeeld bezoekerscentrum, gemeentehuis en recreatiecentrum, omdat zulke waarden meer zeggen over het gebruik van een gebouw dan over het fysieke karakter ervan)
 
 @enduml
