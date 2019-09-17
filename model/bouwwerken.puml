@@ -90,7 +90,6 @@ package "FUNCTIE" {
         class Voorziening {
         }
         note top of Gebruikseenheid : Relevant voor de context van WOZ.
-        note top of Gebruikseenheid : Nog uitwerken hoe om te gaan met bijvoorbeeld een woning die alleen toegankelijk is via een winkel.
     }
     package "Indeling" #e6e6e6 {
         class AbstractIndeling {
@@ -159,6 +158,7 @@ Gebruikseenheid "*" --> "*" Voorziening : gebruikt
 Bouwwerk "1" *-- "1..*" Bouwwerkdeel
 Gebruikseenheid "*" --> "1..*" Gebouw : ligt\nin
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
+note on link : Nog uitwerken hoe om te gaan met bijvoorbeeld een woning die alleen toegankelijk is via een winkel.
 Bouwwerk "*" <-- "*" Voorziening : ligt\nin
 Bouwwerk "*" -- "1..*" Bouwbesluit : is\ngebouwd\nvolgens
 Verblijfseenheid "*" <-- "*" Voorziening : ligt\nin
