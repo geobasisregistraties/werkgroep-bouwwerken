@@ -90,6 +90,7 @@ package "FUNCTIE" {
         class Voorziening {
         }
         note top of Gebruikseenheid : Relevant voor de context van WOZ.
+        note top of Gebruikseenheid : Nog uitwerken hoe om te gaan met bijvoorbeeld een woning die alleen toegankelijk is via een winkel. Dit kan gevolgen hebben voor de definitie van AbstractGebruik.
     }
     package "Indeling" #e6e6e6 {
         class AbstractIndeling {
@@ -158,7 +159,6 @@ Gebruikseenheid "*" --> "*" Voorziening : gebruikt
 Bouwwerk "1" *-- "1..*" Bouwwerkdeel
 Gebruikseenheid "*" --> "1..*" Gebouw : ligt\nin
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
-note top on link : Nog uitwerken hoe om te gaan met bijvoorbeeld een woning die alleen toegankelijk is via een winkel. Dit kan gevolgen hebben voor de definitie van AbstractGebruik.
 Bouwwerk "*" <-- "*" Voorziening : ligt\nin
 Bouwwerk "*" -- "1..*" Bouwbesluit : is\ngebouwd\nvolgens
 Verblijfseenheid "*" <-- "*" Voorziening : ligt\nin
@@ -292,6 +292,8 @@ class Verdieping << Objecttype >> <<vrijwillig>> {
 
 note bottom of Verdieping : Schrappen indien niet relevant voor de contexten van WOZ en OOV.
 
+note bottom of Verdieping : Nog uitwerken of verdieping thuishoren bij vindbaarheid of bij indeling.
+
 class Voorziening << Objecttype >> {
 '     + gedeeldeVoorziening
 '     + geometrie
@@ -299,6 +301,8 @@ class Voorziening << Objecttype >> {
     ..
     Kleinste geheel van een installatie of andere voorziening die relevant is voor een of meer gebruikseenheden.
 }
+
+note bottom of Voorziening : Nog uitwerken of voorzieningen thuishoren bij fysiek of bij functie.
 
 note bottom of Voorziening : Relevant bij het interpreteren van objecten voor de contexten van BAG, WOZ en OOV.
 
