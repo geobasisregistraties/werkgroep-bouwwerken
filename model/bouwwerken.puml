@@ -166,7 +166,7 @@ AbstractIndeling <|-- Verblijfseenheid
 Gebouw "1" *-- "*" AbstractIndeling
 Gebruikseenheid "1" --> "+ hoofdtoegang\n1" Toegang : heeft
 Verblijfseenheid "1" --> "*" Toegang : heeft
-Toegang "1" --> "1" Adres : heeft
+Toegang "1" --> "0..1" Adres : heeft
 ' Gebouw "1" <|-- "1..*" GebouwRepresentatie
 ' AbstractRepresentatie <|-- GebouwRepresentatie
 ' Gebruikseenheid "1" <|-- "1..*" GebruikseenheidRepresentatie
@@ -213,6 +213,8 @@ class Bouwwerkdeel << Objecttype >> {
     ..
     Bouwkundig-constructief homogeen gedeelte van een bouwwerk.
 }
+
+note bottom of Bouwwerkdeel : Schrappen indien niet relevant voor de context van WOZ en OOV
 
 class Gebouw << Objecttype >> {
     + typeGebouw: TypeGebouw [1..*]
