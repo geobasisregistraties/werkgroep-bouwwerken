@@ -248,6 +248,6 @@ package "WAARDELIJSTEN" {
 
 }
 
-note bottom of TypeGebouw : De waarden in deze lijst reduceren tot fysieke kenmerken (dus zonder bijvoorbeeld bezoekerscentrum, gemeentehuis en recreatiecentrum, omdat zulke waarden meer zeggen over het gebruik van een gebouw dan over het fysieke karakter ervan)
+note bottom of TypeGebouw : Waarden als bezoekerscentrum, gemeentehuis en recreatiecentrum zeggen meer over het gebruik van een gebouw dan over het fysieke karakter ervan en horen daarom niet thuis in deze lijst
 
 @enduml
