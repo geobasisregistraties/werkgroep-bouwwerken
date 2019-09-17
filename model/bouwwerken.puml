@@ -89,10 +89,10 @@ package "FUNCTIE" {
         }
         class Voorziening {
         }
-        note left of Gebruikseenheid : Relevant voor de context van WOZ.
         note top of Gebruikseenheid : Nog uitwerken hoe om te gaan met bijvoorbeeld een woning die alleen toegankelijk is via een winkel. Dit kan ook gevolgen hebben voor de definitie van AbstractGebruik.
-        note left of Gebruikseenheid : Welke dakkapel bij welke gebruikseenheid?
         note top of Gebruikseenheid : Hoe herken je een serre?
+        note left of Gebruikseenheid : Relevant voor de context van WOZ.
+        note left of Gebruikseenheid : Welke dakkapel bij welke gebruikseenheid?
     }
     package "Indeling" #e6e6e6 {
         class AbstractIndeling {
