@@ -165,6 +165,7 @@ AbstractIndeling <|-- Verdieping
 AbstractIndeling <|-- Verblijfseenheid
 Gebouw "1" *-- "*" AbstractIndeling
 Gebruikseenheid "1" --> "+ hoofdtoegang\n1" Toegang : heeft
+Gebruikseenheid "*" --> "*" Verdieping : ligt\nop
 Verblijfseenheid "1" --> "*" Toegang : heeft
 Toegang "1" --> "0..1" Adres : heeft
 ' Gebouw "1" <|-- "1..*" GebouwRepresentatie
