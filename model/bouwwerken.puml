@@ -82,7 +82,7 @@ package "FYSIEK" {
 }
 
 package "FUNCTIE" {
-    package "Gebruik" #f9dfdd {
+    package "Gebruik" #e6e6e6 {
         class AbstractGebruik {
         }
         class Gebruikseenheid {
@@ -91,7 +91,7 @@ package "FUNCTIE" {
         }
         note top of Gebruikseenheid : Relevant voor de context van WOZ
     }
-    package "Indeling" #f9dfdd {
+    package "Indeling" #e6e6e6 {
         class AbstractIndeling {
         }
         class Verblijfseenheid {
@@ -99,7 +99,7 @@ package "FUNCTIE" {
         note top of Verblijfseenheid : Als een verblijfsobject uit BAG, maar altijd binnendoor bereikbaar en zonder gebruiksdoel en daarom zonder eis van voorzieningen.
 
     }
-    package "Vindbaarheid" #f9dfdd {
+    package "Vindbaarheid" #e6e6e6 {
         class Toegang {
         }
         class Verdieping {
