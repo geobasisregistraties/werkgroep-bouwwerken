@@ -208,13 +208,13 @@ class Bouwwerk << Objecttype >> {
     Grootst mogelijke geheel van een bouwkundige constructie.
 }
 
-class Bouwwerkdeel << Objecttype >> {
+class Bouwwerkdeel << Objecttype >> << vrijwillig >> {
     + typeConstructie: TypeConstructie [1..1]
     ..
     Bouwkundig-constructief homogeen gedeelte van een bouwwerk.
 }
 
-note bottom of Bouwwerkdeel : Schrappen indien niet relevant voor de context van WOZ en OOV
+note bottom of Bouwwerkdeel : Schrappen indien niet relevant voor de contexten van WOZ en OOV
 
 class Gebouw << Objecttype >> {
     + typeGebouw: TypeGebouw [1..*]
@@ -282,7 +282,7 @@ class Verblijfseenheid << Objecttype >> {
 ' }
 ' ----^^^^---- representatie ----
 
-class Verdieping << Objecttype >> <<Vrijwillig>> {
+class Verdieping << Objecttype >> <<vrijwillig>> {
     + verdiepingsaanduiding
     ..
     Grootste aaneengesloten gedeelte van een gebouw dat zich op dezelfde bouwlaag bevindt.
