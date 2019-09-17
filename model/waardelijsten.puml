@@ -29,7 +29,7 @@
 ' skinparam linetype polyline
 ' --------^-^-^-^-^-^-^-^--------
 
-skinparam WrapWidth 220
+skinparam WrapWidth 200
 
 skinparam Shadowing false
 
@@ -55,7 +55,7 @@ skinparam note {
 }
 
 skinparam package {
-    BackgroundColor #e6e6e6
+    BackgroundColor #f3f3f3
     BorderColor #d52b1e
     FontColor #d52b1e
 '     FontName RijksoverheidSansText
@@ -137,27 +137,27 @@ package "WAARDELIJSTEN" {
 
     class TypeGebouw << Referentielijst >> {
 ' http://inspire.ec.europa.eu/codelist/BuildingNatureValue
-'         boog
-'         bunker
-'         dam
-'         grotgebouw
-'         kapel
-'         kas
-'         kasteel
-'         kerk
-'         moskee
-'         opslagtank
-'         overkapping
-'         schuur
-'         silo
-'         stadion
-'         synagoge
-'         tempel
-'         toren
-'         vuurtoren
-'         windmolen
-'         windturbine
-'         zonnescherm
+'         + boog
+'         + bunker
+'         + dam
+'         + grotgebouw
+'         + kapel
+'         + kas
+'         + kasteel
+'         + kerk
+'         + moskee
+'         + opslagtank
+'         + overkapping
+'         + schuur
+'         + silo
+'         + stadion
+'         + synagoge
+'         + tempel
+'         + toren
+'         + vuurtoren
+'         + windmolen
+'         + windturbine
+'         + zonnescherm
 '         --
 '         Bron: INSPIRE BuildingNatureValue
 '
