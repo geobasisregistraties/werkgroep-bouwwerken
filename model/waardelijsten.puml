@@ -55,6 +55,7 @@ skinparam note {
 }
 
 skinparam package {
+    BackgroundColor #e6e6e6
     BorderColor #d52b1e
     FontColor #d52b1e
 '     FontName RijksoverheidSansText
@@ -68,16 +69,16 @@ hide circle
 
 hide stereotype
 
-together {
-    class TypeConstructie
-    class TypeVoorziening
+' together {
+'     class TypeConstructie
+'     class TypeVoorziening
 '     class TypeMetagegeven
-    class Gebruiksdoel
+'     class Gebruiksdoel
 '     class TypeGebouw
-}
+' }
 
-package "Waardelijsten" <<rectangle>> #ededed {
-    ' https://www.groephuyzentruyt.be/blog/de-verschillende-bouwmethodes
+package "Waardelijsten" {
+
     class TypeConstructie << Referentielijst >> {
         + beton
         + houtskelet
