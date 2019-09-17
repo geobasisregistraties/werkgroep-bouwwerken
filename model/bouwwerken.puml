@@ -206,7 +206,8 @@ class Adres << extern >> {
 
 class Bouwwerk << Objecttype >> {
     + bouwgeometrie [0..1]
-    + opleverdatum [1..1]
+    + bouwjaar [1..1]
+'     + opleverdatum [1..1]
     + sloopgeometrie [0..1]
     + vigerendBouwbesluit [1..1]
     ..
