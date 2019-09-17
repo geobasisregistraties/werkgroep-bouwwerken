@@ -80,7 +80,7 @@ package "Waardelijsten" <<rectangle>> #ededed {
 
 together {
     class TypeVoorziening
-'    class TypeMetagegeven
+'     class TypeMetagegeven
     class Gebruiksdoel
     class TypeGebouw
 }
