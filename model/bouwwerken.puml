@@ -89,7 +89,7 @@ package "FUNCTIE" {
         }
         class Voorziening {
         }
-        note top of Gebruikseenheid : Relevant voor de context van WOZ
+        note top of Gebruikseenheid : Relevant voor de context van WOZ.
     }
     package "Indeling" #e6e6e6 {
         class AbstractIndeling {
@@ -220,7 +220,7 @@ class Bouwwerkdeel << Objecttype >> << vrijwillig >> {
     Bouwkundig-constructief homogeen gedeelte van een bouwwerk.
 }
 
-note bottom of Bouwwerkdeel : Schrappen indien niet relevant voor de contexten van WOZ en OOV
+note bottom of Bouwwerkdeel : Schrappen indien niet relevant voor de contexten van WOZ en OOV.
 
 class Gebouw << Objecttype >> {
     + typeGebouw: TypeGebouw [1..*]
@@ -289,7 +289,7 @@ class Verdieping << Objecttype >> <<vrijwillig>> {
     Grootste aaneengesloten gedeelte van een gebouw dat zich op dezelfde bouwlaag bevindt.
 }
 
-note bottom of Verdieping : Schrappen indien niet relevant voor de contexten van WOZ en OOV
+note bottom of Verdieping : Schrappen indien niet relevant voor de contexten van WOZ en OOV.
 
 class Voorziening << Objecttype >> {
 '     + gedeeldeVoorziening
@@ -299,6 +299,6 @@ class Voorziening << Objecttype >> {
     Kleinste geheel van een installatie of andere voorziening die relevant is voor een of meer gebruikseenheden.
 }
 
-note bottom of Voorziening : Relevant bij het interpreteren van objecten voor de contexten van BAG, WOZ en OOV
+note bottom of Voorziening : Relevant bij het interpreteren van objecten voor de contexten van BAG, WOZ en OOV.
 
 @enduml
