@@ -246,7 +246,8 @@ package "WAARDELIJSTEN" {
         Bron: Basisregistratie Topografie: Catalogus en Productspecificaties, versie 1.2.0.1, 8 juli 2019
     }
 
-note bottom of TypeGebouw : Niet-fysieke kenmerken verwijderen uit de waardelijst van TypeGebouw, zoals bezoekerscentrum, gemeentehuis en recreatiecentrum
-
 }
+
+note bottom of TypeGebouw : Waardelijst reduceren tot fysieke kenmerken, dus geen bezoekerscentrum, gemeentehuis of recreatiecentrum omdat deze waarden meer lijken te zeggen over het gebruik van een gebouw dan over het fysieke karakter ervan
+
 @enduml
