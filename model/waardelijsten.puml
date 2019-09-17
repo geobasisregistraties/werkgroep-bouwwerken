@@ -68,6 +68,14 @@ hide circle
 
 hide stereotype
 
+together {
+    class TypeConstructie
+    class TypeVoorziening
+'     class TypeMetagegeven
+    class Gebruiksdoel
+'     class TypeGebouw
+}
+
 package "Waardelijsten" <<rectangle>> #ededed {
     ' https://www.groephuyzentruyt.be/blog/de-verschillende-bouwmethodes
     class TypeConstructie << Referentielijst >> {
@@ -77,13 +85,6 @@ package "Waardelijsten" <<rectangle>> #ededed {
         + prefab
         + staalstructuur
     }
-
-together {
-    class TypeVoorziening
-'     class TypeMetagegeven
-    class Gebruiksdoel
-    class TypeGebouw
-}
 
     class TypeVoorziening << Referentielijst >> {
         + atelier/hobbyruimte
