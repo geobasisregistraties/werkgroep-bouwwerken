@@ -289,7 +289,7 @@ class Verdieping << Objecttype >> <<vrijwillig>> {
     Grootste aaneengesloten gedeelte van een gebouw dat zich op dezelfde bouwlaag bevindt.
 }
 
-note bottom of Verdieping : Schrappen indien niet relevant voor de context van WOZ
+note bottom of Verdieping : Schrappen indien niet relevant voor de contexten van WOZ en OOV
 
 class Voorziening << Objecttype >> {
 '     + gedeeldeVoorziening
