@@ -248,6 +248,6 @@ package "WAARDELIJSTEN" {
 
 }
 
-note bottom of TypeGebouw : Waarden als bezoekerscentrum, gemeentehuis en recreatiecentrum zeggen meer over het gebruik van een gebouw dan over het fysieke karakter ervan en horen daarom niet thuis in deze lijst
+note bottom of TypeGebouw : Waarden als bezoekerscentrum, gemeentehuis en recreatiecentrum zeggen meer over het gebruik dan over het fysieke karakter van een gebouw en horen daarom niet thuis in deze lijst
 
 @enduml
