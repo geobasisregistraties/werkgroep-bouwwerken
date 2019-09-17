@@ -177,12 +177,12 @@ Toegang "1" --> "0..1" Adres : heeft
 ' ' AbstractRepresentatie <|-- VerblijfseenheidRepresentatie
 
 abstract class AbstractBouwwerk << Objecttype >> {
-    ..
+'     ..
     Een aaneengesloten en in één keer gerealiseerde bouwkundige constructie, ongeacht de bereikbaarheid binnendoor.
 }
 
 abstract class AbstractGebruik << Objecttype >> {
-    ..
+'     ..
     Kleinste ondeelbare functionele eenheid van gebruik.
 }
 
@@ -192,6 +192,7 @@ abstract class AbstractObject << Objecttype >> {
     + documentnummer
     + geconstateerd
     + status
+'     ..
 }
 
 abstract class AbstractIndeling << Objecttype >> {
@@ -237,6 +238,7 @@ class Gebruikseenheid << Objecttype >> {
 class MetaObject << extern >> {
 '     + typeMetagegeven: TypeMetagegeven
 '     + waarde
+'     ..
 }
 
 class Bouwbesluit << extern >> {
@@ -255,36 +257,30 @@ class Verblijfseenheid << Objecttype >> {
     Kleinste binnen een gebouw gelegen aaneengesloten eenheid van gebruik die volledig binnendoor bereikbaar is en ontsloten wordt via een eigen toegang vanaf de openbare weg, een erf of een gedeelde verkeersruimte, onderwerp kan zijn van goederenrechtelijke rechtshandelingen en in functioneel opzicht zelfstandig is.
 }
 
-' ----vvvv---- representatie ----
+' --------v-v-v-v-v-v-v-v--------
 ' abstract class AbstractRepresentatie << Objecttype >> {
 '     + geometrie
 '     + levelOfDetail: LevelOfDetail [1..1]
 '     + schaal: Schaalbereik [1..1]
 '     ..
-'     Authentieke gegeneraliseerde
-'     representatie van een object.
+'     Authentieke gegeneraliseerde representatie van een object.
 ' }
 '
 ' class GebouwRepresentatie << Objecttype >> {
 '     ..
-'     Authentieke gegeneraliseerde
-'     representatie van een Gebouw.
+'     Authentieke gegeneraliseerde representatie van een gebouw.
 ' }
 '
 ' ' class VerblijfseenheidRepresentatie << Objecttype >> {
 ' '     ..
-' '     Authentieke gegeneraliseerde
-' '     representatie van een
-' '     Verblijfseenheid.
+' '     Authentieke gegeneraliseerde representatie van een verblijfseenheid.
 ' ' }
 '
 ' class GebruikseenheidRepresentatie << Objecttype >> {
 '     ..
-'     Authentieke gegeneraliseerde
-'     representatie van een
-'     Gebruikseenheid.
+'     Authentieke gegeneraliseerde representatie van een gebruikseenheid.
 ' }
-' ----^^^^---- representatie ----
+' --------^-^-^-^-^-^-^-^--------
 
 class Verdieping << Objecttype >> <<vrijwillig>> {
     + verdiepingsaanduiding
