@@ -90,9 +90,7 @@ package "FUNCTIE" {
         class Voorziening {
         }
         note top of Gebruikseenheid : Relevant voor de context van WOZ.
-        note top of Gebruikseenheid : Nog uitwerken hoe om te gaan met bijvoorbeeld een woning die alleen toegankelijk is via een winkel. Dit kan ook gevolgen hebben voor de definitie van AbstractGebruik.
-        note left of Gebruikseenheid : Welke dakkapel hoort bij welke gebruikseenheid?
-        note left of Gebruikseenheid : Hoe herken je een serre?
+        note top of Gebruikseenheid : Vragen om uit te werken:\n- Hoe een woning te herkennen die alleen bereikbaar is via een winkel?\n- Welke dakkapel hoort bij welke gebruikseenheid?\n- Hoe een serre te herkennen?\n- Hoe gebruikseenheden afbakenen binnen een bedrijfsverzamelgebouw?
     }
     package "Indeling" #e6e6e6 {
         class AbstractIndeling {
@@ -288,7 +286,7 @@ class Verblijfseenheid << Objecttype >> {
 ' --------^-^-^-^-^-^-^-^--------
 
 class Bouwlaag << Objecttype >> <<vrijwillig>> {
-    + bouwlaagaanduiding
+    + verdieping
     ..
     Grootste aaneengesloten gedeelte van een gebouw met dezelfde vloerhoogte.
 }
