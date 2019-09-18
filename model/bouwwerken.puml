@@ -212,6 +212,7 @@ class Bouwwerk << Objecttype >> {
     + bouwjaar [1..1]
 '     + opleverdatum [1..1]
     + sloopgeometrie [0..1]
+    + typeBouwwerk: TypeBouwwerk [1..*]
     + vigerendBouwbesluit [1..1]
     ..
     Grootst mogelijke geheel van een bouwkundige constructie.
