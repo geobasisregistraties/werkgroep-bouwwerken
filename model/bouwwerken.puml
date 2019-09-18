@@ -105,7 +105,7 @@ package "FUNCTIE" {
     package "Vindbaarheid" #e6e6e6 {
         class Toegang {
         }
-        class Verdieping {
+        class Bouwlaag {
         }
     }
 }
@@ -144,7 +144,7 @@ package "FUNCTIE" {
 
 ' together {
 '     class Verblijfseenheid
-'     class Verdieping
+'     class Bouwlaag
 ' }
 
 AbstractObject <|-- AbstractBouwwerk
@@ -164,12 +164,12 @@ Gebruikseenheid "1" o-- "*" Verblijfseenheid
 Bouwwerk "*" <-- "*" Voorziening : ligt\nin
 Bouwwerk "*" -- "1..*" Bouwbesluit : is\ngebouwd\nvolgens
 Verblijfseenheid "*" <-- "*" Voorziening : ligt\nin
-Verblijfseenheid "*" --> "1..*" Verdieping : ligt\nop
-AbstractIndeling <|-- Verdieping
+Verblijfseenheid "*" --> "1..*" Bouwlaag : ligt\nop
+AbstractIndeling <|-- Bouwlaag
 AbstractIndeling <|-- Verblijfseenheid
 Gebouw "1" *-- "*" AbstractIndeling
 Gebruikseenheid "1" --> "+ hoofdtoegang\nmet adres\n1" Toegang : heeft
-Gebruikseenheid "*" --> "*" Verdieping : ligt\nop
+Gebruikseenheid "*" --> "*" Bouwlaag : ligt\nop
 Verblijfseenheid "1" --> "*" Toegang : heeft
 Toegang "1" --> "0..1" Adres : heeft
 ' Gebouw "1" <|-- "1..*" GebouwRepresentatie
@@ -287,15 +287,15 @@ class Verblijfseenheid << Objecttype >> {
 ' }
 ' --------^-^-^-^-^-^-^-^--------
 
-class Verdieping << Objecttype >> <<vrijwillig>> {
-    + verdiepingsaanduiding
+class Bouwlaag << Objecttype >> <<vrijwillig>> {
+    + bouwlaagaanduiding
     ..
-    Grootste aaneengesloten gedeelte van een gebouw dat zich op dezelfde bouwlaag bevindt.
+    Grootste aaneengesloten gedeelte van een gebouw met dezelfde vloerhoogte.
 }
 
-note bottom of Verdieping : Schrappen indien niet relevant voor de contexten van WOZ en OOV.
+note bottom of Bouwlaag : Schrappen indien niet relevant voor de contexten van WOZ en OOV.
 
-note bottom of Verdieping : Nog uitwerken of verdiepingen thuishoren bij vindbaarheid of bij indeling.
+note bottom of Bouwlaag : Nog uitwerken of bouwlagen thuishoren bij vindbaarheid of bij indeling of bij fysiek.
 
 class Voorziening << Objecttype >> {
 '     + gedeeldeVoorziening
