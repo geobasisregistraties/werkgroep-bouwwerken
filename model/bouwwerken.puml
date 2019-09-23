@@ -22,170 +22,111 @@
 ' Rijksoverheid grijs 6 #696969
 ' Rijksoverheid grijs 7 #535353
 
-' skinparam linetype ortho
-' skinparam linetype polyline
 ' --------^-^-^-^-^-^-^-^--------
 
-skinparam WrapWidth 165
-
-skinparam Shadowing false
-
-skinparam classAttributeIconSize 0
+skinparam defaultFontColor black
+skinparam defaultFontName Lucida Sans
+skinparam defaultFontSize 11
+skinparam defaultFontStyle normal
+skinparam defaultMonospacedFontName Lucida Sans Typewriter
+' skinparam defaultTextAlignment left
+' skinparam lineType ortho
+' skinparam lineType polyline
+skinparam shadowing false
+skinparam wrapWidth 165
 
 skinparam class {
     ArrowColor #39870c
-'     ArrowMessageAlignment center
+    ArrowFontSize 10
+'     ArrowTextAlignment center
     ArrowThickness 1.5
+    AttributeIconSize 0
     BackgroundColor #ffffff
     BorderColor #007bc7
-    BorderColor<<extern>> #999999
-    FontColor<<extern>> #999999
-'     FontName RijksoverheidSansText
 '     StereotypeFontStyle italic
+}
+
+skinparam class<<extern>> {
+    BorderColor #b4b4b4
+    FontColor #b4b4b4
 }
 
 skinparam note {
     BackgroundColor #fdf6bb
     BorderColor #f9e11e
     FontColor #01689b
-'     FontName RijksoverheidSansText
 }
 
 skinparam package {
     BackgroundColor #f3f3f3
     BorderColor #d52b1e
     FontColor #d52b1e
-'     FontName RijksoverheidSansText
-    FontStyle normal
+    FontStyle bold
     Style rectangle
 }
 
-hide empty members
-
-hide circle
-
-hide stereotype
+skinparam package<< subpackage >> {
+    BackgroundColor #e6e6e6
+    BorderColor #e6e6e6
+    FontStyle normal
+}
 
 ' hide AbstractObject
 
-hide MetaObject
+hide circle
+
+hide empty members
+
+hide stereotype
+
+package "FUNCTIE" {
+    class Gebruikseenheid {
+    }
+'     note top of Gebruikseenheid : Vragen om uit te werken:\n- Hoe een woning te herkennen die alleen bereikbaar is via een winkel?\n- Welke dakkapel hoort bij welke gebruikseenheid?\n- Hoe een serre te herkennen?\n- Hoe gebruikseenheden afbakenen binnen een bedrijfsverzamelgebouw?
+}
 
 package "FYSIEK" {
-    class AbstractBouwwerk {
+    package "Gebeurtenis" << subpackage >> {
+        class Bouwwerk {
+        }
     }
     class Gebouw {
     }
-    class Bouwwerk {
+    class Toegang {
     }
-    class Bouwwerkdeel {
+    class Voorziening {
     }
-}
-
-package "FUNCTIE" {
-    package "Gebruik" #e6e6e6 {
-        class AbstractGebruik {
-        }
-        class Gebruikseenheid {
-        }
-        class Voorziening {
-        }
-        note top of Gebruikseenheid : Relevant voor de context van WOZ.
-        note top of Gebruikseenheid : Vragen om uit te werken:\n- Hoe een woning te herkennen die alleen bereikbaar is via een winkel?\n- Welke dakkapel hoort bij welke gebruikseenheid?\n- Hoe een serre te herkennen?\n- Hoe gebruikseenheden afbakenen binnen een bedrijfsverzamelgebouw?
-    }
-    package "Indeling" #e6e6e6 {
-        class AbstractIndeling {
+    package "Indeling" << subpackage >> {
+        class Bouwlaag {
         }
         class Verblijfseenheid {
         }
-        note top of Verblijfseenheid : Als een verblijfsobject uit BAG, maar altijd binnendoor bereikbaar en zonder gebruiksdoel en daarom zonder eis van voorzieningen.
-
-    }
-    package "Vindbaarheid" #e6e6e6 {
-        class Toegang {
-        }
-        class Bouwlaag {
-        }
+'         note top of Verblijfseenheid : Als een verblijfsobject uit BAG, maar altijd binnendoor bereikbaar en zonder gebruiksdoel en daarom zonder eis van voorzieningen.
     }
 }
 
-' package "Representatie" {
-'     class AbstractRepresentatie {
-'     }
-'     class GebouwRepresentatie {
-'     }
-'     class GebruikseenheidRepresentatie {
-'     }
-' '     class VerblijfseenheidRepresentatie {
-' '     }
-' }
-
-' together {
-'     class AbstractObject
-'     class MetaObject
-' }
-
-' together {
-'     class Adres
-'     class Bouwbesluit
-' }
-
-' together {
-'     class AbstractBouwwerk
-'     class Bouwwerk
-'     class Bouwwerkdeel
-' }
-
-' together {
-'     class Gebruikseenheid
-'     class Verblijfseenheid
-' }
-
-' together {
-'     class Verblijfseenheid
-'     class Bouwlaag
-' }
-
-AbstractObject <|-- AbstractBouwwerk
-AbstractObject <|-- AbstractIndeling
+AbstractObject <|-- Bouwwerk
 AbstractObject <|-- Gebouw
-AbstractObject <|-- AbstractGebruik
-AbstractObject "1" <- "1..*" MetaObject
-AbstractGebruik <|-- Gebruikseenheid
-AbstractGebruik <|-- Voorziening
-AbstractBouwwerk <|-- Bouwwerk
-AbstractBouwwerk <|-- Bouwwerkdeel
-Gebouw "1" *-- "1..*" Bouwwerk
+AbstractObject <|-- Gebruikseenheid
+AbstractObject <|-- Voorziening
+Gebouw "1..*" o-- "1..*" Bouwwerk
+Gebruikseenheid "*" -> "*" Diversen : gebruikt
 Gebruikseenheid "*" --> "*" Voorziening : gebruikt
-Bouwwerk "1" *-- "1..*" Bouwwerkdeel
-Gebruikseenheid "*" --> "1..*" Gebouw : ligt\nin
+Gebruikseenheid "*" --> "1..*" Gebouw : gebruikt
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
-Bouwwerk "*" <-- "*" Voorziening : ligt\nin
+Bouwwerk "1..*" o-- "*" Voorziening
 Bouwwerk "*" -- "1..*" Bouwbesluit : is\ngebouwd\nvolgens
-Verblijfseenheid "*" <-- "*" Voorziening : ligt\nin
+Verblijfseenheid "*" --> "*" Voorziening : heeft
+Bouwlaag "*" --> "*" Voorziening : omvat
 Verblijfseenheid "*" --> "1..*" Bouwlaag : ligt\nop
-AbstractIndeling <|-- Bouwlaag
-AbstractIndeling <|-- Verblijfseenheid
-Gebouw "1" *-- "*" AbstractIndeling
-Gebruikseenheid "1" --> "+ hoofdtoegang\nmet adres\n1" Toegang : heeft
+AbstractObject <|-- Bouwlaag
+AbstractObject <|-- Verblijfseenheid
+Gebouw "1" *-- "*" Verblijfseenheid
+Gebouw "1" *-- "1..*" Bouwlaag
+Gebruikseenheid "1" --> "+ hoofdtoegang\nmet adres 1" Toegang : gebruikt
 Gebruikseenheid "*" --> "*" Bouwlaag : ligt\nop
-Verblijfseenheid "1" --> "*" Toegang : heeft
+Verblijfseenheid "1" --> "1..*" Toegang : heeft
 Toegang "1" --> "0..1" Adres : heeft
-' Gebouw "1" <|-- "1..*" GebouwRepresentatie
-' AbstractRepresentatie <|-- GebouwRepresentatie
-' Gebruikseenheid "1" <|-- "1..*" GebruikseenheidRepresentatie
-' AbstractRepresentatie <|-- GebruikseenheidRepresentatie
-' ' Verblijfseenheid "1" <|-- "1..*" VerblijfseenheidRepresentatie
-' ' AbstractRepresentatie <|-- VerblijfseenheidRepresentatie
-
-abstract class AbstractBouwwerk << Objecttype >> {
-'     ..
-    Een aaneengesloten en in één keer gerealiseerde bouwkundige constructie, ongeacht de bereikbaarheid binnendoor.
-}
-
-abstract class AbstractGebruik << Objecttype >> {
-'     ..
-    Kleinste ondeelbare functionele eenheid van gebruik.
-}
 
 abstract class AbstractObject << Objecttype >> {
     + identificatie
@@ -196,33 +137,30 @@ abstract class AbstractObject << Objecttype >> {
 '     ..
 }
 
-abstract class AbstractIndeling << Objecttype >> {
-    + geometrie
-    ..
-    Gedeelte van een gebouw.
+class Adres << extern >> {
 }
 
-class Adres << extern >> {
+class Bouwbesluit << extern >> {
+}
+
+class Bouwlaag << Objecttype >> << vrijwillig >> {
+    + geometrie
+    + verdiepingsaanduiding [1..1]
+    ..
+    Grootste aaneengesloten gedeelte van een gebouw met dezelfde vloerhoogte.
 }
 
 class Bouwwerk << Objecttype >> {
     + bouwgeometrie [0..1]
     + bouwjaar [1..1]
 '     + opleverdatum [1..1]
-    + sloopgeometrie [0..1]
+    + sloopgeometrie [0..*]
     + typeBouwwerk: TypeBouwwerk [1..*]
-    + vigerendBouwbesluit [1..1]
+    + typeConstructie: TypeConstructie [1..*]
+'     + vigerendBouwbesluit [1..1]
     ..
-    Grootst mogelijke geheel van een bouwkundige constructie.
+    Grootst mogelijke geheel van een aaneengesloten en in één keer gerealiseerde bouwkundige constructie, ongeacht de bereikbaarheid binnendoor.
 }
-
-class Bouwwerkdeel << Objecttype >> << vrijwillig >> {
-    + typeConstructie: TypeConstructie [1..1]
-    ..
-    Bouwkundig-constructief homogeen gedeelte van een bouwwerk.
-}
-
-note bottom of Bouwwerkdeel : Schrappen indien niet relevant voor de contexten van WOZ en OOV.
 
 class Gebouw << Objecttype >> {
     + typeGebouw: TypeGebouw [1..*]
@@ -235,16 +173,10 @@ class Gebruikseenheid << Objecttype >> {
     + gebruiksdoel: Gebruiksdoel [1..*]
     + vergundGebruik
     ..
-    Samenstel van alle verblijfseenheden en gebouwen die als geheel worden gebruikt.
+    Kleinste ondeelbare samenstel van alle verblijfseenheden, gebouwen en voorzieningen die als geheel worden gebruikt.
 }
 
-class MetaObject << extern >> {
-'     + typeMetagegeven: TypeMetagegeven
-'     + waarde
-'     ..
-}
-
-class Bouwbesluit << extern >> {
+class Diversen << extern >> {
 }
 
 class Toegang << Objecttype >> {
@@ -255,45 +187,11 @@ class Toegang << Objecttype >> {
 }
 
 class Verblijfseenheid << Objecttype >> {
+    + geometrie
     + oppervlakte
     ..
     Kleinste binnen een gebouw gelegen aaneengesloten eenheid van gebruik die volledig binnendoor bereikbaar is en ontsloten wordt via een eigen toegang vanaf de openbare weg, een erf of een gedeelde verkeersruimte, onderwerp kan zijn van goederenrechtelijke rechtshandelingen en in functioneel opzicht zelfstandig is.
 }
-
-' --------v-v-v-v-v-v-v-v--------
-' abstract class AbstractRepresentatie << Objecttype >> {
-'     + geometrie
-'     + levelOfDetail: LevelOfDetail [1..1]
-'     + schaal: Schaalbereik [1..1]
-'     ..
-'     Authentieke gegeneraliseerde representatie van een object.
-' }
-'
-' class GebouwRepresentatie << Objecttype >> {
-'     ..
-'     Authentieke gegeneraliseerde representatie van een gebouw.
-' }
-'
-' ' class VerblijfseenheidRepresentatie << Objecttype >> {
-' '     ..
-' '     Authentieke gegeneraliseerde representatie van een verblijfseenheid.
-' ' }
-'
-' class GebruikseenheidRepresentatie << Objecttype >> {
-'     ..
-'     Authentieke gegeneraliseerde representatie van een gebruikseenheid.
-' }
-' --------^-^-^-^-^-^-^-^--------
-
-class Bouwlaag << Objecttype >> <<vrijwillig>> {
-    + verdieping
-    ..
-    Grootste aaneengesloten gedeelte van een gebouw met dezelfde vloerhoogte.
-}
-
-note bottom of Bouwlaag : Schrappen indien niet relevant voor de contexten van WOZ en OOV.
-
-note bottom of Bouwlaag : Nog uitwerken of bouwlagen thuishoren bij vindbaarheid of bij indeling of bij fysiek.
 
 class Voorziening << Objecttype >> {
 '     + gedeeldeVoorziening
@@ -302,9 +200,5 @@ class Voorziening << Objecttype >> {
     ..
     Kleinste geheel van een installatie of andere voorziening die relevant is voor een of meer gebruikseenheden.
 }
-
-note bottom of Voorziening : Nog uitwerken of voorzieningen thuishoren bij fysiek of bij functie.
-
-note bottom of Voorziening : Relevant bij het interpreteren van objecten voor de contexten van BAG, WOZ en OOV.
 
 @enduml

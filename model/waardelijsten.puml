@@ -1,8 +1,5 @@
 @startuml
 
-' skinparam linetype ortho
-' skinparam linetype polyline
-
 ' --------v-v-v-v-v-v-v-v--------
 ' https://www.rijkshuisstijl.nl/organisatiespecifieke-richtlijnen/ministerie-van-binnenlandse-zaken-en-koninkrijksrelaties/deelidentiteit-kerndepartement-bzk
 ' https://www.rijkshuisstijl.nl/basiselementen/basiselementen-online/online-kleuren
@@ -25,58 +22,62 @@
 ' Rijksoverheid grijs 6 #696969
 ' Rijksoverheid grijs 7 #535353
 
-' skinparam linetype ortho
-' skinparam linetype polyline
 ' --------^-^-^-^-^-^-^-^--------
 
-skinparam WrapWidth 200
-
-skinparam Shadowing false
-
-skinparam classAttributeIconSize 0
+skinparam defaultFontColor black
+skinparam defaultFontName Lucida Sans
+skinparam defaultFontSize 11
+skinparam defaultFontStyle normal
+skinparam defaultMonospacedFontName Lucida Sans Typewriter
+' skinparam defaultTextAlignment left
+' skinparam lineType ortho
+' skinparam lineType polyline
+skinparam shadowing false
+skinparam wrapWidth 165
 
 skinparam class {
     ArrowColor #39870c
-'     ArrowMessageAlignment center
+    ArrowFontSize 10
+'     ArrowTextAlignment center
     ArrowThickness 1.5
+    AttributeIconSize 0
     BackgroundColor #ffffff
     BorderColor #007bc7
-    BorderColor<<extern>> #999999
-    FontColor<<extern>> #999999
-'     FontName RijksoverheidSansText
 '     StereotypeFontStyle italic
+}
+
+skinparam class<<extern>> {
+    BorderColor #b4b4b4
+    FontColor #b4b4b4
 }
 
 skinparam note {
     BackgroundColor #fdf6bb
     BorderColor #f9e11e
     FontColor #01689b
-'     FontName RijksoverheidSansText
 }
 
 skinparam package {
     BackgroundColor #f3f3f3
     BorderColor #d52b1e
     FontColor #d52b1e
-'     FontName RijksoverheidSansText
-    FontStyle normal
+    FontStyle bold
     Style rectangle
 }
 
-hide empty members
+skinparam package<< subpackage >> {
+    BackgroundColor #e6e6e6
+    BorderColor #e6e6e6
+    FontStyle normal
+}
+
+' hide AbstractObject
 
 hide circle
 
-hide stereotype
+hide empty members
 
-' together {
-'     class TypeConstructie
-'     class TypeVoorziening
-'     class TypeMetagegeven
-'     class Gebruiksdoel
-'     class TypeGebouw
-'     class TypeBouwwerk
-' }
+hide stereotype
 
 package "WAARDELIJSTEN" {
 
@@ -98,28 +99,30 @@ package "WAARDELIJSTEN" {
     }
 
     class TypeVoorziening << Referentielijst >> {
-        + atelier/hobbyruimte
         + badkamer
         + balkon
-        + berging
         + carport
         + dakkapel
-        + dakopbouw
         + dakterras
-        + garage
-        + kelder
         + keuken
         + meterkast
-        + serre
-        + souterrain
         + terras
         + toilet
-        + toren
         + trap
-        + zolder
+        + warmtepomp
+        + zonnepaneel
         + zwembad
+        <color:#b4b4b4>+ atelier/hobbyruimte</color>
+        <color:#b4b4b4>+ berging</color>
+        <color:#b4b4b4>+ dakopbouw</color>
+        <color:#b4b4b4>+ garage</color>
+        <color:#b4b4b4>+ kelder</color>
+        <color:#b4b4b4>+ serre</color>
+        <color:#b4b4b4>+ souterrain</color>
+        <color:#b4b4b4>+ toren</color>
+        <color:#b4b4b4>+ zolder</color>
         --
-        Bronnen: CityGML 2.0 BuildingInstallation function; CityGML 2.0 Room function
+        <i>Bronnen: o.a. CityGML 2.0 BuildingInstallation function; CityGML 2.0 Room function</i>
     }
 
 '     class TypeMetagegeven << Referentielijst >> {
@@ -142,7 +145,7 @@ package "WAARDELIJSTEN" {
         + woonfunctie
         + overige gebruiksfunctie
         --
-        Bronnen: BAG; Bouwbesluit 2012
+        <i>Bronnen: BAG; Bouwbesluit 2012</i>
     }
 
     class TypeGebouw << Referentielijst >> {
@@ -169,9 +172,8 @@ package "WAARDELIJSTEN" {
 '         + windturbine
 '         + zonnescherm
 '         --
-'         Bron: INSPIRE BuildingNatureValue
+'         <i>Bron: INSPIRE BuildingNatureValue</i>
 '
-        + bezoekerscentrum
         + boortoren
         + brandtoren
         + brandweerkazerne
@@ -182,7 +184,6 @@ package "WAARDELIJSTEN" {
         + fabriek
         + fort
         + gemaal
-        + gemeentehuis
         + gevangenis
         + hotel
         + huizenblok
@@ -216,7 +217,6 @@ package "WAARDELIJSTEN" {
         + radarpost
         + radartoren
         + radiotoren, televisietoren
-        + recreatiecentrum
         + reddingboothuisje
         + remise
         + ruïne
@@ -252,12 +252,15 @@ package "WAARDELIJSTEN" {
         + ziekenhuis
         + zwembad
         + overig
+        <color:#b4b4b4>+ bezoekerscentrum</color>
+        <color:#b4b4b4>+ gemeentehuis</color>
+        <color:#b4b4b4>+ recreatiecentrum</color>
         --
-        Bron: Basisregistratie Topografie: Catalogus en Productspecificaties, versie 1.2.0.1, 8 juli 2019
+        Fysieke aard van een gebouw, onafhankelijk van het actuele gebruik.
+        --
+        <i>Bron: Basisregistratie Topografie: Catalogus en Productspecificaties, versie 1.2.0.1, 8 juli 2019</i>
     }
 
 }
-
-note bottom of TypeGebouw : Waarden als bezoekerscentrum, gemeentehuis en recreatiecentrum zeggen meer over het gebruik dan over het fysieke karakter van een gebouw en horen daarom niet thuis in deze lijst
 
 @enduml
