@@ -110,12 +110,12 @@ AbstractObject <|-- Gebouw
 AbstractObject <|-- Gebruikseenheid
 AbstractObject <|-- Voorziening
 Gebouw "1..*" o-- "1..*" Bouwwerk
-Gebruikseenheid "*" -> "*" Diversen : gebruikt
+Gebruikseenheid "*" -> "*" Vastgoed : gebruikt
 Gebruikseenheid "*" --> "*" Voorziening : gebruikt
 Gebruikseenheid "*" --> "1..*" Gebouw : gebruikt
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
 Bouwwerk "1..*" o-- "*" Voorziening
-Bouwwerk "*" -- "1..*" Bouwbesluit : is\ngebouwd\nvolgens
+Bouwwerk "*" .. "1..*" Bouwbesluit : is\ngebouwd\nvolgens
 Verblijfseenheid "*" --> "*" Voorziening : heeft
 Bouwlaag "*" --> "*" Voorziening : omvat
 Verblijfseenheid "*" --> "1..*" Bouwlaag : ligt\nop
@@ -123,6 +123,8 @@ AbstractObject <|-- Bouwlaag
 AbstractObject <|-- Verblijfseenheid
 Gebouw "1" *-- "*" Verblijfseenheid
 Gebouw "1" *-- "1..*" Bouwlaag
+' Gebouw "*" --> "*" "IFC-model" : is\nbeschreven\nin
+Bouwwerk "1..*" -> "1" "IFC-model" : is\nbeschreven\nin
 Gebruikseenheid "1" --> "+ hoofdtoegang\nmet adres 1" Toegang : gebruikt
 Gebruikseenheid "*" --> "*" Bouwlaag : ligt\nop
 Verblijfseenheid "1" --> "1..*" Toegang : heeft
@@ -134,7 +136,7 @@ abstract class AbstractObject << Objecttype >> {
     + documentnummer
     + geconstateerd
     + status
-'     ..
+'     --
 }
 
 class Adres << extern >> {
@@ -146,11 +148,12 @@ class Bouwbesluit << extern >> {
 class Bouwlaag << Objecttype >> << vrijwillig >> {
     + geometrie
     + verdiepingsaanduiding [1..1]
-    ..
+    --
     Grootste aaneengesloten gedeelte van een gebouw met dezelfde vloerhoogte.
 }
 
 class Bouwwerk << Objecttype >> {
+'     ..//verplicht//..
     + bouwgeometrie [0..1]
     + bouwjaar [1..1]
 '     + opleverdatum [1..1]
@@ -158,13 +161,16 @@ class Bouwwerk << Objecttype >> {
     + typeBouwwerk: TypeBouwwerk [1..*]
     + typeConstructie: TypeConstructie [1..*]
 '     + vigerendBouwbesluit [1..1]
-    ..
+'     ..//vrijwillig//..
+    --
     Grootst mogelijke geheel van een aaneengesloten en in één keer gerealiseerde bouwkundige constructie, ongeacht de bereikbaarheid binnendoor.
 }
 
 class Gebouw << Objecttype >> {
+'     ..//verplicht//..
     + typeGebouw: TypeGebouw [1..*]
-    ..
+'     ..//vrijwillig//..
+    --
     Grootst mogelijke homogene en tezamen duurzaam met de aarde verbonden geheel van aaneengesloten bouwwerken waarop de kleinst mogelijke verscheidenheid van attribuutwaarden integraal van toepassing is, ongeacht de bereikbaarheid binnendoor.
 }
 
@@ -172,24 +178,27 @@ class Gebruikseenheid << Objecttype >> {
     + feitelijkGebruik
     + gebruiksdoel: Gebruiksdoel [1..*]
     + vergundGebruik
-    ..
+    --
     Kleinste ondeelbare samenstel van alle verblijfseenheden, gebouwen en voorzieningen die als geheel worden gebruikt.
 }
 
-class Diversen << extern >> {
+class "IFC-model" << extern >> {
 }
 
 class Toegang << Objecttype >> {
     + geometrie
     + toegankelijkheid
-    ..
+    --
     Deur of andere voorziening die toegang geeft tot een verblijfseenheid.
+}
+
+class Vastgoed << extern >> {
 }
 
 class Verblijfseenheid << Objecttype >> {
     + geometrie
     + oppervlakte
-    ..
+    --
     Kleinste binnen een gebouw gelegen aaneengesloten eenheid van gebruik die volledig binnendoor bereikbaar is en ontsloten wordt via een eigen toegang vanaf de openbare weg, een erf of een gedeelde verkeersruimte, onderwerp kan zijn van goederenrechtelijke rechtshandelingen en in functioneel opzicht zelfstandig is.
 }
 
@@ -197,7 +206,7 @@ class Voorziening << Objecttype >> {
 '     + gedeeldeVoorziening
 '     + geometrie
     + typeVoorziening: TypeVoorziening
-    ..
+    --
     Kleinste geheel van een installatie of andere voorziening die relevant is voor een of meer gebruikseenheden.
 }
 
