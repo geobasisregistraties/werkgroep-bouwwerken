@@ -90,6 +90,9 @@ package "FYSIEK" {
         class Bouwwerk {
         }
     }
+    class Bouwblok {
+    }
+'     note left of Bouwblok : Na een muurdoorbraak kan een verblijfseenheid in meerdere aangrenzende gebouwen met verschillende typeGebouw zijn gelegen.
     class Gebouw {
     }
     class Toegang {
@@ -106,6 +109,7 @@ package "FYSIEK" {
 }
 
 AbstractObject <|-- Bouwwerk
+AbstractObject <|-- Bouwblok
 AbstractObject <|-- Gebouw
 AbstractObject <|-- Gebruikseenheid
 AbstractObject <|-- Voorziening
@@ -115,13 +119,14 @@ Gebruikseenheid "*" --> "*" Voorziening : gebruikt
 Gebruikseenheid "*" --> "1..*" Gebouw : gebruikt
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
 Bouwwerk "1..*" o-- "*" Voorziening
+Bouwblok "1" *- "1..*" Gebouw
 Bouwwerk "*" .. "1..*" Bouwbesluit : is\ngebouwd\nvolgens
 Verblijfseenheid "*" --> "*" Voorziening : heeft
 Bouwlaag "*" --> "*" Voorziening : omvat
 Verblijfseenheid "*" --> "1..*" Bouwlaag : ligt\nop
 AbstractObject <|-- Bouwlaag
 AbstractObject <|-- Verblijfseenheid
-Gebouw "1" *-- "*" Verblijfseenheid
+Bouwblok "1" *-- "*" Verblijfseenheid
 Gebouw "1" *-- "1..*" Bouwlaag
 ' Gebouw "*" --> "*" "IFC-model" : is\nbeschreven\nin
 Bouwwerk "1..*" -> "1" "IFC-model" : is\nbeschreven\nin
@@ -143,6 +148,13 @@ class Adres << extern >> {
 }
 
 class Bouwbesluit << extern >> {
+}
+
+class Bouwblok << Objecttype >> {
+'     ..//verplicht//..
+'     ..//vrijwillig//..
+'     --
+    Grootst mogelijke geheel van aaneengesloten gebouwen.
 }
 
 class Bouwlaag << Objecttype >> << vrijwillig >> {
@@ -200,7 +212,7 @@ class Verblijfseenheid << Objecttype >> {
     + geometrie
     + oppervlakte
     --
-    Kleinste binnen een gebouw gelegen aaneengesloten eenheid van gebruik die volledig binnendoor bereikbaar is en ontsloten wordt via een eigen toegang vanaf de openbare weg, een erf of een gedeelde verkeersruimte, onderwerp kan zijn van goederenrechtelijke rechtshandelingen en in functioneel opzicht zelfstandig is.
+    Kleinste binnen een bouwblok gelegen aaneengesloten eenheid van gebruik die volledig binnendoor bereikbaar is en ontsloten wordt via een eigen toegang vanaf de openbare weg, een erf of een gedeelde verkeersruimte, onderwerp kan zijn van goederenrechtelijke rechtshandelingen en in functioneel opzicht zelfstandig is.
 }
 
 class Voorziening << Objecttype >> {
