@@ -106,6 +106,7 @@ package "WAARDELIJSTEN" {
         + dakterras
         + keuken
         + meterkast
+        + serre
         + terras
         + toilet
         + trap
@@ -117,7 +118,6 @@ package "WAARDELIJSTEN" {
         <color:#b4b4b4>+ dakopbouw</color>
         <color:#b4b4b4>+ garage</color>
         <color:#b4b4b4>+ kelder</color>
-        <color:#b4b4b4>+ serre</color>
         <color:#b4b4b4>+ souterrain</color>
         <color:#b4b4b4>+ toren</color>
         <color:#b4b4b4>+ zolder</color>
