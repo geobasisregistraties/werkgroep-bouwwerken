@@ -92,7 +92,7 @@ package "FYSIEK" {
     }
     class Bouwblok {
     }
-'     note left of Bouwblok : Na een muurdoorbraak kan een verblijfseenheid in meerdere aangrenzende gebouwen met verschillende typeGebouw zijn gelegen.
+'     note left of Bouwblok : Na een muurdoorbraak kan een verblijfseenheid in meerdere aaneengesloten gebouwen met verschillende typeGebouw zijn gelegen.
     class Gebouw {
     }
     class Toegang {
