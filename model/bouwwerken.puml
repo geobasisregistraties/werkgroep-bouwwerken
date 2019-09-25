@@ -183,6 +183,7 @@ class Gebruikseenheid << Objecttype >> {
 }
 
 class "IFC-model" << extern >> {
+'     https://hetnationaalbimplatform.nl/upload/documents/RVB_BIM_Norm_v1.1.pdf
 }
 
 class Toegang << Objecttype >> {
