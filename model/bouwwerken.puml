@@ -47,8 +47,10 @@ skinparam class {
 }
 
 skinparam class<<extern>> {
+    AttributeFontColor #b4b4b4
     BorderColor #b4b4b4
     FontColor #b4b4b4
+    StereotypeFontColor #b4b4b4
 }
 
 skinparam note {
@@ -73,6 +75,12 @@ skinparam package<< subpackage >> {
 
 ' hide AbstractObject
 
+' hide Eigendom
+
+' hide Gebruik
+
+' hide FUNCTIE
+
 hide circle
 
 hide empty members
@@ -80,11 +88,20 @@ hide empty members
 hide stereotype
 
 package "FUNCTIE" {
-    class Gebruikseenheid {
+    package "Gebruik" << subpackage >> {
+        class Gebruikseenheid {
+        }
+        class Gebruiksdeel {
+        }
+    '     note top of Gebruiksdeel : Woning die alleen bereikbaar is via een winkel vormt een apart gebruiksdeel binnen dezelfde verblijfseenheid als de winkel. Deze gebruiksdelen gebruiken tezamen de gehele verblijfseenheid van de winkel met woning. Idem bij een bedrijfsverzamelgebouw. Als een gebruikseenheid de gehele verblijfseenheid gebruikt, is er geen gebruiksdeel, daarom kardinaliteit 0,2..*.
     }
-    class Gebruiksdeel {
+    package "Eigendom" << subpackage >> {
+        class Eigendomseenheid {
+        }
+        class Eigendomsdeel {
+        }
+        note top of Eigendomseenheid : Conceptueel als gebruikseenheid, maar omwille van de leesbaarheid hier niet verder uitgewerkt.
     }
-'     note top of Gebruiksdeel : Woning die alleen bereikbaar is via een winkel vormt een apart gebruiksdeel binnen dezelfde verblijfseenheid als de winkel. Deze gebruiksdelen gebruiken tezamen de gehele verblijfseenheid van de winkel met woning. Idem bij een bedrijfsverzamelgebouw. Als een gebruikseenheid de gehele verblijfseenheid gebruikt, is er geen gebruiksdeel, daarom kardinaliteit 0,2..*.
 }
 
 package "FYSIEK" {
@@ -92,9 +109,9 @@ package "FYSIEK" {
         class Bouwwerk {
         }
     }
-    class Bouwblok {
+    class Gebouwblok {
     }
-'     note left of Bouwblok : Na een muurdoorbraak kan een verblijfseenheid in meerdere aaneengesloten gebouwen met verschillende typeGebouw zijn gelegen.
+'     note left of Gebouwblok : Na een muurdoorbraak kan een verblijfseenheid in meerdere aaneengesloten gebouwen met verschillende typeGebouw zijn gelegen.
     class Gebouw {
     }
 '     note top of Gebouw : Dus bovengrondse delen die uitsteken horen bij het gebouw waar ze aan vast zitten. Een ondergrondse kelder hoort bij het gebouw waar deze onder ligt en als een tunnel twee kantoortorens verbindt, dan vormen die samen met de tunnel één gebouw.
@@ -105,41 +122,63 @@ package "FYSIEK" {
     package "Indeling" << subpackage >> {
         class Bouwlaag {
         }
+        class Gebouwdeel {
+        }
         class Verblijfseenheid {
+        }
+        class Verkeerseenheid {
         }
 '         note top of Verblijfseenheid : Als een verblijfsobject uit BAG, maar ongeacht functionele zelfstandigheid, altijd binnendoor bereikbaar, zonder gebruiksdoel en zonder eis van voorzieningen.
     }
 }
 
-AbstractObject <|-- Bouwwerk
-AbstractObject <|-- Bouwblok
-AbstractObject <|-- Gebouw
-AbstractObject <|-- Gebruikseenheid
-AbstractObject <|-- Voorziening
-AbstractObject <|-- Bouwlaag
-AbstractObject <|-- Verblijfseenheid
+' ABSTRACT
+' AbstractObject <|-- Bouwwerk
+' AbstractObject <|-- Gebouwblok
+' AbstractObject <|-- Gebouw
+' AbstractObject <|-- Gebruikseenheid
+' AbstractObject <|-- Eigendomseenheid
+' AbstractObject <|-- Gebruiksdeel
+' AbstractObject <|-- Eigendomsdeel
+' AbstractObject <|-- Voorziening
+' AbstractObject <|-- Bouwlaag
+' AbstractObject <|-- Gebouwdeel
+' AbstractObject <|-- Toegang
+
+' FYSIEK
+Bouwwerk "1..*" o-left- "*" Voorziening
 Gebouw "1..*" o-- "1..*" Bouwwerk
+Gebouwblok "1" *-- "1..*" Gebouw
+Gebouwblok "1" *-- "1..*" Gebouwdeel
+Gebouwdeel <|-- Verblijfseenheid
+Gebouwdeel <|-- Verkeerseenheid
+Verkeerseenheid "*" -> "2..*" Verblijfseenheid : verbindt  >
+Gebouwdeel "*" -> "1..*" Bouwlaag : ligt\nop  >
+Gebouwdeel "*" --> "*" Voorziening : heeft >
+Verblijfseenheid "1" --> "1..*" Toegang : heeft >
+' Bouwlaag "*" --> "*" Voorziening : heeft >
+' Gebouw "1" *-- "1..*" Bouwlaag
+
+' GEBRUIK
 Gebruikseenheid "*" --> "*" Voorziening : gebruikt >
 Gebruikseenheid "*" --> "1..*" Gebouw : gebruikt >
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
-Gebruikseenheid "1" *-- "0,2..*" Gebruiksdeel
-Gebruiksdeel "0,2..*" --> "1" Verblijfseenheid : gebruikt >
-' Verblijfseenheid "1" *-- "0,2..*" Gebruiksdeel
-Bouwwerk "1..*" o-- "*" Voorziening
-Bouwblok "1" *-- "1..*" Gebouw
-Verblijfseenheid "*" --> "*" Voorziening : heeft >
-Bouwlaag "*" --> "*" Voorziening : heeft >
-Verblijfseenheid "*" --> "1..*" Bouwlaag : ligt\nop >
-Bouwblok "1" *-- "*" Verblijfseenheid
-Gebouw "1" *-- "1..*" Bouwlaag
+Gebruikseenheid "1" --> "*" Gebruiksdeel : gebruikt >
 Gebruikseenheid "1" --> "+ hoofdtoegang\nmet adres 1" Toegang : gebruikt >
 Gebruikseenheid "*" --> "*" Bouwlaag : ligt\nop >
-Verblijfseenheid "1" --> "1..*" Toegang : heeft >
+Gebruikseenheid "2..*" --> "*" Verkeerseenheid : gebruikt >
+Gebruiksdeel "2..*" --* "1" Verblijfseenheid
+' Gebruikseenheid"*" -left-> "*" Vastgoed : gebruikt >
 
-Gebruikseenheid"*" -left-> "*" Vastgoed : gebruikt >
-Bouwwerk "*" .down. "1..*" Bouwbesluit : is\ngebouwd\nvolgens >
-Bouwwerk "1..*" -> "1" "IFC-model" : is\nbeschreven\nin >
-Toegang "1" -left-> "0..1" Adres : heeft >
+' EIGENDOM
+Gebruikseenheid "*" -left-> "*" Eigendomseenheid : gebruikt >
+Gebruikseenheid "*" -left-> "*" Eigendomsdeel : gebruikt >
+Eigendomseenheid "1" --> "*" Eigendomsdeel
+
+' EXTERN
+Bouwwerk "*" -down- "1..*" Bouwbesluit : is\ngebouwd\nvolgens >
+Bouwwerk "1..*" -down-> "1" "IFC-model" : is\nbeschreven\nin >
+Toegang "1" --> "0..1" Adres : heeft >
 
 abstract class AbstractObject << Objecttype >> {
     + identificatie
@@ -149,6 +188,8 @@ abstract class AbstractObject << Objecttype >> {
     + status
 '     --
 }
+'     note top of AbstractObject : Generalisatie van alle objecttypen, maar omwille van de leesbaarheid hier niet verder weergegeven.
+    note top of AbstractObject : Extra attributen voor alle objecttypen, maar omwille van de leesbaarheid hier niet verder uitgewerkt.
 
 class Adres << extern >> {
 }
@@ -156,7 +197,7 @@ class Adres << extern >> {
 class Bouwbesluit << extern >> {
 }
 
-class Bouwblok << Objecttype >> {
+class Gebouwblok << Objecttype >> {
 '     ..//verplicht//..
 '     ..//vrijwillig//..
 '     --
@@ -167,7 +208,15 @@ class Bouwlaag << Objecttype >> << vrijwillig >> {
     + geometrie
     + verdiepingsaanduiding [1..1]
     --
-    Grootste aaneengesloten gedeelte van een gebouw met dezelfde vloerhoogte.
+    Grootste aaneengesloten gedeelte van een gebouwblok met dezelfde vloerhoogte.
+}
+
+abstract class Gebouwdeel << Objecttype >> {
+'     ..//verplicht//..
+    + geometrie
+'     ..//vrijwillig//..
+    --
+    Binnen een gebouwblok gelegen aaneengesloten eenheid van ruimten die volledig binnendoor bereikbaar is.
 }
 
 class Bouwwerk << Objecttype >> {
@@ -184,18 +233,27 @@ class Bouwwerk << Objecttype >> {
     Grootst mogelijke geheel van een aaneengesloten en in één keer gerealiseerde bouwkundige constructie, ongeacht de duurzaamheid van de verbinding met de aarde en de bereikbaarheid binnendoor.
 }
 
-class Gebouw << Objecttype >> {
-'     ..//verplicht//..
-    + typeGebouw: TypeGebouw [1..*]
-'     ..//vrijwillig//..
+class Eigendomsdeel << Objecttype >> << extern >> {
     --
-    Grootst mogelijke homogene en duurzaam met de aarde verbonden samenstel van aaneengesloten bouwwerken die bestaat uit alle bouwwerken die steunen op het geheel of die worden ontsloten via het geheel, ongeacht de bereikbaarheid binnendoor.
+    Gedeelte van een verblijfseenheid dat door een andere eigendomseenheid wordt gebruikt dan andere eigendomsdelen van dezelfde verblijfseenheid.
+}
+
+class Eigendomseenheid << Objecttype >> << extern >> {
+    --
+    Kleinste ondeelbare samenstel van alle verblijfseenheden, gebouwen en voorzieningen die als geheel onderwerp kan zijn van goederenrechtelijke rechtshandelingen.
+}
+
+class Gebouw << Objecttype >> {
+    + geometrie
+    + typeGebouw: TypeGebouw [1..*]
+    --
+    Kleinst mogelijke homogene en duurzaam met de aarde verbonden samenstel van aaneengesloten bouwwerken die bestaat uit alle bouwwerken die steunen op dit samenstel of die erdoor worden ontsloten, ongeacht de bereikbaarheid binnendoor.
 }
 
 class Gebruiksdeel << Objecttype >> {
     + oppervlakte
     --
-    Gedeelte van een verblijfseenheid dat door een andere gebruikseenheid wordt gebruikt dan andere gebruiksdelen van die verblijfseenheid.
+    Gedeelte van een verblijfseenheid dat door een andere gebruikseenheid wordt gebruikt dan andere gebruiksdelen van dezelfde verblijfseenheid.
 }
 
 class Gebruikseenheid << Objecttype >> {
@@ -214,17 +272,18 @@ class Toegang << Objecttype >> {
     + geometrie
     + toegankelijkheid
     --
-    Deur of andere voorziening die toegang geeft tot een verblijfseenheid vanaf de openbare weg, een erf of een gedeelde verkeersruimte.
-}
-
-class Vastgoed << extern >> {
+    Deur of andere voorziening die toegang geeft tot een verblijfseenheid vanaf de openbare weg, een erf of een verkeerseenheid.
 }
 
 class Verblijfseenheid << Objecttype >> {
-    + geometrie
     + oppervlakte
     --
-    Kleinste binnen een bouwblok gelegen aaneengesloten eenheid van gebruik die volledig binnendoor bereikbaar is en onderwerp kan zijn van goederenrechtelijke rechtshandelingen.
+    Grootste aaneengesloten eenheid van verblijf die onderwerp kan zijn van goederenrechtelijke rechtshandelingen.
+}
+
+class Verkeerseenheid << Objecttype >> {
+    --
+    Grootste aaneengesloten eenheid van verkeer die bereikbaar is vanaf een openbare weg of een erf.
 }
 
 class Voorziening << Objecttype >> {
@@ -232,7 +291,7 @@ class Voorziening << Objecttype >> {
 '     + geometrie
     + typeVoorziening: TypeVoorziening
     --
-    Kleinste geheel van een installatie of andere voorziening die relevant is voor een of meer gebruikseenheden.
+    Geheel van een installatie of andere voorziening die relevant is voor een of meer gebruikseenheden.
 }
 
 @enduml
