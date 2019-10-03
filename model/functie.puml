@@ -79,13 +79,15 @@ skinparam package<< subpackage >> {
 
 ' hide Gebruik
 
-' hide FUNCTIE
-
 hide circle
 
 hide empty members
 
 hide stereotype
+
+
+' =================================================================================================
+
 
 package "FUNCTIE" {
     package "Gebruik" << subpackage >> {
@@ -93,30 +95,36 @@ package "FUNCTIE" {
         }
         class Gebruiksdeel {
         }
-    '     note top of Gebruiksdeel : Woning die alleen bereikbaar is via een winkel vormt een apart gebruiksdeel binnen dezelfde verblijfseenheid als de winkel. Deze gebruiksdelen gebruiken tezamen de gehele verblijfseenheid van de winkel met woning. Idem bij een bedrijfsverzamelgebouw. Als een gebruikseenheid de gehele verblijfseenheid gebruikt, is er geen gebruiksdeel, daarom kardinaliteit 0,2..*.
+    '     note top of Gebruiksdeel : Een woning die alleen bereikbaar is via een winkel vormt een apart gebruiksdeel binnen dezelfde verblijfseenheid als de winkel. Deze gebruiksdelen gebruiken tezamen de gehele verblijfseenheid van de winkel met woning. Idem bij een bedrijfsverzamelgebouw. Als een gebruikseenheid de gehele verblijfseenheid gebruikt, is er geen gebruiksdeel.
     }
     package "Eigendom" << subpackage >> {
         class Eigendomseenheid {
         }
         class Eigendomsdeel {
         }
-        note right of Eigendomseenheid : Conceptueel te modelleren zoals een gebruikseenheid, maar omwille van de leesbaarheid hier niet verder uitgewerkt.
+        note right of Eigendomseenheid : Op eenzelfde manier te modelleren als een gebruikseenheid, maar omwille van de leesbaarheid hier niet verder uitgewerkt.
     }
 }
 
 package "FYSIEK" {
-    class Gebouw {
+'     package "Gebeurtenis" << subpackage >> {
+'         class Bouwwerk << Objecttype >> {
+'         }
+'     }
+    class Bouwlaag << Objecttype >> << vrijwillig >> {
     }
-    class Toegang {
+'     class Gebouw << Objecttype >> {
+'     }
+    class Toegang << Objecttype >> {
     }
-    class Voorziening {
+    class Voorziening << Objecttype >> {
     }
-    package "Indeling" << subpackage >> {
-        class Bouwlaag {
+    package "Gebouwdelen" << subpackage >> {
+        class Verblijfseenheid << Objecttype >> {
         }
-        class Verblijfseenheid {
+        class Verkeerseenheid << Objecttype >> {
         }
-        class Verkeerseenheid {
+        class Resteenheid << Objecttype >> {
         }
     }
 }
@@ -128,16 +136,14 @@ package "FYSIEK" {
 ' AbstractObject <|-- Eigendomsdeel
 
 ' FYSIEK
-Verkeerseenheid "*" -> "2..*" Verblijfseenheid
-Verblijfseenheid "1" --> "1..*" Toegang
-' Bouwlaag "*" --> "*" Voorziening
-' Gebouw "1" *-- "1..*" Bouwlaag
+' Verkeerseenheid "*" -> "2..*" Verblijfseenheid
+' Verblijfseenheid "1" --> "1..*" Toegang
 
 ' GEBRUIK
 Gebruikseenheid "*" --> "*" Voorziening : gebruikt >
-Gebruikseenheid "*" --> "1..*" Gebouw : gebruikt >
 Gebruikseenheid "1" o-- "*" Verblijfseenheid
-Gebruikseenheid "1" --> "*" Gebruiksdeel : gebruikt >
+Gebruikseenheid "*" --> "*" Resteenheid : gebruikt >
+Gebruikseenheid "1" -right-> "*" Gebruiksdeel : gebruikt >
 Gebruikseenheid "1" --> "+ hoofdtoegang\nmet adres 1" Toegang : gebruikt >
 Gebruikseenheid "*" --> "*" Bouwlaag : ligt\nop >
 Gebruikseenheid "2..*" --> "*" Verkeerseenheid : gebruikt >
@@ -146,10 +152,7 @@ Gebruiksdeel "2..*" --* "1" Verblijfseenheid
 ' EIGENDOM
 Gebruikseenheid "*" -left-> "*" Eigendomseenheid : gebruikt >
 Gebruikseenheid "*" -left-> "*" Eigendomsdeel : gebruikt >
-Eigendomseenheid "1" --> "*" Eigendomsdeel
-
-' EXTERN
-Toegang "1" --> "0..1" Adres
+Eigendomseenheid "1" --> "*" Eigendomsdeel : bezit
 
 abstract class AbstractObject << Objecttype >> {
     + identificatie
@@ -157,31 +160,24 @@ abstract class AbstractObject << Objecttype >> {
     + documentnummer
     + geconstateerd
     + status
-'     --
 }
 
-class Adres << extern >> {
-}
-
-class Bouwlaag << Objecttype >> << vrijwillig >> {
-}
+note top of AbstractObject : Extra attributen voor alle objecttypen, maar omwille van de leesbaarheid hier niet verder uitgewerkt.
 
 class Eigendomsdeel << Objecttype >> << extern >> {
-    --
-    Gedeelte van een verblijfseenheid dat door een andere eigendomseenheid wordt gebruikt dan andere eigendomsdelen van dezelfde verblijfseenheid.
+'     --
+    Aaneengesloten gedeelte van een verblijfseenheid dat in eigendom is van een andere eigendomseenheid dan de andere eigendomsdelen van dezelfde verblijfseenheid.
 }
 
 class Eigendomseenheid << Objecttype >> << extern >> {
-    --
-    Kleinste ondeelbare samenstel van alle verblijfseenheden, gebouwen en voorzieningen die als geheel onderwerp kan zijn van goederenrechtelijke rechtshandelingen.
-}
-class Gebouw << Objecttype >> {
+'     --
+    Kleinste ondeelbare samenstel van alle gebouwdelen en voorzieningen die als geheel onderwerp kan zijn van goederenrechtelijke rechtshandelingen.
 }
 
 class Gebruiksdeel << Objecttype >> {
     + oppervlakte
     --
-    Gedeelte van een verblijfseenheid dat door een andere gebruikseenheid wordt gebruikt dan andere gebruiksdelen van dezelfde verblijfseenheid.
+    Aaneengesloten gedeelte van een verblijfseenheid dat wordt gebruikt door een andere gebruikseenheid dan de andere gebruiksdelen van dezelfde verblijfseenheid.
 }
 
 class Gebruikseenheid << Objecttype >> {
@@ -189,19 +185,7 @@ class Gebruikseenheid << Objecttype >> {
     + gebruiksdoel: Gebruiksdoel [1..*]
     + vergundGebruik
     --
-    Kleinste ondeelbare samenstel van alle verblijfseenheden, gebouwen en voorzieningen die als geheel wordt gebruikt en in functioneel opzicht zelfstandig is.
-}
-
-class Toegang << Objecttype >> {
-}
-
-class Verblijfseenheid << Objecttype >> {
-}
-
-class Verkeerseenheid << Objecttype >> {
-}
-
-class Voorziening << Objecttype >> {
+    Kleinste ondeelbare samenstel van alle nabijgelegen gebouwdelen en voorzieningen die als geheel wordt gebruikt en in functioneel opzicht zelfstandig is.
 }
 
 @enduml
