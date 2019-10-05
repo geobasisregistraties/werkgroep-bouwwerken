@@ -162,21 +162,11 @@ class Adres << extern >> {
 class Bouwbesluit << extern >> {
 }
 
-class Gebouwblok << Objecttype >> {
-    Grootste aaneengesloten geheel van gebouwen.
-}
-
 class Bouwlaag << Objecttype >> << vrijwillig >> {
     + geometrie
     + verdiepingsaanduiding [1..1]
     --
     Grootste aaneengesloten gedeelte van een gebouwblok met dezelfde vloerhoogte.
-}
-
-abstract class Gebouwdeel << Objecttype >> {
-    + geometrie
-    --
-    Grootste aaneengesloten en ondeelbare eenheid van binnen een gebouwblok gelegen ruimten die volledig binnendoor bereikbaar is.
 }
 
 class Bouwwerk << Objecttype >> {
@@ -200,8 +190,23 @@ class Gebouw << Objecttype >> {
     Kleinst mogelijke homogene en duurzaam met de aarde verbonden samenstel van aaneengesloten bouwwerken die bestaat uit alle bouwwerken die steunen op dit samenstel of die erdoor worden ontsloten, ongeacht de bereikbaarheid binnendoor.
 }
 
+class Gebouwblok << Objecttype >> {
+    Grootste aaneengesloten geheel van gebouwen.
+}
+
+abstract class Gebouwdeel << Objecttype >> {
+    + geometrie
+    --
+    Grootste aaneengesloten en ondeelbare eenheid van binnen een gebouwblok gelegen ruimten die volledig binnendoor bereikbaar is.
+}
+
 class "IFC-model" << extern >> {
 '     https://hetnationaalbimplatform.nl/upload/documents/RVB_BIM_Norm_v1.1.pdf
+}
+
+class Resteenheid << Objecttype >> {
+'     --
+    Gedeelte van een gebouwblok dat geen verblijfseenheid of verkeerseenheid is.
 }
 
 class Toegang << Objecttype >> {
@@ -211,27 +216,25 @@ class Toegang << Objecttype >> {
     Deur of andere voorziening die toegang geeft tot een verblijfseenheid vanaf de openbare weg, een erf of een verkeerseenheid.
 }
 
-class Resteenheid << Objecttype >> {
-'     --
-    Gedeelte van een gebouwblok dat geen verblijfseenheid of verkeerseenheid is.
-}
-
 class Verblijfseenheid << Objecttype >> {
     + oppervlakte
     --
+'     Bouwkundig-constructief zelfstandige eenheid van verblijf die onderwerp kan zijn van goederenrechtelijke rechtshandelingen.
     Eenheid van verblijf die onderwerp kan zijn van goederenrechtelijke rechtshandelingen.
 }
 
 class Verkeerseenheid << Objecttype >> {
 '     --
-    Eenheid van verkeer die bereikbaar is vanaf een openbare weg of een erf.
+    Gedeelte van een gebouwblok dat verblijfseenheden met elkaar of met een openbare weg of een erf verbindt.
+' Eenheid van verkeer die meerdere verblijfseenheden verbindt.
+' die bereikbaar is vanaf een openbare weg of een erf.
 }
 
 class Voorziening << Objecttype >> {
 '     + geometrie
     + typeVoorziening: TypeVoorziening
     --
-    Geheel van een relevante installatie of andere voorziening.
+    Geheel van een relevante installatie, bouwkundig constructie-element of andere voorziening.
 }
 
 @enduml
