@@ -175,6 +175,7 @@ class Eigendomseenheid << Objecttype >> << extern >> {
 }
 
 class Gebruiksdeel << Objecttype >> {
+    + geometrie
     + oppervlakte
     --
     Aaneengesloten gedeelte van een verblijfseenheid dat wordt gebruikt door een andere gebruikseenheid dan de andere gebruiksdelen van dezelfde verblijfseenheid.
