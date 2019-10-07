@@ -47,14 +47,16 @@ skinparam class {
 }
 
 skinparam class<<extern>> {
+    AttributeFontColor #b4b4b4
     BorderColor #b4b4b4
     FontColor #b4b4b4
+    StereotypeFontColor #b4b4b4
 }
 
 skinparam note {
     BackgroundColor #fdf6bb
     BorderColor #f9e11e
-    FontColor #01689b
+    FontColor #007bc7
 }
 
 skinparam package {
@@ -71,23 +73,36 @@ skinparam package<< subpackage >> {
     FontStyle normal
 }
 
-' hide AbstractObject
-
 hide circle
 
 hide empty members
 
 hide stereotype
 
+' hide AbstractObject
+
+
+' =================================================================================================
+
+
 package "WAARDELIJSTEN" {
 
-    class TypeConstructie << Referentielijst >> {
-        + beton
-        + houtskelet
-        + metselwerk
-        + prefab
-        + staalstructuur
-    }
+' together {
+'     class Gebruiksdoel
+'     class TypeBouwwerk
+'     class TypeConstructie
+'     class TypeGebouw
+'     class TypeMetagegeven
+'     class TypeVoorziening
+' }
+
+'     class TypeConstructie << Referentielijst >> {
+'         + beton
+'         + houtskelet
+'         + metselwerk
+'         + prefab
+'         + staalstructuur
+'     }
 
     class TypeBouwwerk << Referentielijst >> {
         + aanbouw
@@ -107,11 +122,11 @@ package "WAARDELIJSTEN" {
         + keuken
         + meterkast
         + serre
-        + terras
         + toilet
         + trap
         + warmtepomp
-        + zonnepaneel
+        + zonneboiler
+        + zonnepanelen
         + zwembad
         <color:#b4b4b4>+ atelier/hobbyruimte</color>
         <color:#b4b4b4>+ berging</color>
@@ -119,6 +134,7 @@ package "WAARDELIJSTEN" {
         <color:#b4b4b4>+ garage</color>
         <color:#b4b4b4>+ kelder</color>
         <color:#b4b4b4>+ souterrain</color>
+        <color:#b4b4b4>+ terras</color>
         <color:#b4b4b4>+ toren</color>
         <color:#b4b4b4>+ zolder</color>
         --
