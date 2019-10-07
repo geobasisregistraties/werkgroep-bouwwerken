@@ -187,11 +187,11 @@ class Gebouw << Objecttype >> {
     + geometrie
     + typeGebouw: TypeGebouw [1..*]
     --
-    Kleinst mogelijke homogene, omsloten en duurzaam met de aarde verbonden samenstel van aaneengesloten bouwwerken, dat is samengesteld uit alle bouwwerken die steunen op dit samenstel of die erdoor worden ontsloten, ongeacht de bereikbaarheid binnendoor.
+    Kleinst mogelijke homogene, omsloten en duurzaam met de aarde verbonden samenstel van aaneengesloten bouwwerken, dat (geautomatiseerd?) is samengesteld uit alle bouwwerken die steunen op dit samenstel of die erdoor worden ontsloten, ongeacht de bereikbaarheid binnendoor.
 }
 
 class Gebouwblok << Objecttype >> {
-    Grootste aaneengesloten samenstel van gebouwen.
+    Grootste aaneengesloten samenstel van gebouwen, dat (geautomatiseerd?) is samengesteld uit de gebouwen die bouwkundig-constructief met elkaar zijn verbonden.
 }
 
 abstract class Gebouwdeel << Objecttype >> {
