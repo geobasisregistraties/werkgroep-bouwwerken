@@ -180,7 +180,7 @@ class Bouwwerk << Objecttype >> {
 '     + vigerendBouwbesluit [1..1]
 '     ..//vrijwillig//..
     --
-    Grootst mogelijke geheel van een aaneengesloten en in één keer gerealiseerde bouwkundige constructie, ongeacht de duurzaamheid van de verbinding met de aarde en de bereikbaarheid binnendoor.
+    Grootst mogelijke aaneengesloten geheel van een in één keer gerealiseerde bouwkundige constructie, ongeacht de verbinding met de aarde en de bereikbaarheid binnendoor.
 }
 
 class Gebouw << Objecttype >> {
@@ -197,7 +197,7 @@ class Gebouwblok << Objecttype >> {
 abstract class Gebouwdeel << Objecttype >> {
     + geometrie
     --
-    Grootste aaneengesloten en ondeelbare omsloten eenheid van binnen een gebouwblok gelegen ruimten die volledig binnendoor bereikbaar is.
+    Grootste ondeelbare aaneengesloten en omsloten eenheid van binnen een gebouwblok gelegen ruimten die volledig binnendoor bereikbaar is.
 }
 
 class "IFC-model" << extern >> {
