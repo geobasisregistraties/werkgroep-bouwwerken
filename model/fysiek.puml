@@ -56,7 +56,7 @@ skinparam class<<extern>> {
 skinparam note {
     BackgroundColor #fdf6bb
     BorderColor #f9e11e
-    FontColor #01689b
+    FontColor #007bc7
 }
 
 skinparam package {
@@ -73,13 +73,13 @@ skinparam package<< subpackage >> {
     FontStyle normal
 }
 
-' hide AbstractObject
-
 hide circle
 
 hide empty members
 
 hide stereotype
+
+' hide AbstractObject
 
 
 ' =================================================================================================
@@ -187,7 +187,7 @@ class Gebouw << Objecttype >> {
     + geometrie
     + typeGebouw: TypeGebouw [1..*]
     --
-    Kleinst mogelijke homogene en duurzaam met de aarde verbonden samenstel van aaneengesloten bouwwerken die bestaat uit alle bouwwerken die steunen op dit samenstel of die erdoor worden ontsloten, ongeacht de bereikbaarheid binnendoor.
+    Kleinst mogelijke homogene, omsloten en duurzaam met de aarde verbonden samenstel van aaneengesloten bouwwerken, dat is samengesteld uit alle bouwwerken die steunen op dit samenstel of die erdoor worden ontsloten, ongeacht de bereikbaarheid binnendoor.
 }
 
 class Gebouwblok << Objecttype >> {
@@ -234,7 +234,7 @@ class Voorziening << Objecttype >> {
 '     + geometrie
     + typeVoorziening: TypeVoorziening
     --
-    Geheel van een relevante installatie, bouwkundig constructie-element of andere voorziening.
+    Geheel van een relevante installatie of andere voorziening in of aan een gebouwblok.
 }
 
 @enduml
