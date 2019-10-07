@@ -56,7 +56,7 @@ skinparam class<<extern>> {
 skinparam note {
     BackgroundColor #fdf6bb
     BorderColor #f9e11e
-    FontColor #01689b
+    FontColor #007bc7
 }
 
 skinparam package {
@@ -73,21 +73,21 @@ skinparam package<< subpackage >> {
     FontStyle normal
 }
 
-' hide AbstractObject
-
-' hide Eigendom
-
-' hide Gebruik
-
 hide circle
 
 hide empty members
 
 hide stereotype
 
+' hide AbstractObject
+
 
 ' =================================================================================================
 
+
+' hide Eigendom
+
+' hide Gebruik
 
 package "FUNCTIE" {
     package "Gebruik" << subpackage >> {
@@ -102,8 +102,10 @@ package "FUNCTIE" {
         }
         class Eigendomsdeel {
         }
-        note right of Eigendomseenheid : Op eenzelfde manier te modelleren als een gebruikseenheid, maar omwille van de leesbaarheid hier niet verder uitgewerkt.
+'         note right of Eigendomseenheid : Relaties met fysieke objecten op eenzelfde manier te modelleren als bij een gebruikseenheid, maar omwille van de leesbaarheid hier niet verder uitgewerkt.
+'         note "Relaties met fysieke objecten op eenzelfde manier te modelleren als bij een gebruikseenheid, maar omwille van de leesbaarheid hier niet verder uitgewerkt." AS n1
     }
+    note right of Eigendomseenheid : Relaties met fysieke objecten op eenzelfde manier te modelleren als bij een gebruikseenheid, maar omwille van de leesbaarheid hier niet verder uitgewerkt.
 }
 
 package "FYSIEK" {
@@ -166,7 +168,7 @@ note top of AbstractObject : Extra attributen voor alle objecttypen, maar omwill
 
 class Eigendomsdeel << Objecttype >> << extern >> {
 '     --
-    Aaneengesloten gedeelte van een verblijfseenheid dat in eigendom is van een andere eigendomseenheid dan de andere eigendomsdelen van dezelfde verblijfseenheid.
+    Aaneengesloten gedeelte van een gebouwdeel dat in eigendom is van een andere eigendomseenheid dan de andere eigendomsdelen van hetzelfde gebouwdeel.
 }
 
 class Eigendomseenheid << Objecttype >> << extern >> {
