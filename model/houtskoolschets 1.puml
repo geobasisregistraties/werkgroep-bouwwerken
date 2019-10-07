@@ -1,0 +1,146 @@
+@startuml
+
+' --------v-v-v-v-v-v-v-v--------
+' https://www.rijkshuisstijl.nl/organisatiespecifieke-richtlijnen/ministerie-van-binnenlandse-zaken-en-koninkrijksrelaties/deelidentiteit-kerndepartement-bzk
+' https://www.rijkshuisstijl.nl/basiselementen/basiselementen-online/online-kleuren
+'
+' # Communicatiekleuren
+' Het kerndepartement van BZK heeft uit het kleurenpalet van de rijkshuisstijl drie kleuren (elk met tint1 / tint2) gekozen:
+' - Rijksoverheid hemelblauw #007bc7 (#b2d7ee/#d9ebf7)
+' - Rijksoverheid rood #d52b1e (#f2bfbb/#f9dfdd)
+' - Rijksoverheid groen #39870c (#c3dbb6/#e1eddb)
+' Het gebruik van deze kleuren in combinatie met veel wit wordt gestimuleerd.
+'
+' # Tinten voor achtergrondkaders, grafieken en tabellen
+' Voor achtergrondkaders, grafieken en tabellen kunnen 7 neutrale grijstinten of tinten van een communicatiekleur in stappen van 20% worden toegepast. Voor tekstachtergrond wordt grijstint1 of communicatiekleur tint2 aanbevolen om aan de contrasteisen voor een goede leesbaarheid te voldoen.
+'
+' Rijksoverheid grijs 1 #f3f3f3
+' Rijksoverheid grijs 2 #e6e6e6
+' Rijksoverheid grijs 3 #cccccc
+' Rijksoverheid grijs 4 #b4b4b4
+' Rijksoverheid grijs 5 #999999
+' Rijksoverheid grijs 6 #696969
+' Rijksoverheid grijs 7 #535353
+
+' --------^-^-^-^-^-^-^-^--------
+
+skinparam defaultFontColor black
+skinparam defaultFontName Lucida Sans
+skinparam defaultFontSize 11
+skinparam defaultFontStyle normal
+skinparam defaultMonospacedFontName Lucida Sans Typewriter
+' skinparam defaultTextAlignment left
+' skinparam lineType ortho
+' skinparam lineType polyline
+skinparam shadowing false
+skinparam wrapWidth 165
+
+skinparam class {
+    ArrowColor #39870c
+    ArrowFontSize 10
+'     ArrowTextAlignment center
+    ArrowThickness 1.5
+    AttributeIconSize 0
+    BackgroundColor #ffffff
+    BorderColor #007bc7
+    BorderThickness 2.5
+'     StereotypeFontStyle italic
+}
+
+skinparam class<< extern >> {
+    AttributeFontColor #b4b4b4
+    BorderColor #b4b4b4
+    FontColor #b4b4b4
+    StereotypeFontColor #b4b4b4
+}
+
+skinparam class<< vrijwillig >> {
+    BorderThickness 1
+}
+
+skinparam note {
+    BackgroundColor #fdf6bb
+    BorderColor #f9e11e
+    FontColor #007bc7
+}
+
+skinparam package {
+    BackgroundColor #f3f3f3
+    BorderColor #d52b1e
+    FontColor #d52b1e
+    FontStyle bold
+    Style rectangle
+}
+
+skinparam package<< subpackage >> {
+    BackgroundColor #e6e6e6
+    BorderColor #e6e6e6
+    FontStyle normal
+}
+
+hide circle
+
+hide empty members
+
+hide stereotype
+
+' hide AbstractObject
+
+
+' =================================================================================================
+
+package "INSPIRE" {
+    class Building {
+    }
+    class BuildingInstallation {
+    }
+    class BuildingPart {
+    }
+    class BuildingUnit {
+    }
+    class OtherConstruction {
+    }
+}
+
+Verblijfsobject -up-> "Gebouw (Pand+)"
+Verblijfsobject .. BuildingUnit
+Gebouwdeel --> Verblijfsobject
+Gebouwdeel -right-> "Gebouw (Pand+)"
+Gebouwdeel --> Gebouwinstallatie
+Gebouwinstallatie -up-> "Gebouw (Pand+)"
+Gebouwinstallatie .. BuildingInstallation
+OverigeConstructie .. OtherConstruction
+Building .. "Gebouw (Pand+)"
+BuildingPart .. "Gebouw (Pand+)"
+
+class OtherConstruction << extern >> {
+}
+
+class BuildingInstallation << extern >> {
+}
+
+class Building << extern >> {
+}
+
+class BuildingPart << extern >> {
+}
+
+class BuildingUnit << extern >> {
+}
+
+class OverigeConstructie << vrijwillig >> {
+}
+
+class "Gebouw (Pand+)" << Objecttype >> {
+}
+
+class Gebouwdeel << Objecttype >> {
+}
+
+class Gebouwinstallatie << vrijwillig >> {
+}
+
+class Verblijfsobject << Objecttype >> {
+}
+
+@enduml
