@@ -129,7 +129,7 @@ package "FYSIEK" {
 '         class Bouwwerk << Objecttype >> {
 '         }
 '     }
-    class Bouwlaag << Objecttype >> << vrijwillig >> {
+    class Gebouwlaag << Objecttype >> << vrijwillig >> {
     }
 '     class Gebouw << Objecttype >> {
 '     }
@@ -163,7 +163,7 @@ Gebruikseenheid "1" o-- "*" Verblijfseenheid
 Gebruikseenheid "*" --> "*" Resteenheid : gebruikt >
 Gebruikseenheid "1" -right-> "*" Gebruiksdeel : gebruikt >
 Gebruikseenheid "1" --> "+ hoofdtoegang\nmet adres 1" Toegang : gebruikt >
-Gebruikseenheid "*" --> "*" Bouwlaag : ligt\nop >
+Gebruikseenheid "*" --> "*" Gebouwlaag : ligt\nop >
 Gebruikseenheid "2..*" --> "*" Verkeerseenheid : gebruikt >
 Gebruiksdeel "2..*" --* "1" Verblijfseenheid
 
