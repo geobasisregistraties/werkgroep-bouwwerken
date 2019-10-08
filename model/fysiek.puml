@@ -91,6 +91,10 @@ hide empty members
 
 hide stereotype
 
+' hide attributes
+
+' hide methods
+
 ' hide AbstractObject
 
 
@@ -113,7 +117,7 @@ package "FYSIEK" {
     class Voorziening {
     }
     package "Indeling" << subpackage >> {
-        class Bouwlaag {
+        class Gebouwlaag {
         }
         class Gebouwdeel {
         }
@@ -132,7 +136,7 @@ package "FYSIEK" {
 ' AbstractObject <|-- Gebouwblok
 ' AbstractObject <|-- Gebouw
 ' AbstractObject <|-- Voorziening
-' AbstractObject <|-- Bouwlaag
+' AbstractObject <|-- Gebouwlaag
 ' AbstractObject <|-- Gebouwdeel
 ' AbstractObject <|-- Toegang
 
@@ -145,12 +149,12 @@ Gebouwdeel <|-- Verblijfseenheid
 Gebouwdeel <|-- Verkeerseenheid
 Gebouwdeel <|-left- Resteenheid
 Verkeerseenheid "*" -> "2..*" Verblijfseenheid : verbindt  >
-Gebouwdeel "*" -up-> "1..*" Bouwlaag : ligt\nop  >
+Gebouwdeel "*" -up-> "1..*" Gebouwlaag : ligt\nop  >
 Gebouwdeel "*" --> "*" Voorziening : heeft >
 Verblijfseenheid "*" -up-> "1..*" Gebouw : ligt\nin  >
 Verblijfseenheid "1" --> "1..*" Toegang : heeft >
-' Bouwlaag "*" --> "*" Voorziening : heeft >
-' Gebouw "1" *-- "1..*" Bouwlaag
+' Gebouwlaag "*" --> "*" Voorziening : heeft >
+' Gebouw "1" *-- "1..*" Gebouwlaag
 
 ' EXTERN
 Bouwwerk "*" -down- "1..*" Bouwbesluit : is\ngebouwd\nvolgens >
@@ -174,7 +178,7 @@ class Adres << extern >> {
 class Bouwbesluit << extern >> {
 }
 
-class Bouwlaag << Objecttype >> << vrijwillig >> {
+class Gebouwlaag << Objecttype >> << vrijwillig >> {
     + geometrie
     + verdiepingsaanduiding [1..1]
     --
