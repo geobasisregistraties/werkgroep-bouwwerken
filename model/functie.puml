@@ -91,6 +91,10 @@ hide empty members
 
 hide stereotype
 
+' hide attributes
+
+' hide methods
+
 ' hide AbstractObject
 
 
