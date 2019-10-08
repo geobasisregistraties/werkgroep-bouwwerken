@@ -40,22 +40,28 @@ skinparam class {
     ArrowFontSize 10
 '     ArrowTextAlignment center
     ArrowThickness 1.5
+'     AttributeFontColor #000000
     AttributeIconSize 0
     BackgroundColor #ffffff
     BorderColor #007bc7
-    BorderThickness 2.5
+    BorderThickness 2
+    FontColor #007bc7
+    FontSize 12
+    FontStyle bold
 '     StereotypeFontStyle italic
+'     StereotypeFontColor #000000
 }
 
-skinparam class<< extern >> {
+skinparam class<<extern>> {
     AttributeFontColor #b4b4b4
     BorderColor #b4b4b4
     FontColor #b4b4b4
     StereotypeFontColor #b4b4b4
 }
 
-skinparam class<< vrijwillig >> {
+skinparam class<<vrijwillig>> {
     BorderThickness 1
+    FontStyle normal
 }
 
 skinparam note {
@@ -68,6 +74,7 @@ skinparam package {
     BackgroundColor #f3f3f3
     BorderColor #d52b1e
     FontColor #d52b1e
+    FontSize 12
     FontStyle bold
     Style rectangle
 }
@@ -88,6 +95,7 @@ hide stereotype
 
 
 ' =================================================================================================
+
 
 package "INSPIRE" {
     class Building {
