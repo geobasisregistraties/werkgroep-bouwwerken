@@ -102,12 +102,14 @@ hide stereotype
 package "FUNCTIE" {
     class "Adresseerbaar object" {
     }
-'     class Verblijfsobject {
-'     }
+    class Verblijfsobject {
+    }
 }
 
 package "FYSIEK" {
     class Pand {
+    }
+    class Verblijfsobject {
     }
 }
 
