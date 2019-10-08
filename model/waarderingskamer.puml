@@ -144,8 +144,8 @@ class "Begroeid terreindeel" << extern >> {
 }
 
 class Bouwlaag << Objecttype >> << vrijwillig >> {
-    ..//verplicht//..
-    ..//vrijwillig//..
+'     ..//verplicht//..
+'     ..//vrijwillig//..
     + gebruiksoppervlakte
     + plattegrond
     + verdieping
@@ -156,21 +156,21 @@ class Constructie << extern >> {
 }
 
 class Gebouw << Objecttype >> {
-    ..//verplicht//..
+'     ..//verplicht//..
     + bouwjaar (oudste gebouwdeel)
     + geometrie (3D: LoD 2.2)
     + type
-    ..//vrijwillig//..
+'     ..//vrijwillig//..
 }
 
 class Gebouwdeel << Objecttype >> {
-    ..//verplicht//..
+'     ..//verplicht//..
     + bouwjaar
     + gebruiksoppervlakte
     + toegestaan gebruik
     + type
     + vlakgeometrie (incl. Z-coördinaat)
-    ..//vrijwillig//..
+'     ..//vrijwillig//..
 }
 
 class Gebouwinstallatie << extern >> {
@@ -183,20 +183,20 @@ class Scheiding << extern >> {
 }
 
 class Verblijfsobject << Objecttype >> {
-    ..//verplicht//..
+'     ..//verplicht//..
     + gebruiksdoel
     + gebruiksoppervlakte (optelling)
     + toegang van buiten (puntgeometrie 3D)
     + entree verblijfsobject (puntgeometrie 3D)
     + vlakgeometrie (incl. Z-coördinaat)
-    ..//vrijwillig//..
+'     ..//vrijwillig//..
 }
 
 class WOZ-deelobject << Objecttype >> {
-    ..//verplicht//..
+'     ..//verplicht//..
     + WOZ-objectnummer
     + code WOZ-deelobject
-    ..//vrijwillig//..
+'     ..//vrijwillig//..
 }
 
 @enduml
