@@ -91,13 +91,15 @@ hide empty members
 
 hide stereotype
 
-' hide AbstractObject
+hide AbstractObject
 
 
 ' =================================================================================================
 
 
 package "FUNCTIE" {
+    class Verblijfsobject {
+    }
     class WOZ-deelobject {
     }
 }
@@ -109,8 +111,6 @@ package "FYSIEK" {
     }
     class Gebouwdeel {
     }
-    class Verblijfsobject {
-    }
 }
 
 Verblijfsobject "*" -> "1" Gebouw : ligt\nin  >
@@ -120,22 +120,12 @@ Gebouwdeel "*" <-> "*" Bouwlaag : ligt\nop >
 Gebouwdeel "1" -> "*" Bouwlaag : omvat >
 Gebouw "1" --> "*" Gebouwdeel : is\ndeel\nvan <
 "WOZ-deelobject" "1" -left- "1" Gebouwdeel : bestaat\nuit >
-"WOZ-deelobject" "1" -right- "1" Gebouwinstallatie : bestaat\nuit >
+"WOZ-deelobject" "1" -left- "1" Gebouwinstallatie : bestaat\nuit >
 "WOZ-deelobject" "1" -- "1" Constructie : bestaat\nuit >
 "WOZ-deelobject" "*" -- "*" Scheiding : bestaat\nuit >
 "WOZ-deelobject" "*" -- "*" "Begroeid terreindeel" : bestaat\nuit >
 "WOZ-deelobject" "*" -- "*" "Onbegroeid terreindeel" : bestaat\nuit >
 Verblijfsobject "1" -left- "2" Adres
-
-abstract class AbstractObject << Objecttype >> {
-    + identificatie
-    + documentdatum
-    + documentnummer
-    + geconstateerd
-    + status
-'     --
-}
-    note right of AbstractObject : Extra attributen voor alle objecttypen, maar omwille van de leesbaarheid hier niet verder uitgewerkt.
 
 class Adres << extern >> {
 }
@@ -144,33 +134,30 @@ class "Begroeid terreindeel" << extern >> {
 }
 
 class Bouwlaag << Objecttype >> << vrijwillig >> {
-'     ..//verplicht//..
-'     ..//vrijwillig//..
-    + gebruiksoppervlakte
-    + plattegrond
-    + verdieping
-    + vlakgeometrie (incl. Z-coördinaat)
+    + {field} identificatie
+    + {field} gebruiksoppervlakte
+    + {field} plattegrond
+    + {field} verdieping
+    + {field} vlakgeometrie (incl. Z-coördinaat)
 }
 
 class Constructie << extern >> {
 }
 
 class Gebouw << Objecttype >> {
-'     ..//verplicht//..
-    + bouwjaar (oudste gebouwdeel)
-    + geometrie (3D: LoD 2.2)
-    + type
-'     ..//vrijwillig//..
+    + {field} identificatie
+    + {field} bouwjaar (oudste gebouwdeel)
+    + {field} geometrie (3D: LoD 2.2)
+    + {field} type
 }
 
 class Gebouwdeel << Objecttype >> {
-'     ..//verplicht//..
-    + bouwjaar
-    + gebruiksoppervlakte
-    + toegestaan gebruik
-    + type
-    + vlakgeometrie (incl. Z-coördinaat)
-'     ..//vrijwillig//..
+    + {field} identificatie
+    + {field} bouwjaar
+    + {field} gebruiksoppervlakte
+    + {field} toegestaan gebruik
+    + {field} type
+    + {field} vlakgeometrie (incl. Z-coördinaat)
 }
 
 class Gebouwinstallatie << extern >> {
@@ -183,20 +170,18 @@ class Scheiding << extern >> {
 }
 
 class Verblijfsobject << Objecttype >> {
-'     ..//verplicht//..
-    + gebruiksdoel
-    + gebruiksoppervlakte (optelling)
-    + toegang van buiten (puntgeometrie 3D)
-    + entree verblijfsobject (puntgeometrie 3D)
-    + vlakgeometrie (incl. Z-coördinaat)
-'     ..//vrijwillig//..
+    + {field} identificatie
+    + {field} gebruiksdoel
+    + {field} gebruiksoppervlakte (optelling)
+    + {field} toegang van buiten (puntgeometrie 3D)
+    + {field} entree verblijfsobject (puntgeometrie 3D)
+    + {field} vlakgeometrie (incl. Z-coördinaat)
 }
 
 class WOZ-deelobject << Objecttype >> {
-'     ..//verplicht//..
-    + WOZ-objectnummer
-    + code WOZ-deelobject
-'     ..//vrijwillig//..
+    + {field} code WOZ-deelobject
+    + {field} nummer WOZ-deelobjectnummer
+    + {field} WOZ-objectnummer
 }
 
 @enduml
