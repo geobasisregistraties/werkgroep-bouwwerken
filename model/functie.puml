@@ -189,7 +189,7 @@ class Eigendomsdeel << Objecttype >> << extern >> {
 
 class Eigendomseenheid << Objecttype >> << extern >> {
 '     --
-    Kleinste ondeelbare samenstel van alle gebouwdelen en voorzieningen die als geheel onderwerp kan zijn van goederenrechtelijke rechtshandelingen.
+    Kleinste ondeelbare samenstel van alle gebouwdelen en voorzieningen dat als geheel onderwerp kan zijn van goederenrechtelijke rechtshandelingen.
 }
 
 class Gebruiksdeel << Objecttype >> {
@@ -204,7 +204,7 @@ class Gebruikseenheid << Objecttype >> {
     + gebruiksdoel: Gebruiksdoel [1..*]
     + vergundGebruik
     --
-    Kleinste ondeelbare samenstel van alle nabijgelegen gebouwdelen en voorzieningen die als geheel wordt gebruikt en in functioneel opzicht zelfstandig is.
+    Kleinste ondeelbare samenstel van alle nabijgelegen gebouwdelen en voorzieningen dat als geheel wordt gebruikt en in functioneel opzicht zelfstandig is.
 }
 
 @enduml
