@@ -102,6 +102,10 @@ hide stereotype
 package "FUNCTIE" {
     class "Adresseerbaar object" {
     }
+    class Ligplaats {
+    }
+    class Standplaats {
+    }
     class Verblijfsobject {
     }
 }
@@ -113,6 +117,8 @@ package "FYSIEK" {
     }
 }
 
+"Adresseerbaar object" <|-- Ligplaats
+"Adresseerbaar object" <|-- Standplaats
 "Adresseerbaar object" <|- Verblijfsobject
 Verblijfsobject "0..*" -> "1..*" Pand : maakt\ndeel\nuit\nvan >
 "Adresseerbaar object" "0..1" -left-> "1" Adres : heeft als\nhoofdadres >
