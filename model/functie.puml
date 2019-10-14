@@ -95,11 +95,11 @@ hide stereotype
 
 ' hide methods
 
-' hide AbstractObject
-
+' title Conceptueel model voor Bouwwerken
 
 ' =================================================================================================
 
+' hide AbstractObject
 
 ' hide Eigendom
 
@@ -180,7 +180,7 @@ abstract class AbstractObject << Objecttype >> {
     + status
 }
 
-note top of AbstractObject : Extra attributen voor alle objecttypen, maar omwille van de leesbaarheid hier niet verder uitgewerkt.
+note top of AbstractObject : Extra attributen voor alle objecttypen, maar omwille van de leesbaarheid hier niet verder uitgewerkt. Ook meta-informatie staat niet in dit model.
 
 class Eigendomsdeel << Objecttype >> << extern >> {
 '     --
