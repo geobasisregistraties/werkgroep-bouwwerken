@@ -91,11 +91,15 @@ hide empty members
 
 hide stereotype
 
-' hide AbstractObject
+' hide attributes
 
+' hide methods
+
+' title Conceptueel model voor Bouwwerken
 
 ' =================================================================================================
 
+' hide AbstractObject
 
 package "WAARDELIJSTEN" {
 
@@ -125,6 +129,19 @@ package "WAARDELIJSTEN" {
         + verbouw
     }
 
+    class TypeToegang << Referentielijst >> {
+        + afgesloten
+        + balkondeur
+        + buitendeur naar brancardlift
+        + buitendeur naar personenlift
+        + buitendeur naar rolstoellift
+        + deur vanaf verkeersruimte
+        + horizontaal luik
+        + rolstoeldeur
+        + tuindeur
+        + voordeur
+    }
+
     class TypeVoorziening << Referentielijst >> {
         + badkamer
         + balkon
@@ -141,15 +158,15 @@ package "WAARDELIJSTEN" {
         + zonneboiler
         + zonnepanelen
         + zwembad
-        <color:#b4b4b4>+ atelier/hobbyruimte</color>
-        <color:#b4b4b4>+ berging</color>
-        <color:#b4b4b4>+ dakopbouw</color>
-        <color:#b4b4b4>+ garage</color>
-        <color:#b4b4b4>+ kelder</color>
-        <color:#b4b4b4>+ souterrain</color>
-        <color:#b4b4b4>+ terras</color>
-        <color:#b4b4b4>+ toren</color>
-        <color:#b4b4b4>+ zolder</color>
+'         + atelier/hobbyruimte
+'         + berging
+'         + dakopbouw
+'         + garage
+'         + kelder
+'         + souterrain
+'         + terras
+'         + toren
+'         + zolder
         --
         <i>Bronnen: o.a. CityGML 2.0 BuildingInstallation function; CityGML 2.0 Room function</i>
     }
@@ -175,6 +192,25 @@ package "WAARDELIJSTEN" {
         + overige gebruiksfunctie
         --
         <i>Bronnen: BAG; Bouwbesluit 2012</i>
+    }
+
+    class StatusBouwwerk << Referentielijst >> {
+        + {field} gerealiseerd
+        + {field} gerealiseerd (niet ingemeten)
+        + {field} niet gerealiseerd
+        + {field} ten onrechte opgevoerd
+        + {field} vergunning verleend
+        + {field} werk gestart
+    }
+
+    class StatusGebouwdeel << Referentielijst >> {
+        + {field} buiten gebruik
+        + {field} gevormd
+        + {field} in gebruik
+        + {field} in gebruik (niet ingemeten)
+        + {field} ingetrokken
+        + {field} ten onrechte opgevoerd
+        + {field} verbouwing
     }
 
     class TypeGebouw << Referentielijst >> {
@@ -268,23 +304,23 @@ package "WAARDELIJSTEN" {
         + ziekenhuis
         + zwembad
         + overig
-        <color:#b4b4b4>+ bezoekerscentrum</color>
-        <color:#b4b4b4>+ dok</color>
-        <color:#b4b4b4>+ gemeentehuis</color>
-        <color:#b4b4b4>+ huizenblok</color>
-        <color:#b4b4b4>+ kliniek, inrichting, sanatorium</color>
-        <color:#b4b4b4>+ markant gebouw</color>
-        <color:#b4b4b4>+ militair gebouw</color>
-        <color:#b4b4b4>+ parkeerdak, parkeerdek</color>
-        <color:#b4b4b4>+ politiebureau</color>
-        <color:#b4b4b4>+ postkantoor</color>
-        <color:#b4b4b4>+ psychiatrisch ziekenhuis, psychiatrisch centrum</color>
-        <color:#b4b4b4>+ radarpost</color>
-        <color:#b4b4b4>+ radiotoren, televisietoren</color>
-        <color:#b4b4b4>+ recreatiecentrum</color>
-        <color:#b4b4b4>+ stadskantoor, hulpsecretarie</color>
-        <color:#b4b4b4>+ wegrestaurant</color>
-        <color:#b4b4b4>+ windmolen</color>
+'         + bezoekerscentrum
+'         + dok
+'         + gemeentehuis
+'         + huizenblok
+'         + kliniek, inrichting, sanatorium
+'         + markant gebouw
+'         + militair gebouw
+'         + parkeerdak, parkeerdek
+'         + politiebureau
+'         + postkantoor
+'         + psychiatrisch ziekenhuis, psychiatrisch centrum
+'         + radarpost
+'         + radiotoren, televisietoren
+'         + recreatiecentrum
+'         + stadskantoor, hulpsecretarie
+'         + wegrestaurant
+'         + windmolen
         --
         Fysieke aard van een gebouw, onafhankelijk van het actuele gebruik.
         --

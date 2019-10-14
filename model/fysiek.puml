@@ -95,39 +95,39 @@ hide stereotype
 
 ' hide methods
 
-' hide AbstractObject
-
+' title Conceptueel model voor Bouwwerken
 
 ' =================================================================================================
 
+' hide AbstractObject
 
 package "FYSIEK" {
-    package "Gebeurtenis" << subpackage >> {
+    package Gebeurtenis << subpackage >> {
         class Bouwwerk {
         }
     }
-    class Gebouwblok {
-    }
-'     note left of Gebouwblok : Na een muurdoorbraak kan een verblijfseenheid in meerdere aaneengesloten gebouwen met verschillende typeGebouw zijn gelegen.
     class Gebouw {
     }
 '     note top of Gebouw : Dus bovengrondse delen die uitsteken horen bij het gebouw waar ze aan vast zitten. Een ondergrondse kelder hoort bij het gebouw waar deze onder ligt en als een tunnel twee kantoortorens verbindt, dan vormen die samen met de tunnel één gebouw.
-    class Toegang {
+    class Gebouwblok {
     }
-    class Voorziening {
-    }
-    package "Indeling" << subpackage >> {
+'     note left of Gebouwblok : Na een muurdoorbraak kan een verblijfseenheid in meerdere aaneengesloten gebouwen met verschillende typeGebouw zijn gelegen.
+    package Indeling << subpackage >> {
+        class Gebouwdeel {
+        }
         class Gebouwlaag {
         }
-        class Gebouwdeel {
+        class Resteenheid {
         }
         class Verblijfseenheid {
         }
         class Verkeerseenheid {
         }
-        class Resteenheid {
-        }
 '         note top of Verblijfseenheid : Als een verblijfsobject uit BAG, maar ongeacht functionele zelfstandigheid, altijd binnendoor bereikbaar, zonder gebruiksdoel en zonder eis van voorzieningen.
+    }
+    class Toegang {
+    }
+    class Voorziening {
     }
 }
 
@@ -142,35 +142,32 @@ package "FYSIEK" {
 
 ' FYSIEK
 Bouwwerk "1..*" o-- "*" Voorziening
-Gebouw "1..*" o-- "1..*" Bouwwerk
-Gebouwblok "1" *-- "1..*" Gebouw
+Gebouwblok "1" o-- "1..*" Bouwwerk
+Gebouwblok "1" *-left- "1..*" Gebouw
 Gebouwblok "1" *-- "1..*" Gebouwdeel
 Gebouwdeel <|-- Verblijfseenheid
-Gebouwdeel <|-- Verkeerseenheid
-Gebouwdeel <|-left- Resteenheid
-Verkeerseenheid "*" -> "2..*" Verblijfseenheid : verbindt  >
-Gebouwdeel "*" -up-> "1..*" Gebouwlaag : ligt\nop  >
+Gebouwdeel <|-down- Verkeerseenheid
+Gebouwdeel <|-right- Resteenheid
+Verkeerseenheid "*" -right-> "2..*" Verblijfseenheid : verbindt >
+Gebouwdeel "*" -left-> "1..*" Gebouwlaag : ligt\nop >
 Gebouwdeel "*" --> "*" Voorziening : heeft >
-Verblijfseenheid "*" -up-> "1..*" Gebouw : ligt\nin  >
+Gebouwdeel "1..*" --> "1..*" Gebouw : ligt\nin >
 Verblijfseenheid "1" --> "1..*" Toegang : heeft >
 ' Gebouwlaag "*" --> "*" Voorziening : heeft >
 ' Gebouw "1" *-- "1..*" Gebouwlaag
 
 ' EXTERN
 Bouwwerk "*" -down- "1..*" Bouwbesluit : is\ngebouwd\nvolgens >
-Bouwwerk "1..*" -down-> "1" "IFC-model" : is\nbeschreven\nin >
-Toegang "1" --> "0..1" Adres : heeft >
+Bouwwerk "1..*" -down-> "1" "IFC-model" : is\nuitgewerkt\nin >
+Toegang "1" -right-> "0..1" Adres : heeft >
 
 abstract class AbstractObject << Objecttype >> {
+    + brondocument
     + identificatie
-    + documentdatum
-    + documentnummer
-    + geconstateerd
-    + status
 '     --
 }
 
-note top of AbstractObject : Extra attributen voor alle objecttypen, maar omwille van de leesbaarheid hier niet verder uitgewerkt.
+note top of AbstractObject : Extra attributen voor alle objecttypen, maar omwille van de leesbaarheid hier niet verder uitgewerkt. Ook meta-informatie staat niet in dit model.
 
 class Adres << extern >> {
 }
@@ -178,46 +175,48 @@ class Adres << extern >> {
 class Bouwbesluit << extern >> {
 }
 
-class Gebouwlaag << Objecttype >> << vrijwillig >> {
-    + geometrie
-    + verdiepingsaanduiding [1..1]
-    --
-    Grootste aaneengesloten gedeelte van een gebouwblok met dezelfde vloerhoogte.
-}
-
 class Bouwwerk << Objecttype >> {
 '     ..//verplicht//..
     + bouwgeometrie [0..1]
-    + bouwjaar [1..1]
+    + bouwjaar
 '     + opleverdatum [1..1]
     + sloopgeometrie [0..*]
-    + typeBouwwerk: TypeBouwwerk [1..*]
-    + typeConstructie: TypeConstructie [1..*]
+    + status: StatusBouwwerk
+    + type: TypeBouwwerk [1..*]
+'     + typeConstructie: TypeConstructie [1..*]
 '     + vigerendBouwbesluit [1..1]
 '     ..//vrijwillig//..
     --
-    Grootst mogelijke aaneengesloten geheel van een in één keer gerealiseerde bouwkundige constructie, ongeacht de verbinding met de aarde en de bereikbaarheid binnendoor.
+    Grootste aaneengesloten geheel van een in één keer gerealiseerde bouwkundige constructie, ongeacht de verbinding met de aarde en de bereikbaarheid binnendoor.
 }
 
 class Gebouw << Objecttype >> {
     + geometrie
-    + typeGebouw: TypeGebouw [1..*]
+    + type: TypeGebouw [1..*]
     --
-    + aggregeren( )
-    --
-    Kleinst mogelijke, homogene, omsloten en duurzaam met de aarde verbonden samenstel van aaneengesloten bouwwerken, dat is samengesteld uit alle bouwwerken die steunen op dit samenstel of die erdoor worden ontsloten, ongeacht de bereikbaarheid binnendoor.
+    Grootste aaneengesloten, homogene, duurzaam met de aarde verbonden en omsloten bouwkundige eenheid binnen een gebouwblok.
 }
 
 class Gebouwblok << Objecttype >> {
+    + geometrie
+    --
     + aggregeren( )
     --
-    Grootste aaneengesloten samenstel van gebouwen, dat is samengesteld uit de gebouwen die bouwkundig-constructief met elkaar zijn verbonden.
+    Grootste aaneengesloten samenstel van bouwwerken die bouwkundig-constructief met elkaar zijn verbonden.
 }
 
 abstract class Gebouwdeel << Objecttype >> {
     + geometrie
+    + status: StatusGebouwdeel
     --
-    Grootste ondeelbare aaneengesloten en omsloten eenheid van binnen een gebouwblok gelegen ruimten die volledig binnendoor bereikbaar is.
+    Grootste aaneengesloten, omsloten en ondeelbare eenheid van binnen een gebouwblok gelegen ruimten die volledig binnendoor bereikbaar is.
+}
+
+class Gebouwlaag << Objecttype >> << vrijwillig >> {
+    + plattegrond
+    + verdiepingsaanduiding
+    --
+    Grootste aaneengesloten verdieping van een gebouwblok met dezelfde vloerhoogte, ongeacht de bereikbaarheid binnendoor.
 }
 
 class "IFC-model" << extern >> {
@@ -226,14 +225,14 @@ class "IFC-model" << extern >> {
 
 class Resteenheid << Objecttype >> {
 '     --
-    Gedeelte van een gebouwblok dat geen verblijfseenheid of verkeerseenheid is.
+    Gedeelte van een gebouwblok dat geen verblijfseenheid en geen verkeerseenheid is.
 }
 
 class Toegang << Objecttype >> {
     + geometrie
-    + toegankelijkheid
+    + type: TypeToegang
     --
-    Deur of andere voorziening die toegang geeft tot een verblijfseenheid vanaf de openbare weg, een erf of een verkeerseenheid.
+    Deur of andere voorziening die vanaf de openbare weg, een erf of een verkeerseenheid toegang geeft tot een verblijfseenheid.
 }
 
 class Verblijfseenheid << Objecttype >> {
@@ -252,7 +251,7 @@ class Verkeerseenheid << Objecttype >> {
 
 class Voorziening << Objecttype >> {
 '     + geometrie
-    + typeVoorziening: TypeVoorziening
+    + type: TypeVoorziening
     --
     Geheel van een relevante installatie of andere voorziening in of aan een gebouwblok.
 }
