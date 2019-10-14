@@ -91,11 +91,15 @@ hide empty members
 
 hide stereotype
 
-' hide AbstractObject
+' hide attributes
 
+' hide methods
+
+' title Conceptueel model voor Bouwwerken
 
 ' =================================================================================================
 
+' hide AbstractObject
 
 ' hide Waardelijsten
 
@@ -117,16 +121,16 @@ hide stereotype
 "Adresseerbaar object" "0..1" --> "1" Nummeraanduiding : heeft\nals\nhoofdadres >
 ' Note on link: hoofdadres
 
-Nummeraanduiding "0..*" --> "0..1" Woonplaats : ligt\nin >
+Nummeraanduiding "0..*" -up-> "0..1" Woonplaats : ligt\nin >
 ' Note on link: gerelateerde woonplaats
 
-Nummeraanduiding "0..*" --> "1" "Openbare ruimte" : ligt\naan >
+Nummeraanduiding "0..*" -left-> "1" "Openbare ruimte" : ligt\naan >
 ' Note on link: gerelateerde openbare ruimte
 
-Verblijfsobject "0..*" --> "1..*" Pand : maakt\ndeel\nuit\nvan >
+Verblijfsobject "0..*" -up-> "1..*" Pand : maakt\ndeel\nuit\nvan >
 ' Note on link: gerelateerd pand
 
-"Openbare ruimte" "1..*" --> "1" Woonplaats : ligt\nin >
+"Openbare ruimte" "1..*" -up-> "1" Woonplaats : ligt\nin >
 ' Note on link: gerelateerde woonplaats
 
 abstract class "Adresseerbaar object" << Objecttype >>
