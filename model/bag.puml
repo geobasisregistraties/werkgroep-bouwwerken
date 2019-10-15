@@ -115,10 +115,10 @@ hide stereotype
 
 "Adresseerbaar object" <|-- Verblijfsobject
 
-"Adresseerbaar object" "0..1" --> "0..*" Nummeraanduiding : heeft\nals\nnevenadres >
+"Adresseerbaar object" "0..1" --> "0..*" Nummeraanduiding : heeft als\nnevenadres >
 ' Note on link: nevenadres
 
-"Adresseerbaar object" "0..1" --> "1" Nummeraanduiding : heeft\nals\nhoofdadres >
+"Adresseerbaar object" "0..1" --> "1" Nummeraanduiding : heeft als\nhoofdadres >
 ' Note on link: hoofdadres
 
 Nummeraanduiding "0..*" -up-> "0..1" Woonplaats : ligt\nin >
