@@ -110,16 +110,16 @@ package "INSPIRE" {
     }
 }
 
-Verblijfsobject -up-> "Gebouw (Pand+)"
+Verblijfsobject -left-> "Gebouw (Pand+)"
 Verblijfsobject .. BuildingUnit
-Gebouwdeel --> Verblijfsobject
-Gebouwdeel -right-> "Gebouw (Pand+)"
-Gebouwdeel --> Gebouwinstallatie
+Gebouwdeel -up-> Verblijfsobject
+Gebouwdeel -up-> "Gebouw (Pand+)"
+Gebouwdeel -left-> Gebouwinstallatie
 Gebouwinstallatie -up-> "Gebouw (Pand+)"
 Gebouwinstallatie .. BuildingInstallation
 OverigeConstructie .. OtherConstruction
-Building .. "Gebouw (Pand+)"
-BuildingPart .. "Gebouw (Pand+)"
+Building .up. "Gebouw (Pand+)"
+BuildingPart .up. "Gebouw (Pand+)"
 
 class OtherConstruction << extern >> {
 }
