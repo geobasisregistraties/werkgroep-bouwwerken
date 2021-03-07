@@ -1,0 +1,269 @@
+@startuml
+
+' --------v-v-v-v-v-v-v-v--------
+' https://www.rijkshuisstijl.nl/organisatiespecifieke-richtlijnen/ministerie-van-binnenlandse-zaken-en-koninkrijksrelaties/deelidentiteit-kerndepartement-bzk
+' https://www.rijkshuisstijl.nl/basiselementen/basiselementen-online/online-kleuren
+'
+' # Communicatiekleuren
+' Het kerndepartement van BZK heeft uit het kleurenpalet van de rijkshuisstijl drie kleuren (elk met tint1 / tint2) gekozen:
+' - Rijksoverheid hemelblauw #007bc7 (#b2d7ee/#d9ebf7)
+' - Rijksoverheid rood #d52b1e (#f2bfbb/#f9dfdd)
+' - Rijksoverheid groen #39870c (#c3dbb6/#e1eddb)
+' Het gebruik van deze kleuren in combinatie met veel wit wordt gestimuleerd.
+'
+' # Tinten voor achtergrondkaders, grafieken en tabellen
+' Voor achtergrondkaders, grafieken en tabellen kunnen 7 neutrale grijstinten of tinten van een communicatiekleur in stappen van 20% worden toegepast. Voor tekstachtergrond wordt grijstint1 of communicatiekleur tint2 aanbevolen om aan de contrasteisen voor een goede leesbaarheid te voldoen.
+'
+' Rijksoverheid grijs 1 #f3f3f3
+' Rijksoverheid grijs 2 #e6e6e6
+' Rijksoverheid grijs 3 #cccccc
+' Rijksoverheid grijs 4 #b4b4b4
+' Rijksoverheid grijs 5 #999999
+' Rijksoverheid grijs 6 #696969
+' Rijksoverheid grijs 7 #535353
+
+' --------^-^-^-^-^-^-^-^--------
+
+skinparam defaultFontColor black
+skinparam defaultFontName Lucida Sans
+skinparam defaultFontSize 11
+skinparam defaultFontStyle normal
+skinparam defaultMonospacedFontName Lucida Sans Typewriter
+' skinparam defaultTextAlignment left
+' skinparam lineType ortho
+' skinparam lineType polyline
+skinparam shadowing false
+skinparam wrapWidth 165
+
+skinparam class {
+    ArrowColor #39870c
+    ArrowFontSize 10
+'     ArrowTextAlignment center
+    ArrowThickness 1.5
+'     AttributeFontColor #000000
+    AttributeIconSize 0
+    BackgroundColor #ffffff
+    BorderColor #007bc7
+    BorderThickness 2
+    FontColor #007bc7
+    FontSize 12
+    FontStyle bold
+'     StereotypeFontStyle italic
+'     StereotypeFontColor #000000
+}
+
+skinparam class<<extern>> {
+    AttributeFontColor #b4b4b4
+    BorderColor #b4b4b4
+    FontColor #b4b4b4
+    StereotypeFontColor #b4b4b4
+}
+
+skinparam class<<vrijwillig>> {
+    BorderThickness 1
+    FontStyle normal
+}
+
+skinparam note {
+    BackgroundColor #fdf6bb
+    BorderColor #f9e11e
+    FontColor #007bc7
+}
+
+skinparam package {
+    BackgroundColor #f3f3f3
+    BorderColor #d52b1e
+    FontColor #d52b1e
+    FontSize 12
+    FontStyle bold
+    Style rectangle
+}
+
+skinparam package<< subpackage >> {
+    BackgroundColor #e6e6e6
+    BorderColor #e6e6e6
+    FontStyle normal
+}
+
+hide circle
+
+hide empty members
+
+hide stereotype
+
+' hide attributes
+
+' hide methods
+
+' hide AbstractObject
+
+
+' =================================================================================================
+
+
+package "FYSIEK" {
+    package "Gebeurtenis" << subpackage >> {
+        class Bouwwerk {
+        }
+    }
+    class Gebouwblok {
+    }
+'     note left of Gebouwblok : Na een muurdoorbraak kan een verblijfseenheid in meerdere aaneengesloten gebouwen met verschillende typeGebouw zijn gelegen.
+    class Gebouw {
+    }
+'     note top of Gebouw : Dus bovengrondse delen die uitsteken horen bij het gebouw waar ze aan vast zitten. Een ondergrondse kelder hoort bij het gebouw waar deze onder ligt en als een tunnel twee kantoortorens verbindt, dan vormen die samen met de tunnel één gebouw.
+    class Toegang {
+    }
+    class Voorziening {
+    }
+    package "Indeling" << subpackage >> {
+        class Gebouwdeel {
+        }
+        class Gebouwlaag {
+        }
+        class Gebouwruimte {
+        }
+        class Resteenheid {
+        }
+        class Verblijfseenheid {
+        }
+        class Verkeerseenheid {
+        }
+'         note top of Verblijfseenheid : Als een verblijfsobject uit BAG, maar ongeacht functionele zelfstandigheid, altijd binnendoor bereikbaar, zonder gebruiksdoel en zonder eis van voorzieningen.
+    }
+}
+
+' ABSTRACT
+' AbstractObject <|-- Bouwwerk
+' AbstractObject <|-- Gebouwblok
+' AbstractObject <|-- Gebouw
+' AbstractObject <|-- Voorziening
+' AbstractObject <|-- Gebouwlaag
+' AbstractObject <|-- Gebouwdeel
+' AbstractObject <|-- Toegang
+
+' FYSIEK
+Bouwwerk "1..*" o-- "*" Voorziening
+Gebouwblok "1" o-- "1..*" Bouwwerk
+Gebouwblok "1" *-left- "1..*" Gebouw
+Gebouwblok "1" *-- "1..*" Gebouwdeel
+Gebouwdeel <|-- Verblijfseenheid
+Gebouwdeel <|-down- Verkeerseenheid
+Gebouwdeel <|-right- Resteenheid
+Verkeerseenheid "*" -right-> "2..*" Verblijfseenheid : verbindt  >
+Gebouwdeel "*" -left-> "1..*" Gebouwlaag : ligt\nop  >
+Gebouwdeel "*" --> "1..*" Gebouwruimte : ligt\nop  >
+Gebouwdeel "*" --> "*" Voorziening : heeft >
+Gebouwdeel "1..*" --> "1..*" Gebouw : ligt\nin  >
+Verblijfseenheid "1" --> "1..*" Toegang : heeft >
+' Gebouwlaag "*" --> "*" Voorziening : heeft >
+' Gebouw "1" *-- "1..*" Gebouwlaag
+
+' EXTERN
+Bouwwerk "*" -down- "1..*" Bouwbesluit : is\ngebouwd\nvolgens >
+Bouwwerk "1..*" -down-> "1" "IFC-model" : is\nuitgewerkt\nin >
+Toegang "1" -right-> "0..1" Adres : heeft >
+
+abstract class AbstractObject << Objecttype >> {
+    + identificatie
+    + documentdatum
+    + documentnummer
+    + geconstateerd
+    + status
+'     --
+}
+
+note top of AbstractObject : Extra attributen voor alle objecttypen, maar omwille van de leesbaarheid hier niet verder uitgewerkt.
+
+class Adres << extern >> {
+}
+
+class Bouwbesluit << extern >> {
+}
+
+class Bouwwerk << Objecttype >> {
+'     ..//verplicht//..
+    + bouwgeometrie [0..1]
+    + bouwjaar [1..1]
+'     + opleverdatum [1..1]
+    + sloopgeometrie [0..*]
+    + typeBouwwerk: TypeBouwwerk [1..*]
+'     + typeConstructie: TypeConstructie [1..*]
+'     + vigerendBouwbesluit [1..1]
+'     ..//vrijwillig//..
+    --
+    Grootste aaneengesloten geheel van een in één keer gerealiseerde bouwkundige constructie, ongeacht de verbinding met de aarde en de bereikbaarheid binnendoor.
+}
+
+class Gebouw << Objecttype >> {
+    + geometrie
+    + typeGebouw: TypeGebouw [1..*]
+    --
+    Grootste aaneengesloten, homogene, duurzaam met de aarde verbonden en omsloten eenheid van bouwkundig-constructieve aard binnen een gebouwblok.
+}
+
+class Gebouwblok << Objecttype >> {
+    + geometrie
+    --
+    + aggregeren( )
+    --
+    Grootste aaneengesloten samenstel van bouwwerken die bouwkundig-constructief met elkaar zijn verbonden.
+}
+
+abstract class Gebouwdeel << Objecttype >> {
+    + geometrie
+    --
+    Grootste aaneengesloten, omsloten en ondeelbare eenheid van binnen een gebouwblok gelegen ruimten die volledig binnendoor bereikbaar is.
+}
+
+class Gebouwlaag << Objecttype >> << vrijwillig >> {
+    + geometrie
+    + verdiepingsaanduiding [1..1]
+    --
+    Grootste aaneengesloten gedeelte van een gebouwblok met dezelfde vloerhoogte.
+}
+
+class Gebouwruimte << Objecttype >> << vrijwillig >> {
+    + geometrie
+    --
+    Kleinste omsloten eenheid binnen een gebouwblok.
+}
+
+class "IFC-model" << extern >> {
+'     https://hetnationaalbimplatform.nl/upload/documents/RVB_BIM_Norm_v1.1.pdf
+}
+
+class Resteenheid << Objecttype >> {
+'     --
+    Gedeelte van een gebouwblok dat geen verblijfseenheid of verkeerseenheid is.
+}
+
+class Toegang << Objecttype >> {
+    + geometrie
+    + toegankelijkheid
+    --
+    Deur of andere voorziening die toegang geeft tot een verblijfseenheid vanaf de openbare weg, een erf of een verkeerseenheid.
+}
+
+class Verblijfseenheid << Objecttype >> {
+    + oppervlakte
+    --
+'     Bouwkundig-constructief zelfstandige eenheid van verblijf die onderwerp kan zijn van goederenrechtelijke rechtshandelingen.
+    Eenheid van verblijf die onderwerp kan zijn van goederenrechtelijke rechtshandelingen.
+}
+
+class Verkeerseenheid << Objecttype >> {
+'     --
+    Gedeelte van een gebouwblok dat verblijfseenheden met elkaar of met een openbare weg of een erf verbindt.
+' Eenheid van verkeer die meerdere verblijfseenheden verbindt.
+' die bereikbaar is vanaf een openbare weg of een erf.
+}
+
+class Voorziening << Objecttype >> {
+'     + geometrie
+    + typeVoorziening: TypeVoorziening
+    --
+    Geheel van een relevante installatie of andere voorziening in of aan een gebouwblok.
+}
+
+@enduml

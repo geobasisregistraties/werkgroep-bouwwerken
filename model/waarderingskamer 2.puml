@@ -1,0 +1,202 @@
+@startuml
+
+' --------v-v-v-v-v-v-v-v--------
+' https://www.rijkshuisstijl.nl/organisatiespecifieke-richtlijnen/ministerie-van-binnenlandse-zaken-en-koninkrijksrelaties/deelidentiteit-kerndepartement-bzk
+' https://www.rijkshuisstijl.nl/basiselementen/basiselementen-online/online-kleuren
+'
+' # Communicatiekleuren
+' Het kerndepartement van BZK heeft uit het kleurenpalet van de rijkshuisstijl drie kleuren (elk met tint1 / tint2) gekozen:
+' - Rijksoverheid hemelblauw #007bc7 (#b2d7ee/#d9ebf7)
+' - Rijksoverheid rood #d52b1e (#f2bfbb/#f9dfdd)
+' - Rijksoverheid groen #39870c (#c3dbb6/#e1eddb)
+' Het gebruik van deze kleuren in combinatie met veel wit wordt gestimuleerd.
+'
+' # Tinten voor achtergrondkaders, grafieken en tabellen
+' Voor achtergrondkaders, grafieken en tabellen kunnen 7 neutrale grijstinten of tinten van een communicatiekleur in stappen van 20% worden toegepast. Voor tekstachtergrond wordt grijstint1 of communicatiekleur tint2 aanbevolen om aan de contrasteisen voor een goede leesbaarheid te voldoen.
+'
+' Rijksoverheid grijs 1 #f3f3f3
+' Rijksoverheid grijs 2 #e6e6e6
+' Rijksoverheid grijs 3 #cccccc
+' Rijksoverheid grijs 4 #b4b4b4
+' Rijksoverheid grijs 5 #999999
+' Rijksoverheid grijs 6 #696969
+' Rijksoverheid grijs 7 #535353
+
+' --------^-^-^-^-^-^-^-^--------
+
+skinparam defaultFontColor black
+skinparam defaultFontName Lucida Sans
+skinparam defaultFontSize 11
+skinparam defaultFontStyle normal
+skinparam defaultMonospacedFontName Lucida Sans Typewriter
+' skinparam defaultTextAlignment left
+' skinparam lineType ortho
+' skinparam lineType polyline
+skinparam shadowing false
+skinparam wrapWidth 165
+
+skinparam class {
+    ArrowColor #39870c
+    ArrowFontSize 10
+'     ArrowTextAlignment center
+    ArrowThickness 1.5
+'     AttributeFontColor #000000
+    AttributeIconSize 0
+    BackgroundColor #ffffff
+    BorderColor #007bc7
+    BorderThickness 2
+    FontColor #007bc7
+    FontSize 12
+    FontStyle bold
+'     StereotypeFontStyle italic
+'     StereotypeFontColor #000000
+}
+
+skinparam class<<extern>> {
+    AttributeFontColor #b4b4b4
+    BorderColor #b4b4b4
+    FontColor #b4b4b4
+    StereotypeFontColor #b4b4b4
+}
+
+skinparam class<<vrijwillig>> {
+    BorderThickness 1
+    FontStyle normal
+}
+
+skinparam note {
+    BackgroundColor #fdf6bb
+    BorderColor #f9e11e
+    FontColor #007bc7
+}
+
+skinparam package {
+    BackgroundColor #f3f3f3
+    BorderColor #d52b1e
+    FontColor #d52b1e
+    FontSize 12
+    FontStyle bold
+    Style rectangle
+}
+
+skinparam package<< subpackage >> {
+    BackgroundColor #e6e6e6
+    BorderColor #e6e6e6
+    FontStyle normal
+}
+
+hide circle
+
+hide empty members
+
+hide stereotype
+
+' hide AbstractObject
+
+
+' =================================================================================================
+
+
+package "FUNCTIE" {
+    class WOZ-deelobject {
+    }
+}
+
+package "FYSIEK" {
+    class Gebouw {
+    }
+    class Bouwlaag {
+    }
+    class Gebouwdeel {
+    }
+    class Verblijfsobject {
+    }
+}
+
+Verblijfsobject "*" -> "1" Gebouw : ligt\nin  >
+Verblijfsobject "1" --> "*" Gebouwdeel : omvat >
+Gebouw "1" <-- "*" Bouwlaag : ligt\nin <
+Gebouwdeel "*" <-> "*" Bouwlaag : ligt\nop >
+Gebouwdeel "1" -> "*" Bouwlaag : omvat >
+Gebouw "1" --> "*" Gebouwdeel : is\ndeel\nvan <
+"WOZ-deelobject" "1" -left- "1" Gebouwdeel : bestaat\nuit >
+"WOZ-deelobject" "1" -right- "1" Gebouwinstallatie : bestaat\nuit >
+"WOZ-deelobject" "1" -- "1" Constructie : bestaat\nuit >
+"WOZ-deelobject" "*" -- "*" Scheiding : bestaat\nuit >
+"WOZ-deelobject" "*" -- "*" "Begroeid terreindeel" : bestaat\nuit >
+"WOZ-deelobject" "*" -- "*" "Onbegroeid terreindeel" : bestaat\nuit >
+Verblijfsobject "1" -left- "2" Adres
+
+abstract class AbstractObject << Objecttype >> {
+    + identificatie
+    + documentdatum
+    + documentnummer
+    + geconstateerd
+    + status
+'     --
+}
+    note right of AbstractObject : Extra attributen voor alle objecttypen, maar omwille van de leesbaarheid hier niet verder uitgewerkt.
+
+class Adres << extern >> {
+}
+
+class "Begroeid terreindeel" << extern >> {
+}
+
+class Bouwlaag << Objecttype >> << vrijwillig >> {
+'     ..//verplicht//..
+'     ..//vrijwillig//..
+    + gebruiksoppervlakte
+    + plattegrond
+    + verdieping
+    + vlakgeometrie (incl. Z-coördinaat)
+}
+
+class Constructie << extern >> {
+}
+
+class Gebouw << Objecttype >> {
+'     ..//verplicht//..
+    + bouwjaar (oudste gebouwdeel)
+    + geometrie (3D: LoD 2.2)
+    + type
+'     ..//vrijwillig//..
+}
+
+class Gebouwdeel << Objecttype >> {
+'     ..//verplicht//..
+    + bouwjaar
+    + gebruiksoppervlakte
+    + toegestaan gebruik
+    + type
+    + vlakgeometrie (incl. Z-coördinaat)
+'     ..//vrijwillig//..
+}
+
+class Gebouwinstallatie << extern >> {
+}
+
+class "Onbegroeid terreindeel" << extern >> {
+}
+
+class Scheiding << extern >> {
+}
+
+class Verblijfsobject << Objecttype >> {
+'     ..//verplicht//..
+    + gebruiksdoel
+    + gebruiksoppervlakte (optelling)
+    + toegang van buiten (puntgeometrie 3D)
+    + entree verblijfsobject (puntgeometrie 3D)
+    + vlakgeometrie (incl. Z-coördinaat)
+'     ..//vrijwillig//..
+}
+
+class WOZ-deelobject << Objecttype >> {
+'     ..//verplicht//..
+    + WOZ-objectnummer
+    + code WOZ-deelobject
+'     ..//vrijwillig//..
+}
+
+@enduml

@@ -1,0 +1,315 @@
+@startuml
+
+' --------v-v-v-v-v-v-v-v--------
+' https://www.rijkshuisstijl.nl/organisatiespecifieke-richtlijnen/ministerie-van-binnenlandse-zaken-en-koninkrijksrelaties/deelidentiteit-kerndepartement-bzk
+' https://www.rijkshuisstijl.nl/basiselementen/basiselementen-online/online-kleuren
+'
+' # Communicatiekleuren
+' Het kerndepartement van BZK heeft uit het kleurenpalet van de rijkshuisstijl drie kleuren (elk met tint1 / tint2) gekozen:
+' - Rijksoverheid hemelblauw #007bc7 (#b2d7ee/#d9ebf7)
+' - Rijksoverheid rood #d52b1e (#f2bfbb/#f9dfdd)
+' - Rijksoverheid groen #39870c (#c3dbb6/#e1eddb)
+' Het gebruik van deze kleuren in combinatie met veel wit wordt gestimuleerd.
+'
+' # Tinten voor achtergrondkaders, grafieken en tabellen
+' Voor achtergrondkaders, grafieken en tabellen kunnen 7 neutrale grijstinten of tinten van een communicatiekleur in stappen van 20% worden toegepast. Voor tekstachtergrond wordt grijstint1 of communicatiekleur tint2 aanbevolen om aan de contrasteisen voor een goede leesbaarheid te voldoen.
+'
+' Rijksoverheid grijs 1 #f3f3f3
+' Rijksoverheid grijs 2 #e6e6e6
+' Rijksoverheid grijs 3 #cccccc
+' Rijksoverheid grijs 4 #b4b4b4
+' Rijksoverheid grijs 5 #999999
+' Rijksoverheid grijs 6 #696969
+' Rijksoverheid grijs 7 #535353
+
+' --------^-^-^-^-^-^-^-^--------
+
+skinparam defaultFontColor black
+skinparam defaultFontName Lucida Sans
+skinparam defaultFontSize 11
+skinparam defaultFontStyle normal
+skinparam defaultMonospacedFontName Lucida Sans Typewriter
+' skinparam defaultTextAlignment left
+' skinparam lineType ortho
+' skinparam lineType polyline
+skinparam shadowing false
+skinparam wrapWidth 165
+
+skinparam class {
+    ArrowColor #39870c
+    ArrowFontSize 10
+'     ArrowTextAlignment center
+    ArrowThickness 1.5
+'     AttributeFontColor #000000
+    AttributeIconSize 0
+    BackgroundColor #ffffff
+    BorderColor #007bc7
+    BorderThickness 2
+    FontColor #007bc7
+    FontSize 12
+    FontStyle bold
+'     StereotypeFontStyle italic
+'     StereotypeFontColor #000000
+}
+
+skinparam class<<extern>> {
+    AttributeFontColor #b4b4b4
+    BorderColor #b4b4b4
+    FontColor #b4b4b4
+    StereotypeFontColor #b4b4b4
+}
+
+skinparam class<<vrijwillig>> {
+    BorderThickness 1
+    FontStyle normal
+}
+
+skinparam note {
+    BackgroundColor #fdf6bb
+    BorderColor #f9e11e
+    FontColor #007bc7
+}
+
+skinparam package {
+    BackgroundColor #f3f3f3
+    BorderColor #d52b1e
+    FontColor #d52b1e
+    FontSize 12
+    FontStyle bold
+    Style rectangle
+}
+
+skinparam package<< subpackage >> {
+    BackgroundColor #e6e6e6
+    BorderColor #e6e6e6
+    FontStyle normal
+}
+
+hide circle
+
+hide empty members
+
+hide stereotype
+
+' hide AbstractObject
+
+
+' =================================================================================================
+
+
+package "WAARDELIJSTEN" {
+
+' together {
+'     class Gebruiksdoel
+'     class TypeBouwwerk
+'     class TypeConstructie
+'     class TypeGebouw
+'     class TypeMetagegeven
+'     class TypeVoorziening
+' }
+
+'     class TypeConstructie << Referentielijst >> {
+'         + beton
+'         + houtskelet
+'         + metselwerk
+'         + prefab
+'         + staalstructuur
+'     }
+
+    class TypeBouwwerk << Referentielijst >> {
+        + aanbouw
+        + nieuwbouw
+        + onderbouw
+        + opbouw
+        + sloop
+        + verbouw
+    }
+
+    class TypeVoorziening << Referentielijst >> {
+        + badkamer
+        + balkon
+        + carport
+        + dakkapel
+        + dakterras
+        + keuken
+        + meterkast
+        + parkeerdak, parkeerdek
+        + serre
+        + toilet
+        + trap
+        + warmtepomp
+        + zonneboiler
+        + zonnepanelen
+        + zwembad
+        <color:#b4b4b4>+ atelier/hobbyruimte</color>
+        <color:#b4b4b4>+ berging</color>
+        <color:#b4b4b4>+ dakopbouw</color>
+        <color:#b4b4b4>+ garage</color>
+        <color:#b4b4b4>+ kelder</color>
+        <color:#b4b4b4>+ souterrain</color>
+        <color:#b4b4b4>+ terras</color>
+        <color:#b4b4b4>+ toren</color>
+        <color:#b4b4b4>+ zolder</color>
+        --
+        <i>Bronnen: o.a. CityGML 2.0 BuildingInstallation function; CityGML 2.0 Room function</i>
+    }
+
+'     class TypeMetagegeven << Referentielijst >> {
+'         accuraatheid
+'         bewerkingsmethode
+'         in onderzoek
+'         inwinningsmethode
+'     }
+
+    class Gebruiksdoel << Referentielijst >> {
+        + bijeenkomstfunctie
+        + celfunctie
+        + gezondheidszorgfunctie
+        + industriefunctie
+        + kantoorfunctie
+        + logiesfunctie
+        + onderwijsfunctie
+        + sportfunctie
+        + winkelfunctie
+        + woonfunctie
+        + overige gebruiksfunctie
+        --
+        <i>Bronnen: BAG; Bouwbesluit 2012</i>
+    }
+
+    class StatusBouwwerk << Referentielijst >> {
+        + {field} gerealiseerd
+        + {field} gerealiseerd (niet ingemeten)
+        + {field} niet gerealiseerd
+        + {field} ten onrechte opgevoerd
+        + {field} vergunning verleend
+        + {field} werk gestart
+    }
+
+    class StatusGebouwdeel << Referentielijst >> {
+        + {field} buiten gebruik
+        + {field} gevormd
+        + {field} in gebruik
+        + {field} in gebruik (niet ingemeten)
+        + {field} ingetrokken
+        + {field} ten onrechte opgevoerd
+        + {field} verbouwing
+    }
+
+    class TypeGebouw << Referentielijst >> {
+' http://inspire.ec.europa.eu/codelist/BuildingNatureValue
+'         + boog
+'         + bunker
+'         + dam
+'         + grotgebouw
+'         + kapel
+'         + kas
+'         + kasteel
+'         + kerk
+'         + moskee
+'         + opslagtank
+'         + overkapping
+'         + schuur
+'         + silo
+'         + stadion
+'         + synagoge
+'         + tempel
+'         + toren
+'         + vuurtoren
+'         + windmolen
+'         + windturbine
+'         + zonnescherm
+'         --
+'         <i>Bron: INSPIRE BuildingNatureValue</i>
+'
+        + boortoren
+        + brandtoren
+        + brandweerkazerne
+        + bunker
+        + crematorium
+        + elektriciteitscentrale
+        + fabriek
+        + fort
+        + gemaal
+        + gevangenis
+        + hotel
+        + kapel
+        + kas, warenhuis
+        + kasteel
+        + kerk
+        + kerncentrale, kernreactor
+        + klokkentoren
+        + klooster, abdij
+        + koeltoren
+        + koepel
+        + kunstijsbaan
+        + lichttoren
+        + luchtwachttoren
+        + manege
+        + moskee
+        + museum
+        + observatorium
+        + overig religieus gebouw
+        + paleis
+        + parkeergarage
+        + peilmeetstation
+        + pompstation
+        + radartoren
+        + reddingboothuisje
+        + remise
+        + ruïne
+        + schaapskooi
+        + school
+        + schoorsteen
+        + silo
+        + sporthal
+        + stadion
+        + stationsgebouw
+        + synagoge
+        + tank
+        + tankstation
+        + telecommunicatietoren
+        + tol
+        + toren
+        + transformatorstation
+        + uitzichttoren
+        + universiteit
+        + veiling
+        + verkeerstoren
+        + vuurtoren
+        + waterradmolen
+        + watertoren
+        + werf
+        + windmolen: korenmolen
+        + windmolen: watermolen
+        + windturbine
+        + zendtoren
+        + ziekenhuis
+        + zwembad
+        + overig
+        <color:#b4b4b4>+ bezoekerscentrum</color>
+        <color:#b4b4b4>+ dok</color>
+        <color:#b4b4b4>+ gemeentehuis</color>
+        <color:#b4b4b4>+ huizenblok</color>
+        <color:#b4b4b4>+ kliniek, inrichting, sanatorium</color>
+        <color:#b4b4b4>+ markant gebouw</color>
+        <color:#b4b4b4>+ militair gebouw</color>
+        <color:#b4b4b4>+ parkeerdak, parkeerdek</color>
+        <color:#b4b4b4>+ politiebureau</color>
+        <color:#b4b4b4>+ postkantoor</color>
+        <color:#b4b4b4>+ psychiatrisch ziekenhuis, psychiatrisch centrum</color>
+        <color:#b4b4b4>+ radarpost</color>
+        <color:#b4b4b4>+ radiotoren, televisietoren</color>
+        <color:#b4b4b4>+ recreatiecentrum</color>
+        <color:#b4b4b4>+ stadskantoor, hulpsecretarie</color>
+        <color:#b4b4b4>+ wegrestaurant</color>
+        <color:#b4b4b4>+ windmolen</color>
+        --
+        Fysieke aard van een gebouw, onafhankelijk van het actuele gebruik.
+        --
+        <i>Bron: Basisregistratie Topografie: Catalogus en Productspecificaties, versie 1.2.0.1, 8 juli 2019</i>
+    }
+
+}
+
+@enduml
